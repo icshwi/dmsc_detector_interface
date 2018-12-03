@@ -1,4 +1,4 @@
-/* dmsc-detector-interfaceMain.cpp */
+/* dmsc_detector_interfaceMain.cpp */
 /* Author:  Marty Kraimer Date:    17MAR2000 */
 
 #include <stddef.h>
