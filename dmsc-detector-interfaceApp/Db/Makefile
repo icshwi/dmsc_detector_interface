@@ -6,7 +6,12 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install) into <top>/db
 # databases, templates, substitutions like this
-#DB += xxx.db
+DB += detector_controls.db
+DB += ro_register.db
+DB += rw_register.db
+DB += softEventCounter.db
+DB += timestamp_sync_2.db
+DB += timestamp_sync.db
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
