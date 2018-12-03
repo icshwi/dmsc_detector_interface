@@ -1,0 +1,28 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(REG) 	= name of register
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+# $(PRO) = stream DEV protocol filename
+
+
+
+## Communication Records ###
+
+
+
+record(longin, "$(SYS)-$(DEV):$(REG)-OFF") {
+  field(VAL, "$(OFF)")
+}
+
+
+record(longin, "$(SYS)-$(DEV):$(REG)-RBV"){
+
+  #field(DESC, "$(REG) Current Value")
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
+  field(PINI, "1")
+}
+
+

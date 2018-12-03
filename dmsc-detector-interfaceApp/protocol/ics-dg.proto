@@ -1,0 +1,35 @@
+#
+# StreamDevice protocol for the DGRI FPGA protocol.
+#
+# A full packet from the host to the FPGA comprises 16 bytes.
+# Responses will be 0 or 16 bytes.
+#
+MaxInput = 16; 		#No Bytes in 
+Terminator = "";
+ReplyTimeout = 100;
+ReadTimeout  = 100;
+LockTimeout = 100;
+PollPeriod = 1; # See section 5 http://epics.web.psi.ch/software/streamdevice/doc/stream.pdf
+
+
+writeRegister{
+ out "\xCA\xFE\x80\x02%(\$1:\$2).4r\x00\x00\x00\x00\x00\x00\x00%<sum>"; 		# Write Initiate
+ in  "\xBA\xBE\x80\x81%*04r\x00\x00\x00\x00\x00\x00\x00%<sum>"; 			# Response
+ out "\xCA\xFE\x80\xF2\x00\x00\x00\x00%(\$1:\$3).4r\x00\x01\x00%<sum>"; 			# Write Data (Reset 0x8  => 1)
+ out "\xCA\xFE\x80\xC1\x00\x00\x00\x00\x00\x00\x00\x01\x00\x02\x00%<sum>"; 			# Write Terminate
+ in  "\xBA\xBE\x80\xD5\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00%<sum>"; 			# Response
+}
+
+readRegister {
+ out "\xCA\xFE\x80\x00%(\$1:\$2).4r%(\$1:\$2).4r\x00\x00\x00%<sum>"; 	# Read Initiate
+ in  "\xBA\xBE\x80\x80%*04r\x00\x00\x00%*03r\x00%<sum>"; 				# Response
+ in  "\xBA\xBE\x80\xA0%04r\x00\x00\x00%*03r\x00%<sum>";  					# Response Data
+ out "\xCA\xFE\x80\xC0\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00%<sum>"; 			# Read Terminate
+ in  "\xBA\xBE\x80\xE0\x00\x00\x00\x00\x00\x00\x00%*03r\x00%<sum>"; 				# Response
+}
+
+sendTimestamp {
+ out "\xCA\xFE\x40\x00%(\$1:\$2).4r%(\$1:\$3).4r\x00\x00\x00%<sum>";
+}
+
+

@@ -1,0 +1,47 @@
+# Detector Controls general register read write
+# $(SYS)    = The System (DG)
+# $(DEV) = The Device name (FPGA)
+# $(COM) = COM port used for proto file
+# $(PRO) = protocol file 
+
+
+
+
+## Communication Records ###
+
+record(bo, "$(SYS)-$(DEV):writeRegister"){
+
+  field(DESC, "Send write Packets")
+  field(DTYP, "stream")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),off,da) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):registerRBV")
+}
+
+record(longin, "$(SYS)-$(DEV):registerRBV"){
+
+  field(DESC, "Send packets to read  register")
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),off) $(COM)")
+}
+
+
+record(longin, "$(SYS)-$(DEV):off") {
+  field(VAL, "0")
+}
+
+
+record(longin, "$(SYS)-$(DEV):da") {
+# Add to getpvs
+  field(DESC, "Data, 4 bytes")
+  field(VAL, "0")
+  
+}
+
+
+
+
+
+
+
+
+

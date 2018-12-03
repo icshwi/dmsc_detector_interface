@@ -1,0 +1,118 @@
+# Event counter allows with TS of receipt
+#
+# Macros:
+#  $(SYS,undefined) 		= SYS
+#  $(DEV1,undefined) 		= DEVICE2
+#  $(DEV2,undefined) 		= DEVICE2
+#  $(EVR,undefined) 		= EVR
+#  $(CODE,undefined) 		= Event code (hardware)
+#  $(TSEVT,undefined)		= Event letter connecting to record with TSE = -2
+#  $(RST_ENA_DEL,undefined) = delay between reset and enable 
+#  $(ENA_TS_DEL,undefined) 	= delay between enable and send TS 
+#  $(N_SEC_DELTA,undefined) = delay between $(CODE,undefined) and trigger event (set in shel script)
+#  $(COM1,undefined)			= COM1 port that the $(DEV,undefined) is connected to
+#  $(COM2,undefined)			= COM1 port that the $(DEV,undefined) is connected to
+#  $(PRO,undefined) = protocol file
+
+
+
+## -------------- Timestamp Synchronisation Records--------------------- ##
+
+# This record is processed when the 
+record (seq, "$(SYS)-$(DEV1)-$(DEV2):syncTimestamp-CMD"){
+	field(DESC, "Perform timestamp sync")
+	field(DOL1, "1")
+	field(DOL2, "1")
+	field(DOL3, "0")
+	field(DOL4, "0")
+	
+	field(DLY3, "$(RST_ENA_DEL,undefined)")
+	field(DLY6, "$(ENA_TS_DEL,undefined)")
+	
+	field(LNK1, "$(SYS)-$(DEV1):RST-SP")
+	field(LNK2, "$(SYS)-$(DEV2):RST-SP")
+
+	field(LNK3, "$(SYS)-$(DEV1):RST-SP")
+	field(LNK4, "$(SYS)-$(DEV2):RST-SP")
+	
+	field(LNK5, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")	
+	
+	field(LNK6, "$(SYS)-$(DEV1):sendDumTim-CMD.PROC")
+	field(LNK7, "$(SYS)-$(DEV2):sendDumTim-CMD.PROC")
+	
+	field(LNK8, "$(SYS,undefined)-$(EVR,undefined):sendTim-Cnt-I.PROC")
+	field(SCAN, "Event")
+	field(EVNT, "$(CODE,undefined)")
+}
+
+record(aSub, "$(SYS)-$(EVR):getTimeStamp_aSub"){
+	field(SNAM, "getTimeStamp_aSub")
+	field(FTA,  "LONG")     
+	field(NOA,  "1")  	
+	field(INPA, "$(SYS,undefined)-$(EVR,undefined):$(TSEVT,undefined)-SP")
+	field(FTB,  "LONG")
+	field(NOB,  "1")
+	field(INPB, "$(SYS)-$(EVR):fracNsecDelta")
+	field(FTVA, "LONG")
+	field(NOVA, "1")
+	field(OUTA, "$(SYS)-$(EVR):Sec")
+	field(FTVB, "LONG")
+	field(NOVB, "1")
+	field(OUTB, "$(SYS)-$(EVR):Nsec")	
+}
+
+record(longin, "$(SYS)-$(EVR):fracNsecDelta"){
+	field(DESC, "Timestamp delta value")
+	field(VAL, "$(N_SEC_DELTA,undefined)") #Note that this is in fractional nanoseconds and not seconds (it's multiples of the 88MHz Clock)
+}
+
+record(longin, "$(SYS)-$(EVR):Sec") {
+  field(DESC, "Timestamp value upper 32 bits")
+  field(VAL, "0")
+}
+
+record(longin, "$(SYS)-$(EVR):Nsec") {
+  field(DESC, "Timestamp value lower 32 bits")
+  field(VAL, "0")
+}
+
+record(longin, "$(SYS)-$(EVR):DumSec") {
+  field(DESC, "Dummy Timestamp value upper 32 bits")
+  field(VAL, "666666")
+}
+
+record(longin, "$(SYS)-$(EVR):DumNsec") {
+  field(DESC, "Dummy Timestamp value lower 32 bits")
+  field(VAL, "777777")
+}
+
+record(bo, "$(SYS)-$(DEV1):sendTim-CMD") {
+  field(DESC, "Send timestamp register packet to FPGA")
+  field(DTYP, "stream")	
+  field(OUT, "@$(PRO,undefined) sendTimestamp($(SYS)-$(EVR),Sec,Nsec) $(COM1,undefined)")
+}
+
+record(bo, "$(SYS)-$(DEV2):sendTim-CMD") {
+  field(DESC, "Send timestamp register packet to FPGA")
+  field(DTYP, "stream")	
+  field(OUT, "@$(PRO,undefined) sendTimestamp($(SYS)-$(EVR),Sec,Nsec) $(COM2,undefined)")
+}
+
+record(bo, "$(SYS)-$(DEV1):sendDumTim-CMD") {
+  field(DESC, "Send timestamp register packet to FPGA")
+  field(DTYP, "stream")	
+  field(OUT, "@$(PRO,undefined) sendTimestamp($(SYS)-$(EVR),DumSec,DumNsec) $(COM1,undefined)")
+}
+
+record(bo, "$(SYS)-$(DEV2):sendDumTim-CMD") {
+  field(DESC, "Send timestamp register packet to FPGA")
+  field(DTYP, "stream")	
+  field(OUT, "@$(PRO,undefined) sendTimestamp($(SYS)-$(EVR),DumSec,DumNsec) $(COM2,undefined)")
+}
+
+
+record(calc, "$(SYS,undefined)-$(EVR):sendTim-Cnt-I") {
+  field(CALC, "A+1")
+  field(INPA, "$(SYS,undefined)-$(EVR):sendTim-Cnt-I NPP")
+}
+ 
