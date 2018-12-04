@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Display</name>
+  <width>1000</width>
+  <height>800</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>ADC Demonstrator</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>305</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group</name>
+    <x>9</x>
+    <y>59</y>
+    <width>883</width>
+    <height>182</height>
+    <style>2</style>
+    <background_color>
+      <color name="BACKGROUND" red="220" green="225" blue="221">
+      </color>
+    </background_color>
+    <widget type="led" version="2.0.0">
+      <name>Reset</name>
+      <pv_name>ca://${PREFIX}RST-RBV</pv_name>
+      <x>24</x>
+      <y>105</y>
+      <off_color>
+        <color name="RED" red="252" green="13" blue="27">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="RED-BORDER" red="150" green="8" blue="16">
+        </color>
+      </on_color>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>Enabled</name>
+      <pv_name>ca://${PREFIX}RST-RBV</pv_name>
+      <x>24</x>
+      <y>62</y>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>EnableButton</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(PREFIX)RST-SP</pv_name>
+          <value>1</value>
+          <description>Enable Sampling</description>
+        </action>
+      </actions>
+      <text>Enable</text>
+      <x>57</x>
+      <y>56</y>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>DisableButton</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(PREFIX)RST-SP</pv_name>
+          <value>0</value>
+          <description>Disable Sampling</description>
+        </action>
+      </actions>
+      <text>Disable</text>
+      <x>57</x>
+      <y>99</y>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>BasicLabel</name>
+      <class>HEADER2</class>
+      <text>Basic controls</text>
+      <x>211</x>
+      <width>170</width>
+      <font use_class="true">
+        <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Sampling mode</name>
+      <x>189</x>
+      <y>40</y>
+      <width>190</width>
+      <height>135</height>
+      <widget type="led" version="2.0.0">
+        <name>PeakDetectEnabled</name>
+        <pv_name>ca://${PREFIX}BPZ-RBV</pv_name>
+        <x>9</x>
+        <y>10</y>
+        <off_color>
+          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>ContinousEnabled</name>
+        <pv_name>ca://${PREFIX}BPZ-RBV</pv_name>
+        <x>9</x>
+        <y>37</y>
+      </widget>
+      <widget type="radio" version="2.0.0">
+        <name>Sampling mode</name>
+        <pv_name>ca://${PREFIX}BPZ-SP</pv_name>
+        <x>39</x>
+        <y>9</y>
+        <items>
+          <item>Peak detect</item>
+          <item>Continous</item>
+        </items>
+        <items_from_pv>false</items_from_pv>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Clock source</name>
+      <x>395</x>
+      <y>40</y>
+      <width>190</width>
+      <height>135</height>
+      <widget type="led" version="2.0.0">
+        <name>InternalClock</name>
+        <pv_name>ca://${PREFIX}CLKSEL-RBV</pv_name>
+        <x>9</x>
+        <y>10</y>
+        <off_color>
+          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>ExternalClock</name>
+        <pv_name>ca://${PREFIX}CLKSEL-RBV</pv_name>
+        <x>9</x>
+        <y>37</y>
+      </widget>
+      <widget type="radio" version="2.0.0">
+        <name>ClockSource</name>
+        <pv_name>ca://${PREFIX}BPZ-SP</pv_name>
+        <x>39</x>
+        <y>9</y>
+        <items>
+          <item>Internal</item>
+          <item>External</item>
+        </items>
+        <items_from_pv>false</items_from_pv>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Payload source</name>
+      <x>600</x>
+      <y>40</y>
+      <width>190</width>
+      <height>135</height>
+      <widget type="led" version="2.0.0">
+        <name>SynthPayload</name>
+        <pv_name>ca://${PREFIX}PAYSEL-RBV</pv_name>
+        <x>9</x>
+        <y>10</y>
+        <off_color>
+          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+          </color>
+        </off_color>
+        <on_color>
+          <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+          </color>
+        </on_color>
+      </widget>
+      <widget type="led" version="2.0.0">
+        <name>ADCPayload</name>
+        <pv_name>ca://${PREFIX}PAYSEL-RBV</pv_name>
+        <x>9</x>
+        <y>37</y>
+      </widget>
+      <widget type="radio" version="2.0.0">
+        <name>PayloadSet</name>
+        <pv_name>ca://${PREFIX}PAYSEL-SP</pv_name>
+        <x>39</x>
+        <y>9</y>
+        <items>
+          <item>Synthetic</item>
+          <item>ADC</item>
+        </items>
+        <items_from_pv>false</items_from_pv>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>StatsGroup</name>
+    <x>587</x>
+    <y>270</y>
+    <width>305</width>
+    <height>210</height>
+    <style>2</style>
+    <widget type="label" version="2.0.0">
+      <name>StatsTitle</name>
+      <class>HEADER2</class>
+      <text>Stats and information</text>
+      <x>59</x>
+      <width>220</width>
+      <font use_class="true">
+        <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="table" version="2.0.0">
+      <name>Table</name>
+      <x>29</x>
+      <y>39</y>
+      <width>250</width>
+      <height>149</height>
+      <font>
+        <font family="Source Sans Pro" style="REGULAR" size="14.0">
+        </font>
+      </font>
+      <columns>
+        <column>
+          <name>Name</name>
+          <width>150</width>
+          <editable>false</editable>
+        </column>
+        <column>
+          <name>Value</name>
+          <width>100</width>
+          <editable>false</editable>
+        </column>
+      </columns>
+      <actions>
+      </actions>
+      <scripts>
+        <script file="EmbeddedPy">
+          <text><![CDATA[# Embedded python script
+from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+
+data = []
+NameDict = {"GIT-RBV":"Git hash", "BUILD-RBV":"Build time", "ID-H":"Device id #1", "PKCNT-RBV":"Packet count", "STATUS0-RBV":"Status 0", "STATUS1-RBV":"Status 1", "STATUS2-RBV":"Status 2"}
+for pv in pvs:
+    VariableName = pv.getName()
+    for CName in NameDict:
+        if CName in VariableName:
+            VariableName = NameDict[CName]
+            break
+    row =  [ VariableName, PVUtil.getString(pv) ]
+    data.append(row)
+
+widget.setValue(data)]]></text>
+          <pv_name>ca://${PREFIX}GIT-RBV</pv_name>
+          <pv_name>ca://${PREFIX}BUILD-RBV</pv_name>
+          <pv_name>ca://${PREFIX}ID-H-RBV</pv_name>
+          <pv_name>ca://${PREFIX}PKCNT-RBV</pv_name>
+          <pv_name>ca://${PREFIX}STATUS0-RBV</pv_name>
+          <pv_name>ca://${PREFIX}STATUS1-RBV</pv_name>
+          <pv_name>ca://${PREFIX}STATUS2-RBV</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1PulseCtr_1</name>
+      <x>189</x>
+      <y>370</y>
+      <width>56</width>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>NetworkingGroup</name>
+    <x>9</x>
+    <y>270</y>
+    <width>541</width>
+    <height>210</height>
+    <style>2</style>
+    <widget type="label" version="2.0.0">
+      <name>NetworkTitle</name>
+      <text>Network settings</text>
+      <x>159</x>
+      <width>180</width>
+      <font>
+        <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Timeout description</name>
+      <text>Keep alive</text>
+      <x>9</x>
+      <y>39</y>
+      <width>80</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>TimeoutSetField</name>
+      <pv_name>ca://${PREFIX}PTO-SP</pv_name>
+      <x>121</x>
+      <y>39</y>
+      <width>69</width>
+      <format>1</format>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>TimeoutGetField</name>
+      <pv_name>ca://${PREFIX}PTO-RBV</pv_name>
+      <x>200</x>
+      <y>39</y>
+      <width>59</width>
+      <format>1</format>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Source</name>
+      <x>99</x>
+      <y>69</y>
+      <width>210</width>
+      <height>130</height>
+      <widget type="textupdate" version="2.0.0">
+        <name>IPGet</name>
+        <pv_name>ca://${PREFIX}SIP-RBV</pv_name>
+        <x>94</x>
+        <y>9</y>
+        <width>71</width>
+        <format>4</format>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>PortGet</name>
+        <pv_name>ca://${PREFIX}UDPS-RBV</pv_name>
+        <x>94</x>
+        <y>39</y>
+        <width>71</width>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>MACGet</name>
+        <pv_name>ca://${PREFIX}SMACU-RBV</pv_name>
+        <x>94</x>
+        <y>69</y>
+        <width>71</width>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>IPSet</name>
+        <pv_name>ca://${PREFIX}SIP-SP</pv_name>
+        <y>9</y>
+        <width>79</width>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>PortSet</name>
+        <pv_name>ca://${PREFIX}UDPS-SP</pv_name>
+        <y>39</y>
+        <width>79</width>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>MACSet</name>
+        <pv_name>ca://${PREFIX}SMACU-SP</pv_name>
+        <y>69</y>
+        <width>79</width>
+      </widget>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_9</name>
+      <text>IP Address</text>
+      <x>9</x>
+      <y>99</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_10</name>
+      <text>UDP Port</text>
+      <x>9</x>
+      <y>129</y>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_11</name>
+      <text>MAC Address</text>
+      <x>9</x>
+      <y>159</y>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>Destination</name>
+      <x>309</x>
+      <y>69</y>
+      <width>212</width>
+      <height>130</height>
+      <widget type="textupdate" version="2.0.0">
+        <name>IPGet_1</name>
+        <pv_name>ca://${PREFIX}DIP-RBV</pv_name>
+        <x>95</x>
+        <y>9</y>
+        <width>71</width>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>PortGet_1</name>
+        <pv_name>ca://${PREFIX}UDPD-RBV</pv_name>
+        <x>95</x>
+        <y>39</y>
+        <width>71</width>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>MACGet_1</name>
+        <pv_name>ca://${PREFIX}DMACU-RBV</pv_name>
+        <x>95</x>
+        <y>69</y>
+        <width>71</width>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>IPSet_1</name>
+        <pv_name>ca://${PREFIX}DIP-SP</pv_name>
+        <y>9</y>
+        <width>79</width>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>PortSet_1</name>
+        <pv_name>ca://${PREFIX}UDPD-SP</pv_name>
+        <y>39</y>
+        <width>79</width>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>MACSet_1</name>
+        <pv_name>ca://${PREFIX}DMACU-SP</pv_name>
+        <y>69</y>
+        <width>79</width>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Channels</name>
+    <x>9</x>
+    <y>510</y>
+    <width>883</width>
+    <height>220</height>
+    <style>2</style>
+    <widget type="label" version="2.0.0">
+      <name>Label_1</name>
+      <class>HEADER2</class>
+      <text>ADC Channels settings and stats</text>
+      <x>281</x>
+      <width>305</width>
+      <font use_class="true">
+        <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+        </font>
+      </font>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Ch1Label_1</name>
+      <text>1</text>
+      <x>24</x>
+      <y>62</y>
+      <width>10</width>
+    </widget>
+    <widget type="checkbox" version="2.0.0">
+      <name>Ch1OnSelect</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-SP</pv_name>
+      <label></label>
+      <x>89</x>
+      <y>62</y>
+      <width>19</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>Ch1Led_1</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-RBV</pv_name>
+      <bit>0</bit>
+      <x>60</x>
+      <y>62</y>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Ch1Gain</name>
+      <x>140</x>
+      <y>57</y>
+      <width>71</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch1Offset</name>
+      <pv_name>ca://${PREFIX}Off0-SP</pv_name>
+      <x>259</x>
+      <y>62</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1OffsetGet</name>
+      <pv_name>ca://${PREFIX}Off0-RBV</pv_name>
+      <x>339</x>
+      <y>62</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1ThresholdGet</name>
+      <pv_name>ca://${PREFIX}CH0-T-RBV</pv_name>
+      <x>521</x>
+      <y>62</y>
+      <width>56</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch1ThresholdSet</name>
+      <pv_name>ca://${PREFIX}CH0-T-SP</pv_name>
+      <x>441</x>
+      <y>62</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1PulseCtr</name>
+      <x>650</x>
+      <y>62</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1FrameCtr</name>
+      <x>750</x>
+      <y>62</y>
+      <width>56</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>ChNrLabel</name>
+      <text>#</text>
+      <x>24</x>
+      <y>34</y>
+      <width>10</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>ActiveLabel</name>
+      <text>Active</text>
+      <x>60</x>
+      <y>34</y>
+      <width>50</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>GainLabel</name>
+      <text>Gain</text>
+      <x>140</x>
+      <y>34</y>
+      <width>50</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>OffsetLabel</name>
+      <text>Offset</text>
+      <x>259</x>
+      <y>34</y>
+      <width>50</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>ThresholdLabel</name>
+      <text>Threshold</text>
+      <x>441</x>
+      <y>34</y>
+      <width>80</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>PulsesLabel</name>
+      <text>Pulses</text>
+      <x>650</x>
+      <y>34</y>
+      <width>50</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>FramesLabel</name>
+      <text>Frames</text>
+      <x>750</x>
+      <y>34</y>
+      <width>50</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Ch2Label</name>
+      <text>2</text>
+      <x>24</x>
+      <y>104</y>
+      <width>10</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>Ch2Led</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-RBV</pv_name>
+      <bit>1</bit>
+      <x>60</x>
+      <y>104</y>
+    </widget>
+    <widget type="checkbox" version="2.0.0">
+      <name>Ch2OnSelect</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-SP</pv_name>
+      <bit>1</bit>
+      <label></label>
+      <x>89</x>
+      <y>104</y>
+      <width>19</width>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Ch2Gain</name>
+      <x>140</x>
+      <y>99</y>
+      <width>71</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch2Offset</name>
+      <pv_name>ca://${PREFIX}Off1-SP</pv_name>
+      <x>259</x>
+      <y>104</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch2OffsetGet</name>
+      <pv_name>ca://${PREFIX}Off1-RBV</pv_name>
+      <x>339</x>
+      <y>104</y>
+      <width>56</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch2ThresholdSet</name>
+      <pv_name>ca://${PREFIX}CH1-T-SP</pv_name>
+      <x>441</x>
+      <y>104</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch2ThresholdGet</name>
+      <pv_name>ca://${PREFIX}CH1-T-RBV</pv_name>
+      <x>521</x>
+      <y>104</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch2PulseCtr</name>
+      <x>650</x>
+      <y>104</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch2FrameCtr</name>
+      <x>750</x>
+      <y>104</y>
+      <width>56</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Ch3Label</name>
+      <text>3</text>
+      <x>24</x>
+      <y>145</y>
+      <width>10</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>Ch3Led</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-RBV</pv_name>
+      <bit>2</bit>
+      <x>60</x>
+      <y>145</y>
+    </widget>
+    <widget type="checkbox" version="2.0.0">
+      <name>Ch3OnSelect</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-SP</pv_name>
+      <bit>2</bit>
+      <label></label>
+      <x>89</x>
+      <y>145</y>
+      <width>19</width>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Ch3Gain</name>
+      <x>140</x>
+      <y>140</y>
+      <width>71</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch3Offset</name>
+      <pv_name>ca://${PREFIX}Off2-SP</pv_name>
+      <x>259</x>
+      <y>145</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch3OffsetGet</name>
+      <pv_name>ca://${PREFIX}Off2-RBV</pv_name>
+      <x>339</x>
+      <y>145</y>
+      <width>56</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch3ThresholdSet</name>
+      <pv_name>ca://${PREFIX}CH2-T-SP</pv_name>
+      <x>441</x>
+      <y>145</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch3ThresholdGet</name>
+      <pv_name>ca://${PREFIX}CH2-T-RBV</pv_name>
+      <x>521</x>
+      <y>145</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch3PulseCtr</name>
+      <x>650</x>
+      <y>145</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch3FrameCtr</name>
+      <x>750</x>
+      <y>145</y>
+      <width>56</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Ch4Label</name>
+      <text>4</text>
+      <x>24</x>
+      <y>185</y>
+      <width>10</width>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>Ch4Led</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-RBV</pv_name>
+      <bit>3</bit>
+      <x>60</x>
+      <y>185</y>
+    </widget>
+    <widget type="checkbox" version="2.0.0">
+      <name>Ch4OnSelect</name>
+      <pv_name>ca://${PREFIX}ADC-SEL-SP</pv_name>
+      <bit>3</bit>
+      <label></label>
+      <x>89</x>
+      <y>185</y>
+      <width>19</width>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Ch4Gain</name>
+      <x>140</x>
+      <y>180</y>
+      <width>71</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch4Offset</name>
+      <pv_name>ca://${PREFIX}Off3-SP</pv_name>
+      <x>259</x>
+      <y>185</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch4OffsetGet</name>
+      <pv_name>ca://${PREFIX}Off3-RBV</pv_name>
+      <x>339</x>
+      <y>185</y>
+      <width>56</width>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch4ThresholdSet</name>
+      <pv_name>ca://${PREFIX}CH3-T-SP</pv_name>
+      <x>441</x>
+      <y>185</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch4ThresholdGet</name>
+      <pv_name>ca://${PREFIX}CH3-T-RBV</pv_name>
+      <x>521</x>
+      <y>185</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch4PulseCtr</name>
+      <x>650</x>
+      <y>185</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch14rameCtr</name>
+      <x>750</x>
+      <y>185</y>
+      <width>56</width>
+    </widget>
+  </widget>
+</display>
