@@ -37,8 +37,8 @@ record (seq, "$(SYS)-$(DEV1)-$(DEV2):syncTimestamp-CMD"){
 	
 	field(LNK5, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")	
 	
-	field(LNK6, "$(SYS)-$(DEV1):sendDumTim-CMD.PROC")
-	field(LNK7, "$(SYS)-$(DEV2):sendDumTim-CMD.PROC")
+	field(LNK6, "$(SYS)-$(DEV1):sendTim-CMD.PROC")
+	field(LNK7, "$(SYS)-$(DEV2):sendTim-CMD.PROC")
 	
 	field(LNK8, "$(SYS,undefined)-$(EVR,undefined):sendTim-Cnt-I.PROC")
 	field(SCAN, "Event")
