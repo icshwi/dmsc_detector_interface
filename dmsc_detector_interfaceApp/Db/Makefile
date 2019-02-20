@@ -9,6 +9,7 @@ include $(TOP)/configure/CONFIG
 DB += detector_controls.db
 DB += ro_register.db
 DB += rw_register.db
+DB += reset_register.db
 DB += softEventCounter.db
 DB += timestamp_sync_2.db
 DB += timestamp_sync.db

@@ -1,0 +1,37 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(REG) 	= name of register
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+# $(PRO) = stream DEV protocol filename
+
+
+
+record(mbbo, "$(SYS)-$(DEV):RESET-SP"){
+	field(DESC, "Reset FPGA SP")
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(ZRST, "Enable")
+	field(ONST, "Reset")
+	field(DTYP, "stream")
+	field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),RESET-OFF,RESET-SP) $(COM)")
+	field(FLNK, "$(SYS)-$(DEV):RESET-RBV")
+}
+
+
+record(mbbi, "$(SYS)-$(DEV):RESET-RBV"){
+	field(DESC, "Reset FPGA RBV")
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(ZRST, "Enabled")
+	field(ONST, "Reset")
+	field(DTYP, "stream")
+	field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),RESET-OFF) $(COM)")
+}
+
+record(longin, "$(SYS)-$(DEV):RESET-OFF") {
+  field(VAL, $(OFF))
+}
+
+
