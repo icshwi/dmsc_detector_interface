@@ -1,0 +1,60 @@
+# Event counter allows with TS of receipt
+#
+# Macros:
+#  $(SYS,undefined) 		= SYS
+#  $(DEV1,undefined) 		= DEVICE2
+#  $(DEV2,undefined) 		= DEVICE2
+#  $(EVR,undefined) 		= EVR
+#  $(CODE,undefined) 		= Event code (hardware)
+#  $(TSEVT,undefined)		= Event letter connecting to record with TSE = -2
+
+
+## -------------- Timestamp Synchronisation Records--------------------- ##
+
+# This record is processed when the 
+record (seq, "$(SYS)-$(DEV1)-$(DEV2):checkTimestamp-CMD"){
+	field(DESC, "Perform timestamp check")
+	field(DOL1, "1")
+	field(DOL2, "1")
+	field(DOL3, "1")
+	field(DOL4, "1")
+	field(DOL5, "1")
+	field(DOL5, "1")
+	
+	field(LNK1, "$(SYS,undefined)-$(EVR,undefined):SoftSeq0-SoftTrig-Cmd")
+	field(LNK2, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")	
+	field(LNK3,  "$(SYS)-$(DEV1):TSU-RBV.PROC")
+	field(LNK4,  "$(SYS)-$(DEV1):TSL-RBV.PROC")
+	field(LNK5,  "$(SYS)-$(DEV2):TSU-RBV.PROC")
+	field(LNK6,  "$(SYS)-$(DEV2):TSL-RBV.PROC")
+}
+
+record(aSub, "$(SYS)-$(EVR):getTimeStamp_aSub"){
+	field(SNAM, "getTimeStamp_aSub")
+	field(FTA,  "LONG")     
+	field(NOA,  "1")  	
+	field(INPA, "$(SYS,undefined)-$(EVR,undefined):$(TSEVT,undefined)-SP")
+	field(FTB,  "LONG")
+	field(NOB,  "1")
+	field(INPB, "0")
+	field(FTVA, "LONG")
+	field(NOVA, "1")
+	field(OUTA, "$(SYS)-$(EVR):Sec")
+	field(FTVB, "LONG")
+	field(NOVB, "1")
+	field(OUTB, "$(SYS)-$(EVR):Nsec")	
+}
+
+record(longin, "$(SYS)-$(EVR):Sec") {
+  field(DESC, "Timestamp value upper 32 bits")
+  field(VAL, "0")
+}
+
+record(longin, "$(SYS)-$(EVR):Nsec") {
+  field(DESC, "Timestamp value lower 32 bits")
+  field(VAL, "0")
+}
+
+
+
+

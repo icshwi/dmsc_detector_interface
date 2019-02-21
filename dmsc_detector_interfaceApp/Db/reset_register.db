@@ -8,24 +8,20 @@
 
 
 
-record(mbbo, "$(SYS)-$(DEV):RESET-SP"){
+record(bo, "$(SYS)-$(DEV):RST-SP"){
 	field(DESC, "Reset FPGA SP")
-	field(ZRVL, "0")
-	field(ONVL, "1")
-	field(ZRST, "Enable")
-	field(ONST, "Reset")
+	field(ZNAM, "Enable")
+	field(ONAM, "Reset")
 	field(DTYP, "stream")
 	field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),RESET-OFF,RESET-SP) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):RESET-RBV")
 }
 
 
-record(mbbi, "$(SYS)-$(DEV):RESET-RBV"){
+record(bi, "$(SYS)-$(DEV):RST-RBV"){
 	field(DESC, "Reset FPGA RBV")
-	field(ZRVL, "0")
-	field(ONVL, "1")
-	field(ZRST, "Enabled")
-	field(ONST, "Reset")
+	field(ZNAM, "Enabled")
+	field(ONAM, "Reset")
 	field(DTYP, "stream")
 	field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),RESET-OFF) $(COM)")
 }
