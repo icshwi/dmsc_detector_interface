@@ -1,3 +1,8 @@
+file "detector_controls.db" {
+    pattern {SYS, DEV, COM, PRO}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)", "ics-dg.proto"}
+}
+
 file "ro_register.db" {
     pattern {SYS, DEV, COM, REG, DESC, OFF, PRO}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",     "GIT",                  "git hash",  0, "ics-dg.proto"}
