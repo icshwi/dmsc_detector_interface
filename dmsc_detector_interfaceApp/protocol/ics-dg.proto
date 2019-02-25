@@ -32,4 +32,7 @@ sendTimestamp {
  out "\xCA\xFE\x40\x00%(\$1:\$2).4r%(\$1:\$3).4r\x00\x00\x00%<sum>";
 }
 
+receiveResponseIntr {
+ in 0xBA 0xBE "%*01r%(\$1:\$2)01r%(\$1:\$3)04r%(\$1:\$4)04r%(\$1:\$5)02r%*01r%<sum>"; 	
+}
 
