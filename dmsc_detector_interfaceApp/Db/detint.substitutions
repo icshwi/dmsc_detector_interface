@@ -6,10 +6,10 @@ file "detector_controls.db" {
 file "ro_register.db" {
     pattern {SYS, DEV, COM, REG, DESC, OFF, PRO}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",     "GIT",                  "git hash",  0, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",   "BUILD",               "device ID_H",  1, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "ID-H",               "device ID_M",  2, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "ID-M",               "device ID_L",  3, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "ID-L",                "build time",  4, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",   "BUILD",                "Build time",  1, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "ID-H",               "device ID_H",  2, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "ID-M",               "device ID_M",  3, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "ID-L",               "device ID_L",  4, "ics-dg.proto"}
 }
 
 file "rw_register.db" {
