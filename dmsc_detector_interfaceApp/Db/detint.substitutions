@@ -36,7 +36,7 @@ file "rw_register.db" {
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",     "DIP",    "Destination IP Address", 24, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "UDPS",           "UDP Source Port", 25, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",    "UDPD",      "UDP Destination Port", 26, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",     "PTO",            "Packet Timeout", 27, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",     "PTO",            "Packet Timeout", 27, "ics-dg.proto"} #125Mhz clock cycles
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",   "Gain0",                 "Ch 0 Gain", 28, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",   "Gain1",                 "Ch 1 Gain", 29, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",   "Gain2",                 "Ch 2 Gain", 30, "ics-dg.proto"}
@@ -49,17 +49,17 @@ file "rw_register.db" {
         {"$(SSYS)", "$(SDEV)", "$(SCOM)", "SI570-B",                "SI570 base", 37, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)", "SI570-D",                "SI570 data", 38, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)", "SI570-T",                "SI570 trig", 39, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "LEDSEL",                "LED select", 40, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "LEDSEL",                "LED select", 40, "ics-dg.proto"} #Page select register (0 to 9)
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "PCNT01",           "Pulse count C01", 41, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "PCNT23",           "Pulse count C23", 42, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "FCNT01",             "FRM count C01", 43, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "FCNT23",             "FRM count C23", 44, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",   "PKCNT",              "Packet Count", 45, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "SNAP01",                  "C01 Snap", 46, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "SNAP01",                  "C01 Snap", 46, "ics-dg.proto"} #Current value on the input line (ch 0 and ch 1)
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "SNAP23",                  "C23 Snap", 47, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)", "STATUS0",                  "Status 0", 48, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)", "STATUS1",                  "Status 1", 49, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)", "STATUS2",                  "Status 2", 50, "ics-dg.proto"}
         {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "CLKSEL",  "internal or external clk", 51, "ics-dg.proto"}
-        {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "PAYSEL","Payload select, ADC or TST", 52, "ics-dg.proto"}
+        {"$(SSYS)", "$(SDEV)", "$(SCOM)",  "PAYSEL","Payload select, ADC or TST", 52, "ics-dg.proto"} #Use ramp (test) data
 }
