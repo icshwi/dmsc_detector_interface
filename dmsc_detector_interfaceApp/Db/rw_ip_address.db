@@ -1,0 +1,64 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+
+record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-SP"){
+  field(DESC, "IP $(DIR) Set Point")
+  field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-WR")
+}
+
+record(longin, "$(SYS)-$(DEV):IP-$(DIR)-OFF") {
+  field(VAL, "$(OFF)")
+}
+
+record(bo, "$(SYS)-$(DEV):IP-$(DIR)-WR"){
+  field(DESC, "IP $(DIR) write Packets")
+  field(DTYP, "stream")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),IP-$(DIR)-OFF,IP-$(DIR)-RAW-SP) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV")
+}
+
+record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV") {
+  field(DESC, "(RAW) IP $(DIR) address")
+  field(DTYP, "stream")
+  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),IP-$(DIR)-OFF) $(COM)")
+  field(PINI, "1")
+  field(SCAN, "Passive")
+  field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
+}
+
+record(aSub,"$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
+{
+    field(SNAM,"ipAddrToString")
+    field(FTA,"LONG")
+    field(NOA,"1")
+    field(INPA,"$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV NPP")
+    field(FTVA, "STRING")
+    field(OUTA, "$(SYS)-$(DEV):IP-$(DIR)-RBV PP")
+    field(NOVA, "1")
+}
+
+record(stringin, "$(SYS)-$(DEV):IP-$(DIR)-RBV") {
+    field(DESC, "IP $(DIR) address")
+    field(VAL, "")
+    field(PINI, "NO")
+}
+
+record(stringout, "$(SYS)-$(DEV):IP-$(DIR)-SP") {
+    field(DESC, "IP $(DIR) address")
+    field(VAL, "")
+    field(PINI, "NO")
+    field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-OUT-STR")
+}
+
+record(aSub,"$(SYS)-$(DEV):IP-$(DIR)-CALC-OUT-STR") {
+    field(SNAM,"stringToIpAddr")
+    field(FTA,"STRING")
+    field(NOA,"1")
+    field(INPA,"$(SYS)-$(DEV):IP-$(DIR)-SP NPP")
+    field(FTVA, "LONG")
+    field(OUTA, "$(SYS)-$(DEV):IP-$(DIR)-RAW-SP PP")
+    field(NOVA, "1")
+}

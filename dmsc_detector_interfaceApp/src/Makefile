@@ -17,12 +17,14 @@ dmsc_detector_interface_DBD += base.dbd
 
 # Include dbd files from all support applications:
 dmsc_detector_interface_DBD += detectorinterface.dbd
+dmsc_detector_interface_DBD += convertIPAddress.dbd
 
 # Add all the support libraries needed by this IOC
 #dmsc_detector_interface_LIBS += xxx
 
 # dmsc_detector_interface_registerRecordDeviceDriver.cpp derives from dmsc_detector_interface.dbd
 dmsc_detector_interface_SRCS += dmsc_detector_interface_registerRecordDeviceDriver.cpp
+dmsc_detector_interface_SRCS += convertIPAddress.cpp
 dmsc_detector_interface_SRCS += getTimeStamp_aSub.c
 
 # Build the main IOC entry point on workstation OSs.
