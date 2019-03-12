@@ -10,6 +10,7 @@ DB += detector_controls.db
 DB += ro_register.db
 DB += rw_register.db
 DB += rw_ip_address.db
+DB += rw_mac_address.db
 DB += reset_register.db
 DB += softEventCounter.db
 DB += timestamp_sync_2.db
