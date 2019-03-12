@@ -35,7 +35,7 @@ static int ipStringToInt(std::string Input) {
     throw std::runtime_error("Invalid IP address.");
   }
   int RetValue = 0;
-  for (int i = 0; i < Parts.size(); i++) {
+  for (size_t i = 0; i < Parts.size(); i++) {
     RetValue = RetValue << 8;
     RetValue += (Parts[i] & 0xFF);
   }

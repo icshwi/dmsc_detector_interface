@@ -33,14 +33,14 @@ record(longin, "$(SYS)-$(DEV):MAC-$(DIR)2-OFF") {
 record(longout, "$(SYS)-$(DEV):MAC-$(DIR)1-WR"){
   field(DESC, "MAC $(DIR) write Packets")
   field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF,MAC-$(DIR)1-SP) $(COM)")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF,MAC-$(DIR)1-RAW-SP) $(COM)")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-WR")
 }
 
 record(longout, "$(SYS)-$(DEV):MAC-$(DIR)2-WR"){
   field(DESC, "MAC $(DIR) write Packets")
   field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),MAC-$(DIR)2-OFF,MAC-$(DIR)2-SP) $(COM)")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),MAC-$(DIR)2-OFF,MAC-$(DIR)2-RAW-SP) $(COM)")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV")
 }
 
@@ -98,7 +98,7 @@ record(aSub,"$(SYS)-$(DEV):MAC-$(DIR)-CALC-OUT-STR")
     field(FTVA, "LONG")
     field(OUTA, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-SP PP")
     field(NOVA, "1")
-    field(FTVA, "LONG")
-    field(OUTA, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-SP PP")
-    field(NOVA, "1")
+    field(FTVB, "LONG")
+    field(OUTB, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-SP PP")
+    field(NOVB, "1")
 }

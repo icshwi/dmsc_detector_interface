@@ -15,7 +15,7 @@
 #include <vector>
 #include <exception>
 
-static std::pair<int, int> macStringToInt(std::string Input) {
+static std::pair<int, int> macToInt(std::string Input) {
   int Upper, Lower;
   int NrOfColons = 0;
   size_t ColonPos = 0;
@@ -43,11 +43,7 @@ static std::pair<int, int> macStringToInt(std::string Input) {
   return {Upper, Lower};
 }
 
-extern "C" {
-  
-static int macAddrToString(aSubRecord *prec) {
-  int UpperBytes = *(int *)prec->a;
-  int LowerBytes = *(int *)prec->b;
+static std::string intToMac(int UpperBytes, int LowerBytes) {
   unsigned char Part5 = UpperBytes & 0xFF;
   UpperBytes = UpperBytes >> 8;
   unsigned char Part6 = UpperBytes & 0xFF;
@@ -64,8 +60,23 @@ static int macAddrToString(aSubRecord *prec) {
   char StrBuffer[BufferSize];
   int CharsPrinted = snprintf(StrBuffer, BufferSize, "%02x:%02x:%02x:%02x:%02x:%02x", Part6, Part5, Part4, Part3, Part2, Part1);
   if (CharsPrinted > 0 && CharsPrinted <= BufferSize) {
+    return std::string(StrBuffer);
+  }
+  return ""; //Failure
+}
+
+
+extern "C" {
+  
+static int macAddrToString(aSubRecord *prec) {
+  int UpperBytes = *(int *)prec->a;
+  int LowerBytes = *(int *)prec->b;
+  
+  std::string MacStr = intToMac(UpperBytes, LowerBytes);
+  
+  if (!MacStr.empty()) {
     epicsOldString* StrOut = (epicsOldString*)prec->vala;
-    memcpy((char*)StrOut, StrBuffer, CharsPrinted + 1);
+    memcpy((char*)StrOut, MacStr.c_str(), MacStr.size() + 1);
   } else {
     return 1; //Failure
   }
@@ -77,7 +88,7 @@ static int stringToMacAddr(aSubRecord *prec) {
   std::string IpStr((char*)StrIn);
   
   try {
-    std::pair<int, int> Temp = stringToInt(IpStr);
+    std::pair<int, int> Temp = macToInt(IpStr);
     *(int *)prec->vala = Temp.first;
     *(int *)prec->valb = Temp.second;
   } catch (std::exception &E) {
