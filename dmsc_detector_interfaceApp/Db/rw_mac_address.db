@@ -4,6 +4,7 @@
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
 # $(PRO) = stream DEV protocol filename
+# $(DIR) = Destination or Source, used for record naming
 
 record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-SP"){
   field(DESC, "MAC $(DIR) raw register 1")
