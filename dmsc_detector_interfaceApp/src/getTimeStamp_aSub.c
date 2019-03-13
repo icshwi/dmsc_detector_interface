@@ -18,7 +18,7 @@ unsigned long firmware_nanoseconds = 0;
 unsigned long firmware_seconds = 0;
 unsigned long ICSTICKSPERSECOND = 88052500;
 unsigned long FPGATICKSPERSECOND= 44026250;
-unsigned long NANOSPERSECOND = 1000000000;
+unsigned long NANOSPERSECOND = 1E9;
 	
 	if (!dbGetTimeStamp(&prec->inpa, &tick)){ 			
 		printf("Initial sec %lu ICS nsec %lu\n",tick.secPastEpoch,tick.nsec);
