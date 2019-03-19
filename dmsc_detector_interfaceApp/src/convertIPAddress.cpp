@@ -7,6 +7,8 @@
 #include <dbAccess.h>
 #include <link.h>
 #include <string.h>
+#include <sstream>
+#include <stdexcept>
 
 #include <string>
 #include <vector>
