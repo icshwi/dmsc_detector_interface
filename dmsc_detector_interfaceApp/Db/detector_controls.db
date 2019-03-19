@@ -3,6 +3,7 @@
 # $(DEV) = The Device name (FPGA)
 # $(COM) = COM port used for proto file
 # $(PRO) = protocol file 
+# $(SCAN_EVNT) = Event number that scans all RBVs
 
 
 
@@ -37,7 +38,10 @@ record(longin, "$(SYS)-$(DEV):da") {
   
 }
 
-
+record(event, "$(SYS)-$(DEV):All-RBV"){
+	field(DESC, "read all registers")
+	field(VAL, "$(SCAN_EVNT)")
+}
 
 
 

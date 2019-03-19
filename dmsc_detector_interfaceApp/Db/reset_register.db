@@ -24,6 +24,9 @@ record(bi, "$(SYS)-$(DEV):RST-RBV"){
 	field(ONAM, "Reset")
 	field(DTYP, "stream")
 	field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),RESET-OFF) $(COM)")
+	field(PINI, "1")
+	field(SCAN, "Event")
+    field(EVNT, "$(SCAN_EVNT)")
 }
 
 record(longin, "$(SYS)-$(DEV):RESET-OFF") {

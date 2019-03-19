@@ -34,8 +34,12 @@ record(longin, "$(SYS)-$(DEV):$(REG)-RBV"){
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
   field(PINI, "1")
-  field(SCAN, "Event")
-  field(EVNT, "$(SCAN_EVNT)")
 }
 
-
+record(calc, "$(SYS,undefined)-$(DEV,undefined):$(REG)-Cnt-RBV") {
+  field(CALC, "A+1")
+  field(INPA, "$(SYS,undefined)-$(DEV,undefined):$(REG)-Cnt-RBV NPP")
+  field(SCAN, "Event")
+  field(EVNT, "$(SCAN_EVNT)")
+  field(FLNK, "$(SYS)-$(DEV):$(REG)-RBV")
+}

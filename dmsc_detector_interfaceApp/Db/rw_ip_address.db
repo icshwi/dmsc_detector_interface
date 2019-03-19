@@ -1,8 +1,10 @@
 # ESS Detector group FPGA demonstrator database
-# $(SYS)    	= The System (DG)
-# $(DEV) 	= The DEV name (FPGA)
-# $(OFF) = register offset
-# $(COM)	= COM port for stream DEV
+# $(SYS)    		= The System (DG)
+# $(DEV) 			= The DEV name (FPGA)
+# $(OFF) 			= register offset
+# $(COM)			= COM port for stream DEV
+# $(PRO) 			= stream DEV protocol filename
+# $(SCAN_EVNT) 		= Event number that record will be processed on. 
 
 record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-SP"){
   field(DESC, "IP $(DIR) Set Point")
@@ -16,17 +18,19 @@ record(longin, "$(SYS)-$(DEV):IP-$(DIR)-OFF") {
 record(bo, "$(SYS)-$(DEV):IP-$(DIR)-WR"){
   field(DESC, "IP $(DIR) write Packets")
   field(DTYP, "stream")
-  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),IP-$(DIR)-OFF,IP-$(DIR)-RAW-SP) $(COM)")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),IP-$(DIR)-OFF,IP-$(DIR)-RAW-SP) $(COM)")
   field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV")
 }
 
 record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV") {
   field(DESC, "(RAW) IP $(DIR) address")
   field(DTYP, "stream")
-  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),IP-$(DIR)-OFF) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),IP-$(DIR)-OFF) $(COM)")
   field(PINI, "1")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
+  field(SCAN, "Event")
+  field(EVNT, "$(SCAN_EVNT)")
 }
 
 record(aSub,"$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
