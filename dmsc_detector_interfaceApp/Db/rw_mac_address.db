@@ -52,8 +52,7 @@ record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV") {
   field(PINI, "1")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV")
-  field(SCAN, "Event")
-  field(EVNT, "$(SCAN_EVNT)")
+
 }
 
 record(longin, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV") {
@@ -63,8 +62,7 @@ record(longin, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV") {
   field(PINI, "0")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)-CALC-IN-STR")
-  field(SCAN, "Event")
-  field(EVNT, "$(SCAN_EVNT)")
+
 }
 
 record(aSub,"$(SYS)-$(DEV):MAC-$(DIR)-CALC-IN-STR")

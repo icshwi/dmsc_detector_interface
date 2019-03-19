@@ -5,7 +5,7 @@
 # $(OFF) 			= register offset
 # $(COM)			= COM port for stream DEV
 # $(PRO) 			= stream DEV protocol filename
-# $(SCAN_EVNT) 		= Event number that record will be processed on. 
+
 
 
 ## Communication Records ###
@@ -25,11 +25,4 @@ record(longin, "$(SYS)-$(DEV):$(REG)-RBV"){
 }
 
 
-record(calc, "$(SYS,undefined)-$(DEV,undefined):$(REG)-Cnt-RBV") {
-  field(CALC, "A+1")
-  field(INPA, "$(SYS,undefined)-$(DEV,undefined):$(REG)-Cnt-RBV NPP")
-  field(SCAN, "Event")
-  field(EVNT, "$(SCAN_EVNT)")
-  field(FLNK, "$(SYS)-$(DEV):$(REG)-RBV")
-}
 

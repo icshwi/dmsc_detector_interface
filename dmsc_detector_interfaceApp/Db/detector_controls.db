@@ -38,11 +38,6 @@ record(longin, "$(SYS)-$(DEV):da") {
   
 }
 
-record(event, "$(SYS)-$(DEV):All-RBV"){
-	field(DESC, "read all registers")
-	field(VAL, "$(SCAN_EVNT)")
-}
-
 
 
 

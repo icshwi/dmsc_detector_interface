@@ -4,7 +4,7 @@
 # $(OFF) 			= register offset
 # $(COM)			= COM port for stream DEV
 # $(PRO) 			= stream DEV protocol filename
-# $(SCAN_EVNT) 		= Event number that record will be processed on. 
+
 
 record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-SP"){
   field(DESC, "IP $(DIR) Set Point")
@@ -29,8 +29,6 @@ record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV") {
   field(PINI, "1")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
-  field(SCAN, "Event")
-  field(EVNT, "$(SCAN_EVNT)")
 }
 
 record(aSub,"$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
