@@ -41,11 +41,11 @@
       <x>24</x>
       <y>105</y>
       <off_color>
-        <color name="RED" red="252" green="13" blue="27">
+        <color name="LED-RED-OFF" red="110" green="101" blue="90">
         </color>
       </off_color>
       <on_color>
-        <color name="RED-BORDER" red="150" green="8" blue="16">
+        <color name="LED-RED-ON" red="255" green="60" blue="46">
         </color>
       </on_color>
     </widget>
@@ -54,13 +54,21 @@
       <pv_name>ca://${PREFIX}RST-RBV</pv_name>
       <x>24</x>
       <y>62</y>
+      <off_color>
+        <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+        </color>
+      </off_color>
+      <on_color>
+        <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+        </color>
+      </on_color>
     </widget>
     <widget type="action_button" version="3.0.0">
       <name>EnableButton</name>
       <actions>
         <action type="write_pv">
           <pv_name>$(PREFIX)RST-SP</pv_name>
-          <value>1</value>
+          <value>0</value>
           <description>Enable Sampling</description>
         </action>
       </actions>
@@ -74,7 +82,7 @@
       <actions>
         <action type="write_pv">
           <pv_name>$(PREFIX)RST-SP</pv_name>
-          <value>0</value>
+          <value>1</value>
           <description>Disable Sampling</description>
         </action>
       </actions>
@@ -119,18 +127,35 @@
         <name>ContinousEnabled</name>
         <pv_name>ca://${PREFIX}BPZ-RBV</pv_name>
         <x>9</x>
-        <y>37</y>
+        <y>57</y>
       </widget>
-      <widget type="radio" version="2.0.0">
-        <name>Sampling mode</name>
-        <pv_name>ca://${PREFIX}BPZ-SP</pv_name>
-        <x>39</x>
-        <y>9</y>
-        <items>
-          <item>Peak detect</item>
-          <item>Continous</item>
-        </items>
-        <items_from_pv>false</items_from_pv>
+      <widget type="action_button" version="3.0.0">
+        <name>Action Button</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(PREFIX)BPZ-SP</pv_name>
+            <value>0</value>
+            <description>Peak det.</description>
+          </action>
+        </actions>
+        <text>Peak detect</text>
+        <x>49</x>
+        <y>10</y>
+        <tooltip>$(actions)</tooltip>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>Action Button_1</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(PREFIX)BPZ-SP</pv_name>
+            <value>1</value>
+            <description>Enable cont.</description>
+          </action>
+        </actions>
+        <text>Continous</text>
+        <x>49</x>
+        <y>57</y>
+        <tooltip>$(actions)</tooltip>
       </widget>
     </widget>
     <widget type="group" version="2.0.0">
@@ -212,9 +237,9 @@
   </widget>
   <widget type="group" version="2.0.0">
     <name>StatsGroup</name>
-    <x>587</x>
+    <x>716</x>
     <y>270</y>
-    <width>305</width>
+    <width>269</width>
     <height>210</height>
     <style>2</style>
     <widget type="label" version="2.0.0">
@@ -230,9 +255,9 @@
     </widget>
     <widget type="table" version="2.0.0">
       <name>Table</name>
-      <x>29</x>
+      <x>23</x>
       <y>39</y>
-      <width>250</width>
+      <width>222</width>
       <height>149</height>
       <font>
         <font family="Source Sans Pro" style="REGULAR" size="14.0">
@@ -241,7 +266,7 @@
       <columns>
         <column>
           <name>Name</name>
-          <width>150</width>
+          <width>100</width>
           <editable>false</editable>
         </column>
         <column>
@@ -258,7 +283,7 @@
 from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
 
 data = []
-NameDict = {"GIT-RBV":"Git hash", "BUILD-RBV":"Build time", "ID-H":"Device id #1", "PKCNT-RBV":"Packet count", "STATUS0-RBV":"Status 0", "STATUS1-RBV":"Status 1", "STATUS2-RBV":"Status 2"}
+NameDict = {"GIT-RBV":"Git hash", "BUILD-RBV":"Build time", "ID-L":"Device id #1", "PKCNT-RBV":"Packet count", "STATUS0-RBV":"Status 0", "STATUS1-RBV":"Status 1", "STATUS2-RBV":"Status 2"}
 for pv in pvs:
     VariableName = pv.getName()
     for CName in NameDict:
@@ -271,7 +296,7 @@ for pv in pvs:
 widget.setValue(data)]]></text>
           <pv_name>ca://${PREFIX}GIT-RBV</pv_name>
           <pv_name>ca://${PREFIX}BUILD-RBV</pv_name>
-          <pv_name>ca://${PREFIX}ID-H-RBV</pv_name>
+          <pv_name>ca://${PREFIX}ID-L-RBV</pv_name>
           <pv_name>ca://${PREFIX}PKCNT-RBV</pv_name>
           <pv_name>ca://${PREFIX}STATUS0-RBV</pv_name>
           <pv_name>ca://${PREFIX}STATUS1-RBV</pv_name>
@@ -279,18 +304,12 @@ widget.setValue(data)]]></text>
         </script>
       </scripts>
     </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Ch1PulseCtr_1</name>
-      <x>189</x>
-      <y>370</y>
-      <width>56</width>
-    </widget>
   </widget>
   <widget type="group" version="2.0.0">
     <name>NetworkingGroup</name>
     <x>9</x>
     <y>270</y>
-    <width>541</width>
+    <width>681</width>
     <height>210</height>
     <style>2</style>
     <widget type="label" version="2.0.0">
@@ -328,49 +347,57 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="group" version="2.0.0">
       <name>Source</name>
-      <x>99</x>
+      <x>109</x>
       <y>69</y>
-      <width>210</width>
+      <width>280</width>
       <height>130</height>
       <widget type="textupdate" version="2.0.0">
         <name>IPGet</name>
-        <pv_name>ca://${PREFIX}SIP-RBV</pv_name>
-        <x>94</x>
+        <pv_name>ca://${PREFIX}IP-SRC-RBV</pv_name>
+        <x>125</x>
         <y>9</y>
-        <width>71</width>
+        <width>115</width>
         <format>4</format>
       </widget>
       <widget type="textupdate" version="2.0.0">
         <name>PortGet</name>
         <pv_name>ca://${PREFIX}UDPS-RBV</pv_name>
-        <x>94</x>
+        <x>125</x>
         <y>39</y>
-        <width>71</width>
+        <width>115</width>
       </widget>
       <widget type="textupdate" version="2.0.0">
         <name>MACGet</name>
-        <pv_name>ca://${PREFIX}SMACU-RBV</pv_name>
-        <x>94</x>
+        <pv_name>ca://${PREFIX}MAC-SRC-RBV</pv_name>
+        <x>125</x>
         <y>69</y>
-        <width>71</width>
+        <width>115</width>
+        <font>
+          <font family="Source Code Pro" style="REGULAR" size="11.0">
+          </font>
+        </font>
       </widget>
       <widget type="textentry" version="3.0.0">
         <name>IPSet</name>
-        <pv_name>ca://${PREFIX}SIP-SP</pv_name>
+        <pv_name>ca://${PREFIX}IP-SRC-SP</pv_name>
         <y>9</y>
-        <width>79</width>
+        <width>115</width>
       </widget>
       <widget type="textentry" version="3.0.0">
         <name>PortSet</name>
         <pv_name>ca://${PREFIX}UDPS-SP</pv_name>
         <y>39</y>
-        <width>79</width>
+        <width>115</width>
       </widget>
       <widget type="textentry" version="3.0.0">
         <name>MACSet</name>
-        <pv_name>ca://${PREFIX}SMACU-SP</pv_name>
+        <pv_name>ca://${PREFIX}MAC-SRC-SP</pv_name>
         <y>69</y>
-        <width>79</width>
+        <width>115</width>
+        <font>
+          <font family="Source Code Pro" style="REGULAR" size="11.0">
+          </font>
+        </font>
       </widget>
     </widget>
     <widget type="label" version="2.0.0">
@@ -393,48 +420,56 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="group" version="2.0.0">
       <name>Destination</name>
-      <x>309</x>
+      <x>389</x>
       <y>69</y>
-      <width>212</width>
+      <width>280</width>
       <height>130</height>
       <widget type="textupdate" version="2.0.0">
         <name>IPGet_1</name>
-        <pv_name>ca://${PREFIX}DIP-RBV</pv_name>
-        <x>95</x>
+        <pv_name>ca://${PREFIX}IP-DST-RBV</pv_name>
+        <x>125</x>
         <y>9</y>
-        <width>71</width>
+        <width>115</width>
       </widget>
       <widget type="textupdate" version="2.0.0">
         <name>PortGet_1</name>
         <pv_name>ca://${PREFIX}UDPD-RBV</pv_name>
-        <x>95</x>
+        <x>125</x>
         <y>39</y>
-        <width>71</width>
+        <width>115</width>
       </widget>
       <widget type="textupdate" version="2.0.0">
         <name>MACGet_1</name>
-        <pv_name>ca://${PREFIX}DMACU-RBV</pv_name>
-        <x>95</x>
+        <pv_name>ca://${PREFIX}MAC-DST-RBV</pv_name>
+        <x>125</x>
         <y>69</y>
-        <width>71</width>
+        <width>115</width>
+        <font>
+          <font family="Source Code Pro" style="REGULAR" size="11.0">
+          </font>
+        </font>
       </widget>
       <widget type="textentry" version="3.0.0">
         <name>IPSet_1</name>
-        <pv_name>ca://${PREFIX}DIP-SP</pv_name>
+        <pv_name>ca://${PREFIX}IP-DST-SP</pv_name>
         <y>9</y>
-        <width>79</width>
+        <width>115</width>
       </widget>
       <widget type="textentry" version="3.0.0">
         <name>PortSet_1</name>
         <pv_name>ca://${PREFIX}UDPD-SP</pv_name>
         <y>39</y>
-        <width>79</width>
+        <width>115</width>
       </widget>
       <widget type="textentry" version="3.0.0">
         <name>MACSet_1</name>
-        <pv_name>ca://${PREFIX}DMACU-SP</pv_name>
+        <pv_name>ca://${PREFIX}MAC-DST-SP</pv_name>
         <y>69</y>
-        <width>79</width>
+        <width>115</width>
+        <font>
+          <font family="Source Code Pro" style="REGULAR" size="11.0">
+          </font>
+        </font>
       </widget>
     </widget>
   </widget>
@@ -442,7 +477,7 @@ widget.setValue(data)]]></text>
     <name>Channels</name>
     <x>9</x>
     <y>510</y>
-    <width>883</width>
+    <width>941</width>
     <height>220</height>
     <style>2</style>
     <widget type="label" version="2.0.0">
@@ -514,12 +549,14 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch1PulseCtr</name>
+      <pv_name>ca://${PREFIX}PCNT1-RBV</pv_name>
       <x>650</x>
       <y>62</y>
       <width>56</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch1FrameCtr</name>
+      <pv_name>ca://${PREFIX}FCNT1-RBV</pv_name>
       <x>750</x>
       <y>62</y>
       <width>56</width>
@@ -632,12 +669,14 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch2PulseCtr</name>
+      <pv_name>ca://${PREFIX}PCNT2-RBV</pv_name>
       <x>650</x>
       <y>104</y>
       <width>56</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch2FrameCtr</name>
+      <pv_name>ca://${PREFIX}FCNT2-RBV</pv_name>
       <x>750</x>
       <y>104</y>
       <width>56</width>
@@ -701,12 +740,14 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch3PulseCtr</name>
+      <pv_name>ca://${PREFIX}PCNT3-RBV</pv_name>
       <x>650</x>
       <y>145</y>
       <width>56</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch3FrameCtr</name>
+      <pv_name>ca://${PREFIX}FCNT3-RBV</pv_name>
       <x>750</x>
       <y>145</y>
       <width>56</width>
@@ -770,15 +811,64 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch4PulseCtr</name>
+      <pv_name>ca://${PREFIX}PCNT4-RBV</pv_name>
       <x>650</x>
       <y>185</y>
       <width>56</width>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch14rameCtr</name>
+      <pv_name>ca://${PREFIX}FCNT4-RBV</pv_name>
       <x>750</x>
       <y>185</y>
       <width>56</width>
     </widget>
+    <widget type="label" version="2.0.0">
+      <name>SnapLabel</name>
+      <text>Snap value</text>
+      <x>840</x>
+      <y>34</y>
+      <width>80</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1FrameCtr_1</name>
+      <pv_name>ca://${PREFIX}SNAP1-RBV</pv_name>
+      <x>840</x>
+      <y>62</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1FrameCtr_2</name>
+      <pv_name>ca://${PREFIX}SNAP2-RBV</pv_name>
+      <x>840</x>
+      <y>104</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1FrameCtr_3</name>
+      <pv_name>ca://${PREFIX}SNAP3-RBV</pv_name>
+      <x>840</x>
+      <y>145</y>
+      <width>56</width>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Ch1FrameCtr_4</name>
+      <pv_name>ca://${PREFIX}SNAP4-RBV</pv_name>
+      <x>840</x>
+      <y>185</y>
+      <width>56</width>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>DeviceLabel</name>
+    <class>HEADER2</class>
+    <text>(${PREFIX})</text>
+    <x>342</x>
+    <y>15</y>
+    <width>208</width>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
   </widget>
 </display>
