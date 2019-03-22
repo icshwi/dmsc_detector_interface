@@ -30,7 +30,7 @@
       <action type="open_display">
         <file>adcDemonstrator.bob</file>
         <macros>
-          <PREFIX>LabS-Utgard-VIP:TS-RO1:</PREFIX>
+          <PREFIX>ESSIP-DET:TS-RO1:</PREFIX>
         </macros>
         <target>replace</target>
         <description>Open Display</description>
@@ -47,7 +47,7 @@
       <action type="open_display">
         <file>adcDemonstrator.bob</file>
         <macros>
-          <PREFIX>LabS-Utgard-VIP:TS-RO2:</PREFIX>
+          <PREFIX>ESSIP-DET:TS-RO2:</PREFIX>
         </macros>
         <target>replace</target>
         <description>Open Display</description>
