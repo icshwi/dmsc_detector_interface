@@ -6,9 +6,10 @@
 #
 MaxInput = 16; 		#No Bytes in 
 Terminator = "";
-ReplyTimeout = 100;
+ReplyTimeout = 500;
 ReadTimeout  = 100;
-LockTimeout = 100;
+WriteTimeout = 100;
+LockTimeout = 2000;
 PollPeriod = 1; # See section 5 http://epics.web.psi.ch/software/streamdevice/doc/stream.pdf
 
 
