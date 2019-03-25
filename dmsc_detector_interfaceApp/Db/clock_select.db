@@ -1,7 +1,6 @@
 # ESS Detector group FPGA demonstrator database
 # $(SYS)    	= The System (DG)
 # $(DEV) 	= The DEV name (FPGA)
-# $(REG) 	= name of register
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
 
