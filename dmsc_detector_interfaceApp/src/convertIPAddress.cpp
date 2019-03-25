@@ -7,11 +7,10 @@
 #include <dbAccess.h>
 #include <link.h>
 #include <string.h>
-#include <string>
-#include <regex>
+#include <sstream>
+#include <stdexcept>
 
 #include <string>
-#include <regex>
 #include <vector>
 #include <exception>
 

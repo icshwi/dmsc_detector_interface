@@ -33,7 +33,7 @@ unsigned long NANOSPERSECOND = 1E9;
 		
 		//convert nanoseconds into FPGA ticks
 		firmware_nanoseconds = floor((nSecRem/1E9)*FPGATICKSPERSECOND);
-		firmware_seconds = tick.secPastEpoch + carrySec;
+		firmware_seconds = tick.secPastEpoch + carrySec + 631152000; //Add the time to shift to UNIX time
 		
 		if(firmware_nanoseconds>=FPGATICKSPERSECOND){
 			printf("nanoseconds overflow %lu\n",firmware_nanoseconds);

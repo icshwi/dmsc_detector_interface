@@ -48,19 +48,21 @@ record(longout, "$(SYS)-$(DEV):MAC-$(DIR)2-WR"){
 record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV") {
   field(DESC, "(RAW) MAC $(DIR) address")
   field(DTYP, "stream")
-  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF) $(COM)")
   field(PINI, "1")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV")
+
 }
 
 record(longin, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV") {
   field(DESC, "(RAW) MAC $(DIR) address")
   field(DTYP, "stream")
-  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),MAC-$(DIR)2-OFF) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),MAC-$(DIR)2-OFF) $(COM)")
   field(PINI, "0")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)-CALC-IN-STR")
+
 }
 
 record(aSub,"$(SYS)-$(DEV):MAC-$(DIR)-CALC-IN-STR")
