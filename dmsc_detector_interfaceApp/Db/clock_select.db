@@ -1,0 +1,30 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(REG) 	= name of register
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+
+record(bo, "$(SYS)-$(DEV):CLKSEL-SP"){
+	field(DESC, "ADC clock select SP")
+	field(ZNAM, "Internal")
+	field(ONAM, "External")
+	field(DTYP, "stream")
+	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),CLKSEL-OFF,CLKSEL-SP) $(COM)")
+	field(FLNK, "$(SYS)-$(DEV):CLKSEL-RBV")
+}
+
+record(bi, "$(SYS)-$(DEV):CLKSEL-RBV"){
+	field(DESC, "ADC clock select RBV")
+	field(ZNAM, "Internal")
+	field(ONAM, "External")
+	field(DTYP, "stream")
+  field(PINI, "1")
+	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),CLKSEL-OFF) $(COM)")
+}
+
+record(longin, "$(SYS)-$(DEV):CLKSEL-OFF") {
+  field(VAL, $(OFF))
+}
+
+

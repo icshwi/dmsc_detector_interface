@@ -4,26 +4,23 @@
 # $(REG) 	= name of register
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
-# $(PRO) = stream DEV protocol filename
 
-
-
-record(bo, "$(SYS)-$(DEV):RST-SP"){
+record(bo, "$(SYS)-$(DEV):RESET-SP"){
 	field(DESC, "Reset FPGA SP")
 	field(ZNAM, "Enable")
 	field(ONAM, "Reset")
 	field(DTYP, "stream")
-	field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),RESET-OFF,RESET-SP) $(COM)")
+	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),RESET-OFF,RESET-SP) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):RESET-RBV")
 }
 
-
-record(bi, "$(SYS)-$(DEV):RST-RBV"){
+record(bi, "$(SYS)-$(DEV):RESET-RBV"){
 	field(DESC, "Reset FPGA RBV")
 	field(ZNAM, "Enabled")
 	field(ONAM, "Reset")
 	field(DTYP, "stream")
-	field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),RESET-OFF) $(COM)")
+  field(PINI, "1")
+	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),RESET-OFF) $(COM)")
 }
 
 record(longin, "$(SYS)-$(DEV):RESET-OFF") {

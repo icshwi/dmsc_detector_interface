@@ -1,0 +1,52 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+# $(CH) = ADC channel nr
+
+record(mbbo, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP"){
+	field(DESC, "Select ch$(CH) gain")
+  field(DTYP, "Raw Soft Channel")
+  field(ZRST, "+/-5V 1kOhm")
+  field(ZRVL, "69")
+  field(ONST, "+/-0.5V 1kOhm")
+  field(ONVL, "17")
+  field(TWST, "+/-50mV 1kOhm")
+  field(TWVL, "35")
+	field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP")
+}
+
+record(longout, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP"){
+  field(DESC, "(RAW) Select ch$(CH) gain")
+  field(DTYP, "stream")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),GAIN-CH$(CH)-OFF,GAIN-CH$(CH)-SP.RVAL) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV")
+}
+
+record(mbbi, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV"){
+	field(DESC, "Selected gain ch$(CH)")
+  field(DTYP, "Raw Soft Channel")
+  field(ZRST, "+/-5V 1kOhm")
+  field(ZRVL, "69")
+  field(ONST, "+/-0.5V 1kOhm")
+  field(ONVL, "17")
+  field(TWST, "+/-50mV 1kOhm")
+  field(TWVL, "35")
+  field(PINI, "0")
+  field(INP, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV NPP")
+}
+
+record(longin, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV"){
+	field(DESC, "Raw gain setting ch$(CH)")
+	field(DTYP, "stream")
+  field(PINI, "1")
+	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),GAIN-CH$(CH)-OFF) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV")
+}
+
+record(longin, "$(SYS)-$(DEV):GAIN-CH$(CH)-OFF") {
+  field(VAL, $(OFF))
+}
+
+
