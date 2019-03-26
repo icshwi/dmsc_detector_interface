@@ -14,6 +14,7 @@ DB += rw_ip_address.db
 DB += rw_mac_address.db
 DB += reset_register.db
 DB += sampling_mode.db
+DB += clock_select.db
 DB += payload_select.db
 DB += oversampling.db
 DB += channel_gain.db
