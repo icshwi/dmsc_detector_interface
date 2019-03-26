@@ -13,6 +13,7 @@ DB += ro_2x16bit_register.db
 DB += rw_register.db
 DB += rw_ip_address.db
 DB += rw_mac_address.db
+DB += ch_offset.db
 DB += reset_register.db
 DB += sampling_mode.db
 DB += clock_select.db
