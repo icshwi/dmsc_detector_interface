@@ -14,7 +14,7 @@
 #include <exception>
 
 static std::pair<int, int> macToInt(std::string Input) {
-  int Upper, Lower;
+  unsigned int Upper, Lower;
   int NrOfColons = 0;
   size_t ColonPos = 0;
   while ((ColonPos = Input.find(':')) != std::string::npos) {
@@ -38,7 +38,7 @@ static std::pair<int, int> macToInt(std::string Input) {
   if (not ss.eof() or ss.fail()) {
     throw std::runtime_error("Invalid characters in address.");
   }
-  return {Upper, Lower};
+  return {static_cast<int>(Upper), static_cast<int>(Lower)};
 }
 
 static std::string intToMac(int UpperBytes, int LowerBytes) {
