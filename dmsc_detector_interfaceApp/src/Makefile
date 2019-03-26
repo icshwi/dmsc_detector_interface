@@ -19,6 +19,7 @@ dmsc_detector_interface_DBD += base.dbd
 dmsc_detector_interface_DBD += detectorinterface.dbd
 dmsc_detector_interface_DBD += convertIPAddress.dbd
 dmsc_detector_interface_DBD += convertMACAddress.dbd
+dmsc_detector_interface_DBD += generateHexString.dbd
 
 # Add all the support libraries needed by this IOC
 #dmsc_detector_interface_LIBS += xxx
@@ -27,6 +28,7 @@ dmsc_detector_interface_DBD += convertMACAddress.dbd
 dmsc_detector_interface_SRCS += dmsc_detector_interface_registerRecordDeviceDriver.cpp
 dmsc_detector_interface_SRCS += convertIPAddress.cpp
 dmsc_detector_interface_SRCS += convertMACAddress.cpp
+dmsc_detector_interface_SRCS += generateHexString.c
 dmsc_detector_interface_SRCS += getTimeStamp_aSub.c
 
 # Build the main IOC entry point on workstation OSs.
