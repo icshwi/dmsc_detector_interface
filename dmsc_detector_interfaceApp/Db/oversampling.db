@@ -1,0 +1,51 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+
+record(mbbo, "$(SYS)-$(DEV):OVERSMPL-SP"){
+	field(DESC, "Select oversampling multiplier")
+  field(DTYP, "Raw Soft Channel")
+  field(ZRVL, "1")
+  field(ONVL, "2")
+  field(TWVL, "4")
+	field(ZRST, "1x")
+  field(ONST, "2x")
+  field(TWST, "4x")
+	field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-SP")
+}
+
+record(longout, "$(SYS)-$(DEV):OVERSMPL-RAW-SP"){
+  field(DESC, "Select oversampling multiplier (raw)")
+  field(DTYP, "stream")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),OVERSMPL-OFF,OVERSMPL-SP.RVAL) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV")
+}
+
+record(mbbi, "$(SYS)-$(DEV):OVERSMPL-RBV"){
+	field(DESC, "Selected oversampling multiplier")
+  field(DTYP, "Raw Soft Channel")
+  field(ZRVL, 1)
+  field(ONVL, 2)
+  field(TWVL, 4)
+	field(ZRST, "1x")
+  field(ONST, "2x")
+  field(TWST, "4x")
+  field(PINI, "0")
+  field(INP, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")
+}
+
+record(longin, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV"){
+	field(DESC, "Raw oversampling multiplier")
+	field(DTYP, "stream")
+  field(PINI, "1")
+	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),OVERSMPL-OFF) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RBV")
+}
+
+record(longin, "$(SYS)-$(DEV):OVERSMPL-OFF") {
+  field(VAL, $(OFF))
+}
+
+
