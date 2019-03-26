@@ -9,7 +9,7 @@
 #include <string.h>
 
 
-static int generateHashString(aSubRecord *prec) {
+static int generateHexString(aSubRecord *prec) {
   int CurrentValue = *(int *)prec->a;
   
   epicsOldString* StrOut = (epicsOldString*)prec->vala;
@@ -27,7 +27,7 @@ static int generateHashString(aSubRecord *prec) {
 
 //register the function with the dbd file
 
-epicsRegisterFunction(generateHashString);
+epicsRegisterFunction(generateHexString);
 
 
 

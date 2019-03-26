@@ -14,9 +14,9 @@ record(longin, "$(SYS)-$(DEV):$(REG)-OFF") {
 record(longin, "$(SYS)-$(DEV):$(REG)-RAW-RBV") {
   field(DESC, "(RAW) $(DESC)")
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
+  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
   field(PINI, "1")
-  field(SCAN, "$(SCAN)"
+  field(SCAN, "$(SCAN)")
   field(FLNK, "$(SYS)-$(DEV):$(REG)-CALC-HEX-STR")
 }
 
