@@ -1,0 +1,30 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(REG) 	= name of register
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+
+record(bo, "$(SYS)-$(DEV):PAYSEL-SP"){
+	field(DESC, "Select payload ADC/synthetic.")
+	field(ZNAM, "ADC")
+	field(ONAM, "Ramp")
+	field(DTYP, "stream")
+	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),PAYSEL-OFF,PAYSEL-SP) $(COM)")
+	field(FLNK, "$(SYS)-$(DEV):PAYSEL-RBV")
+}
+
+record(bi, "$(SYS)-$(DEV):PAYSEL-RBV"){
+	field(DESC, "Selected payload")
+	field(ZNAM, "ADC")
+	field(ONAM, "Ramp")
+	field(DTYP, "stream")
+  field(PINI, "1")
+	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),PAYSEL-OFF) $(COM)")
+}
+
+record(longin, "$(SYS)-$(DEV):PAYSEL-OFF") {
+  field(VAL, $(OFF))
+}
+
+

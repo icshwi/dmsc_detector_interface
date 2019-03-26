@@ -1,0 +1,30 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(REG) 	= name of register
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+
+record(bo, "$(SYS)-$(DEV):ACQ-MODE-SP"){
+	field(DESC, "Acquisition mode SP")
+	field(ZNAM, "Peak detect")
+	field(ONAM, "Continous")
+	field(DTYP, "stream")
+	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),ACQ-MODE-OFF,ACQ-MODE-SP) $(COM)")
+	field(FLNK, "$(SYS)-$(DEV):ACQ-MODE-RBV")
+}
+
+record(bi, "$(SYS)-$(DEV):ACQ-MODE-RBV"){
+	field(DESC, "Acquisition mode RBV")
+	field(ZNAM, "Peak detect")
+	field(ONAM, "Continous")
+	field(DTYP, "stream")
+  field(PINI, "1")
+	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),ACQ-MODE-OFF) $(COM)")
+}
+
+record(longin, "$(SYS)-$(DEV):ACQ-MODE-OFF") {
+  field(VAL, $(OFF))
+}
+
+
