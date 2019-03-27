@@ -7,14 +7,14 @@
 # $(NR1) = Device/reg number 1
 # $(NR2) = Device/reg number 2
 
-record(longin, "$(SYS)-$(DEV):$(REG)-OFF") {
+record(longin, "$(SYS)-$(DEV):$(REG)$(NR1)$(NR2)-OFF") {
   field(VAL, "$(OFF)")
 }
 
 record(longin, "$(SYS)-$(DEV):$(REG)$(NR1)$(NR2)-RAW-RBV") {
   field(DESC, "(RAW) $(DESC) $(NR1), $(NR2)")
   field(DTYP, "stream")
-  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
+  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),$(REG)$(NR1)$(NR2)-OFF) $(COM)")
   field(PINI, "1")
   field(SCAN, "5 second")
   field(FLNK, "$(SYS)-$(DEV):$(REG)$(NR1)-RBV")

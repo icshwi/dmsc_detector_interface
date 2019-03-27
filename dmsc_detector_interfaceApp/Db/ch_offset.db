@@ -1,0 +1,23 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(OFF) = register offset
+# $(CH) = ADC channel
+
+record(longin, "$(SYS)-$(DEV):OFF-CH$(CH)-OFF") {
+  field(VAL, "$(OFF)")
+}
+
+record(ao,"$(SYS)-$(DEV):OFF-CH$(CH)-SP") {
+    field(DESC, "Set channel$(CH) offset.")
+    field(FLNK,"$(SYS)-$(DEV):OFF-CH$(CH)-WR")
+}
+
+record(calcout, "$(SYS)-$(DEV):OFF-CH$(CH)-WR"){
+  field(DESC, "(RAW) Set channel$(CH) offset.")
+  field(CALC,"32768-A*6553.4")
+  field(INPA,"$(SYS)-$(DEV):OFF-CH$(CH)-SP NPP")
+  field(DTYP, "stream")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),OFF-CH$(CH)-OFF,OFF-CH$(CH)-WR) $(COM)")
+}
+
