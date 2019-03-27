@@ -76,10 +76,10 @@ TEMPLATES += $(wildcard $(APPPROTO)/*.proto)
 
 
 SOURCES += $(APPSRC)/getTimeStamp_aSub.c
+SOURCES += $(APPSRC)/syncState_aSub.c
 SOURCES += $(APPSRC)/convertIPAddress.cpp
 SOURCES += $(APPSRC)/convertMACAddress.cpp
 SOURCES += $(APPSRC)/generateHexString.c
-SOURCES += $(APPSRC)/syncState_aSub.c
 # # DBDINC_SRCS should be last of the series of SOURCES
 # SOURCES += $(DBDINC_SRCS)
 

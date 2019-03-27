@@ -41,32 +41,27 @@ record(longin, "$(SYS)-$(DEV):da") {
 
 ## Sync Timestamp Records ##
 
-
-
-
-
-
-
 record (seq, "$(SYS)-$(DEV):syncTimestamp-CMD"){
 	field(DESC, "Perform timestamp sync")
 	field(DOL1, "1") #reset
-	field(DOL2, "0") #enable
-	field(DOL3, "1") 
+	field(DOL2, "1") 
+	field(DOL3, "0") #enable
 	field(DOL4, "1")
 	field(DLY2, "0.1")
 	field(LNK1, "$(SYS)-$(DEV):RST-SP")
-	field(LNK2, "$(SYS)-$(DEV):RST-SP")
-	field(LNK3, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")	
+	field(LNK2, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")
+	field(LNK3, "$(SYS)-$(DEV):RST-SP")
+		
 	field(LNK4, "$(SYS)-$(DEV):sendTim-CMD.PROC")
 	field(SCAN, "Event")
-	field(EVNT, "$(CODE)")
+	field(EVNT, "$(SYS)-$(EVR):syncTrigEvt-SP")
 }
 
 
 record(bo, "$(SYS)-$(DEV):sendTim-CMD") {
   field(DESC, "Send timestamp register packet to FPGA")
   field(DTYP, "stream")	
-  field(OUT, "@$(PRO) sendTimestamp($(SYS)-$(EVR),Sec,Nsec) $(COM)")
+  field(OUT, "@$(PRO) sendTimestamp($(SYS)-$(EVR),SyncSec-RBV,SyncNsec-RBV) $(COM)")
 }
 
 
@@ -82,7 +77,7 @@ record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	field(LNK5,  "$(SYS)-$(DEV):TS-NDiff-RBV.PROC")
 	field(LNK6,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
 	field(SCAN, "Event")
-	field(EVNT, "$(CODE)")
+	field(EVNT, "$(SYS)-$(EVR):syncTrigEvt-SP")
 }
 
 

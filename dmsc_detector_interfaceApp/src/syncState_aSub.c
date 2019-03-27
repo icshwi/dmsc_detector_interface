@@ -6,43 +6,76 @@
 #include <dbFldTypes.h>
 #include <dbAccess.h>
 #include <link.h>
+#include <string.h> // Provides memcpy prototype
+#include <stdlib.h> // Provides calloc prototyp
 
 
-static int syncState_aSub(aSubRecord *prec) {
+static long syncState_aSub(aSubRecord *prec) {
 
-	int i, evtCode*,timestamp*, runMode*,clkRstEvt,syncPulEvt,state,tickDelta;
+	float evtCode[4];
+	double timestamp[4];
+	long clkRstEvt, syncPulEvt;
+	long tickDelta;
+	long  state;
 	
 	
 	
 	
 	
-	state 		= *(int *)prec->a; 	// the value of the state input record
-	clkRstEvt 	= *(int *)prec->b;	// the clock reset event number
-	syncPulEvt  = *(int *)prec->c;	// the sync pulse event number
-	tickDelta  	= *(int *)prec->d;	// The number of ticks between clk reset and sync trig
+	state 		= *(long *)prec->a; 	// the value of the state input record
+	clkRstEvt 	= *(long *)prec->b;	// the clock reset event number
+	syncPulEvt  = *(long *)prec->c;	// the sync pulse event number
+	tickDelta  	= *(long *)prec->d;	// The number of ticks between clk reset and sync trig
 	
-	evtCode 	= (int *)prec->vala; 	//The output fields which hold the values in outa, the seq array
-	timestamp 	= (int *)prec->valb; 	//The output fields which hold the values in outb, the timestamp array
-	runMode 	= (int *)prec->valc; 	//the run mode (normal or single)
+	
+	
 	if(!state){	//initial syncPulEvt
-		evtCode[0] = clkRstEvt;
-		evtCode[1] = syncPulEvt;
+		
+		
+		
+		evtCode[0] = (float) clkRstEvt;
+		
+		evtCode[1] = (float) syncPulEvt;
+		
+		
+		evtCode[2] = 127;
 		
 		timestamp[0] = 0;
-		timestamp[1] = tickDelta;
-		runMode = 1; //single
+		
+		timestamp[1] = (double) tickDelta;
+		
+		*(int *)prec->valc = 1; //single
+		//Output event list
+		prec->neva = 3;	
+		memcpy(prec->vala, evtCode, 3 * sizeof(evtCode[0]));
+		
+		//Output tick list
+		prec->nevb = 2;
+		memcpy(prec->valb, timestamp, 2 * sizeof(timestamp[0]));
 	}
 	else{		//check sync state
-		evtCode[0] = syncPulEvt;
-		evtCode[1] = 0;
+		
+		evtCode[0] = (float) syncPulEvt;
+		
+		evtCode[1] = 127;
 		
 		timestamp[0] = 0;
-		timestamp[1] = 0;
 		
-		runMode = 0; //normal
 		
+		*(int *)prec->valc = 0; //normal
+		
+		//Output event list
+		prec->neva = 2;	
+		memcpy(prec->vala, evtCode, 2*sizeof(evtCode[0]));
+		
+		//Output tick list
+		prec->nevb = 1;
+		memcpy(prec->valb, timestamp, sizeof(timestamp[0]));
+	
 	}
 	
+	
+	return 0;
 
 }
 

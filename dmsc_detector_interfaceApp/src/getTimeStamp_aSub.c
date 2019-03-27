@@ -6,6 +6,7 @@
 #include <dbFldTypes.h>
 #include <dbAccess.h>
 #include <link.h>
+#include <math.h>
 
 
 static int getTimeStamp_aSub(aSubRecord *prec) {
