@@ -78,12 +78,14 @@ TEMPLATES += $(wildcard $(APPPROTO)/*.proto)
 SOURCES += $(APPSRC)/getTimeStamp_aSub.c
 SOURCES += $(APPSRC)/convertIPAddress.cpp
 SOURCES += $(APPSRC)/convertMACAddress.cpp
+SOURCES += $(APPSRC)/generateHexString.c
 # # DBDINC_SRCS should be last of the series of SOURCES
 # SOURCES += $(DBDINC_SRCS)
 
 DBDS += $(APPSRC)/detectorinterface.dbd
 DBDS += $(APPSRC)/convertIPAddress.dbd
 DBDS += $(APPSRC)/convertMACAddress.dbd
+DBDS += $(APPSRC)/generateHexString.dbd
 
 #
 # $(DBDINC_DEPS): $(DBDINC_HDRS)

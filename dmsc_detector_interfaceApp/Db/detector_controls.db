@@ -1,10 +1,11 @@
 # Detector Controls general register read write
 # $(SYS)    = The System (DG)
 # $(DEV) = The Device name (FPGA)
+# $(EVR) = EVR name
 # $(COM) = COM port used for proto file
 # $(PRO) = protocol file 
 # $(SCAN_EVNT) = Event number that scans all RBVs
-
+# $(CODE) = Event number to send timestamp
 
 
 
@@ -38,8 +39,68 @@ record(longin, "$(SYS)-$(DEV):da") {
   
 }
 
+## Sync Timestamp Records ##
 
 
+
+
+
+
+
+record (seq, "$(SYS)-$(DEV):syncTimestamp-CMD"){
+	field(DESC, "Perform timestamp sync")
+	field(DOL1, "1") #reset
+	field(DOL2, "0") #enable
+	field(DOL3, "1") 
+	field(DOL4, "1")
+	field(DLY2, "0.1")
+	field(LNK1, "$(SYS)-$(DEV):RST-SP")
+	field(LNK2, "$(SYS)-$(DEV):RST-SP")
+	field(LNK3, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")	
+	field(LNK4, "$(SYS)-$(DEV):sendTim-CMD.PROC")
+	field(SCAN, "Event")
+	field(EVNT, "$(CODE)")
+}
+
+
+record(bo, "$(SYS)-$(DEV):sendTim-CMD") {
+  field(DESC, "Send timestamp register packet to FPGA")
+  field(DTYP, "stream")	
+  field(OUT, "@$(PRO) sendTimestamp($(SYS)-$(EVR),Sec,Nsec) $(COM)")
+}
+
+
+## Check Timestamp Records ###
+
+record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
+	field(DESC, "Perform timestamp check")
+
+	field(LNK1,  "$(SYS)-$(EVR):checkTimeStamp_aSub.PROC")	
+	field(LNK2,  "$(SYS)-$(DEV):TSU-RBV.PROC")
+	field(LNK3,  "$(SYS)-$(DEV):TSL-RBV.PROC")
+	field(LNK4,  "$(SYS)-$(DEV):TS-SDiff-RBV.PROC")
+	field(LNK5,  "$(SYS)-$(DEV):TS-NDiff-RBV.PROC")
+	field(LNK6,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
+	field(SCAN, "Event")
+	field(EVNT, "$(CODE)")
+}
+
+
+record(calc, "$(SYS)-$(DEV):TS-SDiff-RBV"){
+	field(DESC, "Difference between ticks")
+	field(INPA, "$(SYS)-$(EVR):CheckSec-RBV")
+	field(INPB, "$(SYS)-$(DEV):TSU-RBV")
+	field(CALC, "B-A")
+	
+}
+
+record(calc, "$(SYS)-$(DEV):TS-NDiff-RBV"){
+	field(DESC, "Difference between ticks")
+	field(INPA, "$(SYS)-$(EVR):CheckNsec-RBV")
+	field(INPB, "$(SYS)-$(DEV):TSL-RBV")
+	field(CALC, "B-A")
+	
+}
 
 
 

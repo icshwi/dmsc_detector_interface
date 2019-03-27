@@ -1,0 +1,93 @@
+# $(SYS) = The System (DG)
+# $(EVR) = EVR name
+# $(TSEVT,undefined) =  event letter that we get the time from
+
+record(aSub, "$(SYS)-$(EVR):getTimeStamp_aSub"){
+	field(SNAM, "getTimeStamp_aSub")
+	field(FTA,  "LONG")     
+	field(NOA,  "1")  	
+	field(INPA, "$(SYS,undefined)-$(EVR,undefined):$(TSEVT,undefined)-SP")
+	field(FTB,  "LONG")
+	field(NOB,  "1")
+	field(INPB, "$(SYS)-$(EVR):FracNsecDelta-SP")
+	field(FTVA, "LONG")
+	field(NOVA, "1")
+	field(OUTA, "$(SYS)-$(EVR):SyncSec-RBV")
+	field(FTVB, "LONG")
+	field(NOVB, "1")
+	field(OUTB, "$(SYS)-$(EVR):SyncNsec-RBV")	
+}
+
+
+record(longout, "$(SYS)-$(EVR):FracNsecDelta-SP"){
+	field(DESC, "delta in Ticks")
+}
+
+record(longin, "$(SYS)-$(EVR):SyncSec-RBV") {
+  field(DESC, "Timestamp value upper 32 bits")
+  field(VAL, "0")
+}
+
+record(longin, "$(SYS)-$(EVR):SyncNsec-RBV") {
+  field(DESC, "Timestamp value lower 32 bits")
+  field(VAL, "0")
+}
+
+record(bo, "$(SYS)-$(EVR):detSyncState-SP"){
+	field(VAL, 	"0")
+	field(ZNAM, "Initial Sync")
+	field(ONAM, "Sync Check")
+	field(FLNK, "$(SYS)-$(EVR):changeSyncState-CMD")
+}
+
+record(longout, "$(SYS)-$(EVR):syncTrigEvt-SP"){
+	field(DESC, "Event number for sequence")
+}
+
+record(seq, "$(SYS)-$(EVR):changeSyncState-CMD"){
+
+	field(DOL1, "1")
+	field(DOL2, "1")
+	field(DOL3, "1")
+	field(DOL4, "1")
+	field(DOL5, "1")
+	field(DOL6, "1")
+	
+	field(LNK1, "$(SYS)-$(EVR):SoftSeq0-Disable-Cmd")
+	field(LNK2, "$(SYS)-$(EVR):SoftSeq0-Unload-Cmd")
+	field(LNK3, "$(SYS)-$(EVR):SoftSeq0-Load-Cmd")
+	field(LNK4, "$(SYS)-$(EVR):syncState_aSub.PROC")
+	field(LNK5, "$(SYS)-$(EVR):SoftSeq0-Commit-Cmd")
+	field(LNK6, "$(SYS)-$(EVR):SoftSeq0-Enable-Cmd")
+
+}
+
+
+
+
+
+record(aSub, "$(SYS)-$(EVR):syncState_aSub"){
+	field(SNAM, "syncState_aSub")
+	field(FTA,  "LONG")     
+	field(NOA,  "1")  	
+	field(INPA, "$(SYS)-$(EVR):detSyncState-SP")
+	field(FTB,  "LONG")
+	field(NOB,  "1")
+	field(INPB, "$(SYS)-$(EVR):Evt-ResetPS-SP")
+	field(FTC, 	"LONG")
+	field(NOC, 	"1")
+	field(INPC, "$(SYS)-$(EVR):syncTrigEvt-SP")
+	field(FTD, 	"LONG")
+	field(NOD, 	"1")
+	field(INPD, "$(SYS)-$(EVR):FracNsecDelta-SP")
+	field(FTVA, "LONG")
+	field(NOVA, "2")
+	field(OUTA, "$(SYS)-$(EVR):SoftSeq0-EvtCode-SP")
+	field(FTVB, "LONG")
+	field(NOVB, "2")
+	field(OUTB, "$(SYS)-$(EVR):SoftSeq0-Timestamp-SP")
+	field(FTVB, "LONG")
+	field(NOVB, "1")
+	field(OUTB, "$(SYS)-$(EVR):SoftSeq0-RunMode-Sel")
+		
+}
