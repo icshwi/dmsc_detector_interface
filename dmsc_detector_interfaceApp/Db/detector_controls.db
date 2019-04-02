@@ -5,7 +5,8 @@
 # $(COM) = COM port used for proto file
 # $(PRO) = protocol file 
 # $(SCAN_EVNT) = Event number that scans all RBVs
-# $(CODE) = Event number to send timestamp
+# $(CLK_RST_EVNT) = Event number to send timestamp
+# $(SYNC_EVNT) = Event number sync pulse is sent on and check is performed
 
 
 
@@ -33,7 +34,6 @@ record(longin, "$(SYS)-$(DEV):off") {
 
 
 record(longin, "$(SYS)-$(DEV):da") {
-# Add to getpvs
   field(DESC, "Data, 4 bytes")
   field(VAL, "0")
   
@@ -43,18 +43,14 @@ record(longin, "$(SYS)-$(DEV):da") {
 
 record (seq, "$(SYS)-$(DEV):syncTimestamp-CMD"){
 	field(DESC, "Perform timestamp sync")
-	field(DOL1, "1") #reset
-	field(DOL2, "1") 
-	field(DOL3, "0") #enable
-	field(DOL4, "1")
-	field(DLY2, "0.1")
+	field(DLY2, "1")
+	field(DOL2, "0")
 	field(LNK1, "$(SYS)-$(DEV):RST-SP")
-	field(LNK2, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")
-	field(LNK3, "$(SYS)-$(DEV):RST-SP")
-		
-	field(LNK4, "$(SYS)-$(DEV):sendTim-CMD.PROC")
+	field(LNK2, "$(SYS)-$(DEV):RST-SP")
+	field(LNK3, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")
 	field(SCAN, "Event")
-	field(EVNT, "$(SYS)-$(EVR):syncTrigEvt-SP")
+	field(EVNT, "$(CLK_RST_EVNT)")
+	field(FLNK, "$(SYS)-$(DEV):sendTim-CMD")
 }
 
 
@@ -69,30 +65,35 @@ record(bo, "$(SYS)-$(DEV):sendTim-CMD") {
 
 record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	field(DESC, "Perform timestamp check")
-
-	field(LNK1,  "$(SYS)-$(EVR):checkTimeStamp_aSub.PROC")	
+	field(LNK1,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
 	field(LNK2,  "$(SYS)-$(DEV):TSU-RBV.PROC")
 	field(LNK3,  "$(SYS)-$(DEV):TSL-RBV.PROC")
+	
+	field(DLY4, "0.2")
+	field(DLY5, "0.2")
 	field(LNK4,  "$(SYS)-$(DEV):TS-SDiff-RBV.PROC")
 	field(LNK5,  "$(SYS)-$(DEV):TS-NDiff-RBV.PROC")
-	field(LNK6,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
 	field(SCAN, "Event")
-	field(EVNT, "$(SYS)-$(EVR):syncTrigEvt-SP")
+	field(EVNT, "$(SYNC_EVNT)")
+	field(DISV, "0")
+	field(SDIS, "$(SYS)-$(EVR):detSyncState-SP NPP")
+	
 }
 
 
 record(calc, "$(SYS)-$(DEV):TS-SDiff-RBV"){
 	field(DESC, "Difference between ticks")
-	field(INPA, "$(SYS)-$(EVR):CheckSec-RBV")
-	field(INPB, "$(SYS)-$(DEV):TSU-RBV")
+	field(INPA, "$(SYS)-$(EVR):checkTimeStamp_aSub.VALA PP")
+	field(INPB, "$(SYS)-$(DEV):TSU-RBV NPP")
 	field(CALC, "B-A")
+	field(FLNK, "$(SYS)-$(DEV):TS-NDiff-RBV")
 	
 }
 
 record(calc, "$(SYS)-$(DEV):TS-NDiff-RBV"){
 	field(DESC, "Difference between ticks")
-	field(INPA, "$(SYS)-$(EVR):CheckNsec-RBV")
-	field(INPB, "$(SYS)-$(DEV):TSL-RBV")
+	field(INPA, "$(SYS)-$(EVR):checkTimeStamp_aSub.VALB PP")
+	field(INPB, "$(SYS)-$(DEV):TSL-RBV NPP")
 	field(CALC, "B-A")
 	
 }

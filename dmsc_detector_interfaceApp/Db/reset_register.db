@@ -5,6 +5,8 @@
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
 
+
+
 record(bo, "$(SYS)-$(DEV):RST-SP"){
 	field(DESC, "Reset FPGA SP")
 	field(ZNAM, "Enable")

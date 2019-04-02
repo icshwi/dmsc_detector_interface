@@ -1,6 +1,7 @@
 # $(SYS) = The System (DG)
 # $(EVR) = EVR name
 # $(TSEVT,undefined) =  event letter that we get the time from
+# $(SYNC_EVNT) = Event number to send timestamp
 
 record(aSub, "$(SYS)-$(EVR):getTimeStamp_aSub"){
 	field(SNAM, "getTimeStamp_aSub")
@@ -12,15 +13,15 @@ record(aSub, "$(SYS)-$(EVR):getTimeStamp_aSub"){
 	field(INPB, "$(SYS)-$(EVR):FracNsecDelta-SP")
 	field(FTVA, "LONG")
 	field(NOVA, "1")
-	field(OUTA, "$(SYS)-$(EVR):SyncSec-RBV")
+	field(OUTA, "$(SYS)-$(EVR):SyncSec-RBV PP")
 	field(FTVB, "LONG")
 	field(NOVB, "1")
-	field(OUTB, "$(SYS)-$(EVR):SyncNsec-RBV")	
+	field(OUTB, "$(SYS)-$(EVR):SyncNsec-RBV PP")	
 }
 
 
 record(longout, "$(SYS)-$(EVR):FracNsecDelta-SP"){
-	field(DESC, "delta in Ticks")
+	field(DESC, "delta in nanos")
 }
 
 record(longin, "$(SYS)-$(EVR):SyncSec-RBV") {
@@ -38,16 +39,16 @@ record(aSub, "$(SYS)-$(EVR):checkTimeStamp_aSub"){
 	field(SNAM, "getTimeStamp_aSub")
 	field(FTA,  "LONG")     
 	field(NOA,  "1")  	
-	field(INPA, "$(SYS)-$(EVR):$(TSEVT)-SP")
+	field(INPA, "$(SYS)-$(EVR):EvtG-SP")
 	field(FTB,  "LONG")
 	field(NOB,  "1")
 	field(INPB, "0")
 	field(FTVA, "LONG")
 	field(NOVA, "1")
-	field(OUTA, "$(SYS)-$(EVR):CheckSec-RBV")
+	field(OUTA, "$(SYS)-$(EVR):CheckSec-RBV PP")
 	field(FTVB, "LONG")
 	field(NOVB, "1")
-	field(OUTB, "$(SYS)-$(EVR):CheckNsec-RBV")	
+	field(OUTB, "$(SYS)-$(EVR):CheckNsec-RBV PP")	
 }
 
 record(longin, "$(SYS)-$(EVR):CheckSec-RBV") {
@@ -61,15 +62,22 @@ record(longin, "$(SYS)-$(EVR):CheckNsec-RBV") {
 }
 
 record(bo, "$(SYS)-$(EVR):detSyncState-SP"){
-	field(VAL, 	"0")
+	field(VAL, 	"1")
 	field(ZNAM, "Initial Sync")
 	field(ONAM, "Sync Check")
 	field(FLNK, "$(SYS)-$(EVR):changeSyncState-CMD")
+	field(PINI, "1")
+}
+
+record(bi, "$(SYS)-$(EVR):detSyncState-RBV"){
+
+	field(ZNAM, "Initial Sync")
+	field(ONAM, "Sync Check")
 }
 
 record(longout, "$(SYS)-$(EVR):syncTrigEvt-SP"){
 	field(DESC, "Event number for sequence")
-	field(VAL, "16")
+	field(VAL, "$(SYNC_EVNT)")
 }
 
 record(seq, "$(SYS)-$(EVR):changeSyncState-CMD"){
@@ -80,20 +88,21 @@ record(seq, "$(SYS)-$(EVR):changeSyncState-CMD"){
 	field(DOL4, "1")
 	field(DOL5, "1")
 	field(DOL6, "1")
+	field(DOL7, "$(SYS)-$(EVR):detSyncState-SP")
 	
-	field(DLY1, "0.2")
-	field(DLY2, "0.2")
+	field(DLY2, "0.1")
 	field(DLY3, "0.2")
-	field(DLY4, "0.2")
-	field(DLY5, "0.2")
-	field(DLY6, "0.2")
+	field(DLY4, "0.3")
+	field(DLY5, "0.4")
+	field(DLY6, "0.5")
 	
-	field(LNK1, "$(SYS)-$(EVR):SoftSeq0-Disable-Cmd")
-	field(LNK2, "$(SYS)-$(EVR):SoftSeq0-Unload-Cmd")
-	field(LNK3, "$(SYS)-$(EVR):SoftSeq0-Load-Cmd")
+	field(LNK1, "$(SYS)-$(EVR):SoftSeq0-Disable-Cmd PP")
+	field(LNK2, "$(SYS)-$(EVR):SoftSeq0-Unload-Cmd PP")
+	field(LNK3, "$(SYS)-$(EVR):SoftSeq0-Load-Cmd PP")
 	field(LNK4, "$(SYS)-$(EVR):syncState_aSub.PROC")
-	field(LNK5, "$(SYS)-$(EVR):SoftSeq0-Commit-Cmd")
-	field(LNK6, "$(SYS)-$(EVR):SoftSeq0-Enable-Cmd")
+	field(LNK5, "$(SYS)-$(EVR):SoftSeq0-Commit-Cmd PP")
+	field(LNK6, "$(SYS)-$(EVR):SoftSeq0-Enable-Cmd PP")
+	field(LNK7, "$(SYS)-$(EVR):detSyncState-RBV PP")
 
 }
 

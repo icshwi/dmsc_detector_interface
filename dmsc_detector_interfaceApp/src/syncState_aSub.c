@@ -25,7 +25,7 @@ static long syncState_aSub(aSubRecord *prec) {
 	state 		= *(long *)prec->a; 	// the value of the state input record
 	clkRstEvt 	= *(long *)prec->b;	// the clock reset event number
 	syncPulEvt  = *(long *)prec->c;	// the sync pulse event number
-	tickDelta  	= *(long *)prec->d;	// The number of ticks between clk reset and sync trig
+	tickDelta  	= *(long *)prec->d;	// The number of nanoseconds between clk rst and sync
 	
 	
 	

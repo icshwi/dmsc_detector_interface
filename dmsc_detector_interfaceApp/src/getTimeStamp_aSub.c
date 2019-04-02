@@ -31,7 +31,7 @@ unsigned long NANOSPERSECOND = 1E9;
 		//Deal with the carry
 		nSecRem = (tick.nsec + fracNsecDelta)%NANOSPERSECOND;
 		carrySec = floor((tick.nsec + fracNsecDelta)/1E9);
-		
+		printf("carrySec  =%lu \n",carrySec);
 		//convert nanoseconds into FPGA ticks
 		firmware_nanoseconds = floor((nSecRem/1E9)*FPGATICKSPERSECOND);
 		firmware_seconds = tick.secPastEpoch + carrySec + 631152000; //Add the time to shift to UNIX time
