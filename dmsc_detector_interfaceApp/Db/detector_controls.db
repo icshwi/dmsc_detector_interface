@@ -43,10 +43,6 @@ record(longin, "$(SYS)-$(DEV):da") {
 
 record (seq, "$(SYS)-$(DEV):syncTimestamp-CMD"){
 	field(DESC, "Perform timestamp sync")
-	field(DLY2, "1")
-	field(DOL2, "0")
-	field(LNK1, "$(SYS)-$(DEV):RST-SP")
-	field(LNK2, "$(SYS)-$(DEV):RST-SP")
 	field(LNK3, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")
 	field(SCAN, "Event")
 	field(EVNT, "$(CLK_RST_EVNT)")
@@ -58,6 +54,7 @@ record(bo, "$(SYS)-$(DEV):sendTim-CMD") {
   field(DESC, "Send timestamp register packet to FPGA")
   field(DTYP, "stream")	
   field(OUT, "@$(PRO) sendTimestamp($(SYS)-$(EVR),SyncSec-RBV,SyncNsec-RBV) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):RST-ENA-CMD")
 }
 
 
@@ -68,11 +65,6 @@ record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	field(LNK1,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
 	field(LNK2,  "$(SYS)-$(DEV):TSU-RBV.PROC")
 	field(LNK3,  "$(SYS)-$(DEV):TSL-RBV.PROC")
-	
-	field(DLY4, "0.2")
-	field(DLY5, "0.2")
-	field(LNK4,  "$(SYS)-$(DEV):TS-SDiff-RBV.PROC")
-	field(LNK5,  "$(SYS)-$(DEV):TS-NDiff-RBV.PROC")
 	field(SCAN, "Event")
 	field(EVNT, "$(SYNC_EVNT)")
 	field(DISV, "0")
@@ -80,24 +72,46 @@ record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	
 }
 
+record(longin, "$(SYS)-$(DEV):TSU-OFF") {
+  field(VAL, "$(TSU-OFF)")
+}
+
+
+record(longin, "$(SYS)-$(DEV):TSU-RBV"){
+
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),TSU-OFF) $(COM)")
+  field(PINI, "1")
+  field(FLNK, "$(SYS)-$(DEV):TS-SDiff-RBV")
+}
+
+record(longin, "$(SYS)-$(DEV):TSL-OFF") {
+  field(VAL, "$(TSL-OFF)")
+}
+
+
+record(longin, "$(SYS)-$(DEV):TSL-RBV"){
+
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),TSL-OFF) $(COM)")
+  field(PINI, "1")
+  field(FLNK, "$(SYS)-$(DEV):TS-NDiff-RBV")
+}
 
 record(calc, "$(SYS)-$(DEV):TS-SDiff-RBV"){
 	field(DESC, "Difference between ticks")
 	field(INPA, "$(SYS)-$(EVR):checkTimeStamp_aSub.VALA PP")
-	field(INPB, "$(SYS)-$(DEV):TSU-RBV NPP")
+	#NPP since we've already worked out the value
+	field(INPB, "$(SYS)-$(DEV):TSU-RBV NPP") 
 	field(CALC, "B-A")
-	field(FLNK, "$(SYS)-$(DEV):TS-NDiff-RBV")
 	
 }
 
 record(calc, "$(SYS)-$(DEV):TS-NDiff-RBV"){
 	field(DESC, "Difference between ticks")
 	field(INPA, "$(SYS)-$(EVR):checkTimeStamp_aSub.VALB PP")
+	#NPP since we've already worked out the value
 	field(INPB, "$(SYS)-$(DEV):TSL-RBV NPP")
 	field(CALC, "B-A")
 	
 }
-
-
-
-

@@ -61,19 +61,22 @@ record(longin, "$(SYS)-$(EVR):CheckNsec-RBV") {
   field(VAL, "0")
 }
 
+
 record(bo, "$(SYS)-$(EVR):detSyncState-SP"){
 	field(VAL, 	"1")
 	field(ZNAM, "Initial Sync")
 	field(ONAM, "Sync Check")
 	field(FLNK, "$(SYS)-$(EVR):changeSyncState-CMD")
-	field(PINI, "1")
+	field(SDIS, "$(SYS)-$(EVR):Time-Valid-Sts")
+	field(DISV, "0")#if the time is not valid then disable the record processing
 }
 
 record(bi, "$(SYS)-$(EVR):detSyncState-RBV"){
-
 	field(ZNAM, "Initial Sync")
 	field(ONAM, "Sync Check")
 }
+
+
 
 record(longout, "$(SYS)-$(EVR):syncTrigEvt-SP"){
 	field(DESC, "Event number for sequence")
@@ -95,6 +98,7 @@ record(seq, "$(SYS)-$(EVR):changeSyncState-CMD"){
 	field(DLY4, "0.3")
 	field(DLY5, "0.4")
 	field(DLY6, "0.5")
+	field(DLY7, "1.1")
 	
 	field(LNK1, "$(SYS)-$(EVR):SoftSeq0-Disable-Cmd PP")
 	field(LNK2, "$(SYS)-$(EVR):SoftSeq0-Unload-Cmd PP")

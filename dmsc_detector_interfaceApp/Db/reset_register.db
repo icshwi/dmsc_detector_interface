@@ -6,6 +6,29 @@
 # $(COM)	= COM port for stream DEV
 
 
+record(bo, "$(SYS)-$(DEV):RST-CMD"){
+	field(DESC, "Reset FPGA SP")
+	field(VAL, "1")
+	field(DTYP, "soft channel")
+	field(OUT, "$(SYS)-$(DEV):RST-SP PP")
+}
+
+record(bo, "$(SYS)-$(DEV):ENA-CMD"){
+	field(DESC, "Enable FPGA SP")
+	field(VAL, "0")
+	field(DTYP, "soft channel")
+	field(OUT, "$(SYS)-$(DEV):RST-SP PP")
+}
+
+record(seq, "$(SYS)-$(DEV):RST-ENA-CMD"){
+	field(DESC, "Reset, Enable FPGA SP")
+	field(DOL1, "1")
+	field(LNK1, "$(SYS)-$(DEV):RST-SP PP")
+	field(DOL2, "0")
+	field(DLY2, "0.2")
+	field(LNK2, "$(SYS)-$(DEV):RST-SP PP")
+}
+
 
 record(bo, "$(SYS)-$(DEV):RST-SP"){
 	field(DESC, "Reset FPGA SP")
@@ -21,8 +44,9 @@ record(bi, "$(SYS)-$(DEV):RST-RBV"){
 	field(ZNAM, "Enabled")
 	field(ONAM, "Reset")
 	field(DTYP, "stream")
-  field(PINI, "1")
+	field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),RST-OFF) $(COM)")
+	field(FLNK, "$(SYS)-$(DEV):STATUS2-RBV")
 }
 
 record(longin, "$(SYS)-$(DEV):RST-OFF") {

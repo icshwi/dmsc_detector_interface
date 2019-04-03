@@ -43,6 +43,7 @@ static long syncState_aSub(aSubRecord *prec) {
 		timestamp[0] = 0;
 		
 		timestamp[1] = (double) tickDelta;
+		timestamp[2] = (double) tickDelta + 1;
 		
 		*(int *)prec->valc = 1; //single
 		//Output event list
@@ -50,8 +51,10 @@ static long syncState_aSub(aSubRecord *prec) {
 		memcpy(prec->vala, evtCode, 3 * sizeof(evtCode[0]));
 		
 		//Output tick list
-		prec->nevb = 2;
-		memcpy(prec->valb, timestamp, 2 * sizeof(timestamp[0]));
+		prec->nevb = 3;
+		memcpy(prec->valb, timestamp, 3 * sizeof(timestamp[0]));
+		
+		
 	}
 	else{		//check sync state
 		
@@ -61,6 +64,8 @@ static long syncState_aSub(aSubRecord *prec) {
 		
 		timestamp[0] = 0;
 		
+		timestamp[1] = 1;
+		
 		
 		*(int *)prec->valc = 0; //normal
 		
@@ -69,8 +74,10 @@ static long syncState_aSub(aSubRecord *prec) {
 		memcpy(prec->vala, evtCode, 2*sizeof(evtCode[0]));
 		
 		//Output tick list
-		prec->nevb = 1;
-		memcpy(prec->valb, timestamp, sizeof(timestamp[0]));
+		prec->nevb = 2;
+		memcpy(prec->valb, timestamp, 2*sizeof(timestamp[0]));
+		
+		
 	
 	}
 	
