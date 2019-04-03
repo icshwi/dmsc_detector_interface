@@ -17,7 +17,7 @@ record(mbbo, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP"){
   field(THST, "+/-5V 50Ohm")
   field(THVL, "77")
   field(FRST, "+/-0.5V 50Ohm")
-  field(FRVL, "28")
+  field(FRVL, "25")
   field(FVST, "+/-50mV 50Ohm")
   field(FVVL, "43")
   field(SXST, "GND")
