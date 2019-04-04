@@ -27,8 +27,8 @@
   <widget type="group" version="2.0.0">
     <name>Group</name>
     <x>9</x>
-    <y>59</y>
-    <width>883</width>
+    <y>70</y>
+    <width>976</width>
     <height>182</height>
     <style>2</style>
     <background_color>
@@ -91,27 +91,15 @@
       <y>99</y>
       <tooltip>$(actions)</tooltip>
     </widget>
-    <widget type="label" version="2.0.0">
-      <name>BasicLabel</name>
-      <class>HEADER2</class>
-      <text>Basic controls</text>
-      <x>211</x>
-      <width>170</width>
-      <font use_class="true">
-        <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
-        </font>
-      </font>
-      <horizontal_alignment>1</horizontal_alignment>
-    </widget>
     <widget type="group" version="2.0.0">
       <name>Sampling mode</name>
-      <x>189</x>
+      <x>230</x>
       <y>40</y>
       <width>190</width>
       <height>135</height>
       <widget type="led" version="2.0.0">
         <name>PeakDetectEnabled</name>
-        <pv_name>ca://${PREFIX}BPZ-RBV</pv_name>
+        <pv_name>ca://${PREFIX}ACQ-MODE-RBV</pv_name>
         <x>9</x>
         <y>10</y>
         <off_color>
@@ -125,7 +113,7 @@
       </widget>
       <widget type="led" version="2.0.0">
         <name>ContinousEnabled</name>
-        <pv_name>ca://${PREFIX}BPZ-RBV</pv_name>
+        <pv_name>ca://${PREFIX}ACQ-MODE-RBV</pv_name>
         <x>9</x>
         <y>57</y>
       </widget>
@@ -133,7 +121,7 @@
         <name>Action Button</name>
         <actions>
           <action type="write_pv">
-            <pv_name>$(PREFIX)BPZ-SP</pv_name>
+            <pv_name>$(PREFIX)ACQ-MODE-SP</pv_name>
             <value>0</value>
             <description>Peak det.</description>
           </action>
@@ -147,7 +135,7 @@
         <name>Action Button_1</name>
         <actions>
           <action type="write_pv">
-            <pv_name>$(PREFIX)BPZ-SP</pv_name>
+            <pv_name>$(PREFIX)ACQ-MODE-SP</pv_name>
             <value>1</value>
             <description>Enable cont.</description>
           </action>
@@ -160,7 +148,7 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>Clock source</name>
-      <x>395</x>
+      <x>480</x>
       <y>40</y>
       <width>190</width>
       <height>135</height>
@@ -186,9 +174,9 @@
       </widget>
       <widget type="radio" version="2.0.0">
         <name>ClockSource</name>
-        <pv_name>ca://${PREFIX}BPZ-SP</pv_name>
+        <pv_name>ca://${PREFIX}CLKSEL-SP</pv_name>
         <x>39</x>
-        <y>9</y>
+        <y>10</y>
         <items>
           <item>Internal</item>
           <item>External</item>
@@ -198,7 +186,7 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>Payload source</name>
-      <x>600</x>
+      <x>740</x>
       <y>40</y>
       <width>190</width>
       <height>135</height>
@@ -252,6 +240,11 @@
         <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
         </font>
       </font>
+      <background_color use_class="true">
+        <color name="Background" red="220" green="225" blue="221">
+        </color>
+      </background_color>
+      <transparent use_class="true">true</transparent>
     </widget>
     <widget type="table" version="2.0.0">
       <name>Table</name>
@@ -315,7 +308,7 @@ widget.setValue(data)]]></text>
     <widget type="label" version="2.0.0">
       <name>NetworkTitle</name>
       <text>Network settings</text>
-      <x>159</x>
+      <x>9</x>
       <width>180</width>
       <font>
         <font family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
@@ -490,6 +483,11 @@ widget.setValue(data)]]></text>
         <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
         </font>
       </font>
+      <background_color use_class="true">
+        <color name="Background" red="220" green="225" blue="221">
+        </color>
+      </background_color>
+      <transparent use_class="true">true</transparent>
     </widget>
     <widget type="label" version="2.0.0">
       <name>Ch1Label_1</name>
@@ -521,15 +519,8 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Ch1Offset</name>
-      <pv_name>ca://${PREFIX}Off0-SP</pv_name>
+      <pv_name>ca://${PREFIX}OFF-CH1-SP</pv_name>
       <x>259</x>
-      <y>62</y>
-      <width>56</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Ch1OffsetGet</name>
-      <pv_name>ca://${PREFIX}Off0-RBV</pv_name>
-      <x>339</x>
       <y>62</y>
       <width>56</width>
     </widget>
@@ -641,15 +632,8 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Ch2Offset</name>
-      <pv_name>ca://${PREFIX}Off1-SP</pv_name>
+      <pv_name>ca://${PREFIX}OFF-CH2-SP</pv_name>
       <x>259</x>
-      <y>104</y>
-      <width>56</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Ch2OffsetGet</name>
-      <pv_name>ca://${PREFIX}Off1-RBV</pv_name>
-      <x>339</x>
       <y>104</y>
       <width>56</width>
     </widget>
@@ -712,15 +696,8 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Ch3Offset</name>
-      <pv_name>ca://${PREFIX}Off2-SP</pv_name>
+      <pv_name>ca://${PREFIX}OFF-CH3-SP</pv_name>
       <x>259</x>
-      <y>145</y>
-      <width>56</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Ch3OffsetGet</name>
-      <pv_name>ca://${PREFIX}Off2-RBV</pv_name>
-      <x>339</x>
       <y>145</y>
       <width>56</width>
     </widget>
@@ -783,15 +760,8 @@ widget.setValue(data)]]></text>
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Ch4Offset</name>
-      <pv_name>ca://${PREFIX}Off3-SP</pv_name>
+      <pv_name>ca://${PREFIX}OFF-CH4-SP</pv_name>
       <x>259</x>
-      <y>185</y>
-      <width>56</width>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Ch4OffsetGet</name>
-      <pv_name>ca://${PREFIX}Off3-RBV</pv_name>
-      <x>339</x>
       <y>185</y>
       <width>56</width>
     </widget>
@@ -870,5 +840,27 @@ widget.setValue(data)]]></text>
       <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
       </font>
     </font>
+    <background_color use_class="true">
+      <color name="Background" red="220" green="225" blue="221">
+      </color>
+    </background_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>BasicLabel</name>
+    <class>HEADER2</class>
+    <text>Basic controls</text>
+    <y>80</y>
+    <width>170</width>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <background_color use_class="true">
+      <color name="Background" red="220" green="225" blue="221">
+      </color>
+    </background_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
   </widget>
 </display>

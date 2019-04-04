@@ -5,7 +5,6 @@
 # $(COM)	= COM port for stream DEV
 # $(PRO) = stream DEV protocol filename
 # $(DIR) = Destination or Source, used for record naming
-# $(SCAN_EVNT) = Event number that scans all RBVs
 
 record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-SP"){
   field(DESC, "MAC $(DIR) raw register 1")
@@ -52,8 +51,7 @@ record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV") {
   field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF) $(COM)")
   field(PINI, "1")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV")
-  field(SCAN, "Event")
-  field(EVNT, "$(SCAN_EVNT)")
+
 
 }
 

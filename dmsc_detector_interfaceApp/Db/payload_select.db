@@ -4,7 +4,7 @@
 # $(REG) 	= name of register
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
-# $(SCAN_EVNT) = Event number that scans all RBVs
+
 
 record(bo, "$(SYS)-$(DEV):PAYSEL-SP"){
 	field(DESC, "Select payload ADC/synthetic.")
@@ -22,8 +22,7 @@ record(bi, "$(SYS)-$(DEV):PAYSEL-RBV"){
 	field(DTYP, "stream")
     field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),PAYSEL-OFF) $(COM)")
-	field(SCAN, "Event")
-	field(EVNT, "$(SCAN_EVNT)")
+
 }
 
 record(longin, "$(SYS)-$(DEV):PAYSEL-OFF") {

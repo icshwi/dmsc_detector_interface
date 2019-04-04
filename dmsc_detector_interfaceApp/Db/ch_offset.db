@@ -30,7 +30,7 @@ record(ao, "$(SYS)-$(DEV):OFF-CH$(CH)-ASLO"){
 }
 
 
-record(ao, "$(SYS)-$(DEV):OFF-CH$(CH)-AOFF")	
+record(ao, "$(SYS)-$(DEV):OFF-CH$(CH)-AOFF"){	
 	field(DESC, "offset for channel offset")
 	field(VAL, "32768")
 }

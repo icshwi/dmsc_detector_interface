@@ -3,7 +3,6 @@
 # $(DEV) 	= The DEV name (FPGA)
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
-# $(SCAN_EVNT) = Event number that scans all RBVs
 
 record(mbbo, "$(SYS)-$(DEV):OVERSMPL-SP"){
 	field(DESC, "Select oversampling multiplier")
@@ -43,8 +42,7 @@ record(longin, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV"){
 	field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),OVERSMPL-OFF) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RBV")
-  	field(SCAN, "Event")
-	field(EVNT, "$(SCAN_EVNT)")
+
   
 }
 
