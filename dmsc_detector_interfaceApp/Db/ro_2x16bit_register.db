@@ -6,6 +6,7 @@
 # $(OFF) = register offset
 # $(NR1) = Device/reg number 1
 # $(NR2) = Device/reg number 2
+# $(SCAN_EVNT) = Event number that scans all RBVs
 
 record(longin, "$(SYS)-$(DEV):$(REG)$(NR1)$(NR2)-OFF") {
   field(VAL, "$(OFF)")
@@ -16,8 +17,9 @@ record(longin, "$(SYS)-$(DEV):$(REG)$(NR1)$(NR2)-RAW-RBV") {
   field(DTYP, "stream")
   field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),$(REG)$(NR1)$(NR2)-OFF) $(COM)")
   field(PINI, "1")
-  field(SCAN, "5 second")
   field(FLNK, "$(SYS)-$(DEV):$(REG)$(NR1)-RBV")
+  field(SCAN, "Event")
+  field(EVNT, "$(SCAN_EVNT)")
 }
 
 record(calc,"$(SYS)-$(DEV):$(REG)$(NR1)-RBV") {

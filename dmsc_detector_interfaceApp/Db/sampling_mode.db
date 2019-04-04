@@ -4,6 +4,7 @@
 # $(REG) 	= name of register
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
+# $(SCAN_EVNT) = Event number that scans all RBVs
 
 record(bo, "$(SYS)-$(DEV):ACQ-MODE-SP"){
 	field(DESC, "Acquisition mode SP")
@@ -12,6 +13,7 @@ record(bo, "$(SYS)-$(DEV):ACQ-MODE-SP"){
 	field(DTYP, "stream")
 	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),ACQ-MODE-OFF,ACQ-MODE-SP) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):ACQ-MODE-RBV")
+	
 }
 
 record(bi, "$(SYS)-$(DEV):ACQ-MODE-RBV"){
@@ -19,8 +21,10 @@ record(bi, "$(SYS)-$(DEV):ACQ-MODE-RBV"){
 	field(ZNAM, "Peak detect")
 	field(ONAM, "Continous")
 	field(DTYP, "stream")
-  field(PINI, "1")
+	field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),ACQ-MODE-OFF) $(COM)")
+	field(SCAN, "Event")
+	field(EVNT, "$(SCAN_EVNT)")
 }
 
 record(longin, "$(SYS)-$(DEV):ACQ-MODE-OFF") {

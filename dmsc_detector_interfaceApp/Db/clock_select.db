@@ -3,6 +3,7 @@
 # $(DEV) 	= The DEV name (FPGA)
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
+# $(SCAN_EVNT) = Event number that scans all RBVs
 
 record(bo, "$(SYS)-$(DEV):CLKSEL-SP"){
 	field(DESC, "ADC clock select SP")
@@ -18,8 +19,10 @@ record(bi, "$(SYS)-$(DEV):CLKSEL-RBV"){
 	field(ZNAM, "Internal")
 	field(ONAM, "External")
 	field(DTYP, "stream")
-  field(PINI, "1")
+	field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),CLKSEL-OFF) $(COM)")
+	field(SCAN, "Event")
+	field(EVNT, "$(SCAN_EVNT)")
 }
 
 record(longin, "$(SYS)-$(DEV):CLKSEL-OFF") {

@@ -7,11 +7,16 @@
 # $(SCAN_EVNT) = Event number that scans all RBVs
 # $(CLK_RST_EVNT) = Event number to send timestamp
 # $(SYNC_EVNT) = Event number sync pulse is sent on and check is performed
-
-
+# $(TSL-OFF) = Timestmap lower register offset
+# $(TSU-OFF) = Timestmap upper register offset
 
 ## Communication Records ###
 
+record(event, "$(SYS)-$(DEV):updateAll-Cmd"){
+	field(DESC, "scan all PV's for $(DEV)")
+	field(VAL, "$(SCAN_EVNT)")
+}
+	
 record(bo, "$(SYS)-$(DEV):writeRegister"){
 
   field(DESC, "Send write Packets")

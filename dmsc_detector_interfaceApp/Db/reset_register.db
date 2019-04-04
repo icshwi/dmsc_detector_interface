@@ -4,6 +4,7 @@
 # $(REG) 	= name of register
 # $(OFF) = register offset
 # $(COM)	= COM port for stream DEV
+# $(SCAN_EVNT) = Event number that scans all RBVs
 
 
 record(bo, "$(SYS)-$(DEV):RST-CMD"){
@@ -47,6 +48,8 @@ record(bi, "$(SYS)-$(DEV):RST-RBV"){
 	field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),RST-OFF) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):STATUS2-RBV")
+	field(SCAN, "Event")
+	field(EVNT, "$(SCAN_EVNT)")
 }
 
 record(longin, "$(SYS)-$(DEV):RST-OFF") {
