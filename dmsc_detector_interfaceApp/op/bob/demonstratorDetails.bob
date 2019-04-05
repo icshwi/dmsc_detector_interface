@@ -514,6 +514,7 @@ widget.setValue(data)]]></text>
       <x>330</x>
       <y>62</y>
       <width>56</width>
+      <precision>3</precision>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Ch1ThresholdGet</name>
@@ -628,6 +629,7 @@ widget.setValue(data)]]></text>
       <x>330</x>
       <y>104</y>
       <width>56</width>
+      <precision>3</precision>
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Ch2ThresholdSet</name>
@@ -693,6 +695,7 @@ widget.setValue(data)]]></text>
       <x>330</x>
       <y>145</y>
       <width>56</width>
+      <precision>3</precision>
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Ch3ThresholdSet</name>
@@ -758,6 +761,7 @@ widget.setValue(data)]]></text>
       <x>330</x>
       <y>185</y>
       <width>56</width>
+      <precision>3</precision>
     </widget>
     <widget type="textentry" version="3.0.0">
       <name>Ch4ThresholdSet</name>
