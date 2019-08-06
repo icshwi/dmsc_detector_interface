@@ -6,13 +6,13 @@
   <widget type="group" version="2.0.0">
     <name>Status Group</name>
     <macros>
-      <EVR>EVR-02</EVR>
-      <PREFIX>HZB-V20:TS-</PREFIX>
+      <EVR>EVR-01</EVR>
+      <PREFIX>ESSIP-DET:TS-</PREFIX>
     </macros>
     <x>50</x>
     <y>30</y>
     <width>600</width>
-    <height>810</height>
+    <height>661</height>
     <style>2</style>
     <widget type="label" version="2.0.0">
       <name>NetworkTitle</name>
@@ -30,7 +30,7 @@
       <macros>
         <DEV>RO1</DEV>
         <EVR>$(EVR)</EVR>
-        <RO1UNIV>08</RO1UNIV>
+        <RO1UNIV>12</RO1UNIV>
       </macros>
       <x>9</x>
       <y>69</y>
