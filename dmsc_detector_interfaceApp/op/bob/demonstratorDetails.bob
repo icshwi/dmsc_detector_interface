@@ -93,7 +93,7 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>Sampling mode</name>
-      <x>230</x>
+      <x>189</x>
       <y>40</y>
       <width>190</width>
       <height>135</height>
@@ -148,7 +148,7 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>Clock source</name>
-      <x>480</x>
+      <x>389</x>
       <y>40</y>
       <width>190</width>
       <height>135</height>
@@ -186,7 +186,7 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>Payload source</name>
-      <x>740</x>
+      <x>600</x>
       <y>40</y>
       <width>190</width>
       <height>135</height>
@@ -221,6 +221,18 @@
         </items>
         <items_from_pv>false</items_from_pv>
       </widget>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Combo Box</name>
+      <pv_name>ca://${PREFIX}OVERSMPL-SP</pv_name>
+      <x>830</x>
+      <y>70</y>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update</name>
+      <pv_name>ca://${PREFIX}OVERSMPL-RBV</pv_name>
+      <x>830</x>
+      <y>113</y>
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
