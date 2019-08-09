@@ -33,7 +33,7 @@
         <RO1UNIV>12</RO1UNIV>
       </macros>
       <x>9</x>
-      <y>69</y>
+      <y>49</y>
       <width>280</width>
       <height>310</height>
       <widget type="textupdate" version="2.0.0">
@@ -305,7 +305,7 @@
         <RO1UNIV>10</RO1UNIV>
       </macros>
       <x>299</x>
-      <y>69</y>
+      <y>49</y>
       <width>280</width>
       <height>310</height>
       <widget type="textupdate" version="2.0.0">

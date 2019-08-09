@@ -29,7 +29,7 @@
     <x>9</x>
     <y>70</y>
     <width>976</width>
-    <height>182</height>
+    <height>250</height>
     <style>2</style>
     <background_color>
       <color name="BACKGROUND" red="220" green="225" blue="221">
@@ -94,9 +94,9 @@
     <widget type="group" version="2.0.0">
       <name>Sampling mode</name>
       <x>189</x>
-      <y>40</y>
+      <y>29</y>
       <width>190</width>
-      <height>135</height>
+      <height>130</height>
       <widget type="led" version="2.0.0">
         <name>PeakDetectEnabled</name>
         <pv_name>ca://${PREFIX}ACQ-MODE-RBV</pv_name>
@@ -148,10 +148,10 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>Clock source</name>
-      <x>389</x>
-      <y>40</y>
+      <x>379</x>
+      <y>29</y>
       <width>190</width>
-      <height>135</height>
+      <height>130</height>
       <widget type="led" version="2.0.0">
         <name>InternalClock</name>
         <pv_name>ca://${PREFIX}CLKSEL-RBV</pv_name>
@@ -186,10 +186,10 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>Payload source</name>
-      <x>600</x>
-      <y>40</y>
+      <x>569</x>
+      <y>29</y>
       <width>190</width>
-      <height>135</height>
+      <height>130</height>
       <widget type="led" version="2.0.0">
         <name>SynthPayload</name>
         <pv_name>ca://${PREFIX}PAYSEL-RBV</pv_name>
@@ -222,23 +222,79 @@
         <items_from_pv>false</items_from_pv>
       </widget>
     </widget>
-    <widget type="combo" version="2.0.0">
-      <name>Combo Box</name>
-      <pv_name>ca://${PREFIX}OVERSMPL-SP</pv_name>
-      <x>830</x>
-      <y>70</y>
+    <widget type="group" version="2.0.0">
+      <name>OverSampling</name>
+      <x>759</x>
+      <y>29</y>
+      <width>190</width>
+      <height>130</height>
+      <widget type="combo" version="2.0.0">
+        <name>Combo Box</name>
+        <pv_name>ca://${PREFIX}OVERSMPL-SP</pv_name>
+        <x>12</x>
+        <y>9</y>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update</name>
+        <pv_name>ca://${PREFIX}OVERSMPL-RBV</pv_name>
+        <x>12</x>
+        <y>47</y>
+      </widget>
     </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update</name>
-      <pv_name>ca://${PREFIX}OVERSMPL-RBV</pv_name>
-      <x>830</x>
-      <y>113</y>
+    <widget type="group" version="2.0.0">
+      <name>General Read/Write</name>
+      <x>189</x>
+      <y>159</y>
+      <width>570</width>
+      <height>81</height>
+      <widget type="textentry" version="3.0.0">
+        <name>IPSet_2</name>
+        <pv_name>ca://${PREFIX}da</pv_name>
+        <x>147</x>
+        <y>18</y>
+        <width>115</width>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Timeout description_1</name>
+        <text>Offset</text>
+        <x>9</x>
+        <y>-1</y>
+        <width>80</width>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Timeout description_2</name>
+        <text>Setpoint</text>
+        <x>147</x>
+        <y>-1</y>
+        <width>80</width>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>IPGet_3</name>
+        <pv_name>ca://${PREFIX}registerRBV</pv_name>
+        <x>376</x>
+        <y>17</y>
+        <width>115</width>
+        <format>4</format>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>IPSet_3</name>
+        <pv_name>ca://${PREFIX}off</pv_name>
+        <x>9</x>
+        <y>18</y>
+        <width>115</width>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Timeout description_3</name>
+        <text>Readback</text>
+        <x>376</x>
+        <width>80</width>
+      </widget>
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
     <name>StatsGroup</name>
     <x>716</x>
-    <y>270</y>
+    <y>330</y>
     <width>269</width>
     <height>210</height>
     <style>2</style>
@@ -252,6 +308,11 @@
         <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
         </font>
       </font>
+      <background_color use_class="true">
+        <color name="Background" red="220" green="225" blue="221">
+        </color>
+      </background_color>
+      <transparent use_class="true">true</transparent>
     </widget>
     <widget type="table" version="2.0.0">
       <name>Table</name>
@@ -308,7 +369,7 @@ widget.setValue(data)]]></text>
   <widget type="group" version="2.0.0">
     <name>NetworkingGroup</name>
     <x>9</x>
-    <y>270</y>
+    <y>331</y>
     <width>681</width>
     <height>210</height>
     <style>2</style>
@@ -476,8 +537,8 @@ widget.setValue(data)]]></text>
   <widget type="group" version="2.0.0">
     <name>Channels</name>
     <x>9</x>
-    <y>510</y>
-    <width>941</width>
+    <y>550</y>
+    <width>976</width>
     <height>220</height>
     <style>2</style>
     <widget type="label" version="2.0.0">
@@ -490,6 +551,11 @@ widget.setValue(data)]]></text>
         <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
         </font>
       </font>
+      <background_color use_class="true">
+        <color name="Background" red="220" green="225" blue="221">
+        </color>
+      </background_color>
+      <transparent use_class="true">true</transparent>
     </widget>
     <widget type="label" version="2.0.0">
       <name>Ch1Label_1</name>
@@ -850,6 +916,11 @@ widget.setValue(data)]]></text>
       <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
       </font>
     </font>
+    <background_color use_class="true">
+      <color name="Background" red="220" green="225" blue="221">
+      </color>
+    </background_color>
+    <transparent use_class="true">true</transparent>
   </widget>
   <widget type="label" version="2.0.0">
     <name>BasicLabel</name>
@@ -861,6 +932,11 @@ widget.setValue(data)]]></text>
       <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
       </font>
     </font>
+    <background_color use_class="true">
+      <color name="Background" red="220" green="225" blue="221">
+      </color>
+    </background_color>
+    <transparent use_class="true">true</transparent>
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
 </display>
