@@ -243,16 +243,17 @@
     </widget>
     <widget type="group" version="2.0.0">
       <name>General Read/Write</name>
-      <x>189</x>
-      <y>159</y>
-      <width>570</width>
-      <height>81</height>
+      <x>24</x>
+      <y>149</y>
+      <width>928</width>
+      <height>91</height>
       <widget type="textentry" version="3.0.0">
         <name>IPSet_2</name>
         <pv_name>ca://${PREFIX}da</pv_name>
-        <x>147</x>
+        <x>149</x>
         <y>18</y>
         <width>115</width>
+        <format>4</format>
       </widget>
       <widget type="label" version="2.0.0">
         <name>Timeout description_1</name>
@@ -263,15 +264,14 @@
       </widget>
       <widget type="label" version="2.0.0">
         <name>Timeout description_2</name>
-        <text>Setpoint</text>
-        <x>147</x>
-        <y>-1</y>
-        <width>80</width>
+        <text>Setpoint (Hex)</text>
+        <x>149</x>
+        <width>115</width>
       </widget>
       <widget type="textupdate" version="2.0.0">
         <name>IPGet_3</name>
         <pv_name>ca://${PREFIX}registerRBV</pv_name>
-        <x>376</x>
+        <x>574</x>
         <y>17</y>
         <width>115</width>
         <format>4</format>
@@ -285,9 +285,52 @@
       </widget>
       <widget type="label" version="2.0.0">
         <name>Timeout description_3</name>
-        <text>Readback</text>
-        <x>376</x>
-        <width>80</width>
+        <text>Readback (Hex)</text>
+        <x>574</x>
+        <width>140</width>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>EnableButton_1</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(PREFIX)writeRegister</pv_name>
+            <value>1</value>
+            <description>Write Setpoint</description>
+          </action>
+        </actions>
+        <text>Write</text>
+        <x>465</x>
+        <width>67</width>
+        <height>38</height>
+        <tooltip>$(actions)</tooltip>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Timeout description_4</name>
+        <text>Readback (Decimal)</text>
+        <x>714</x>
+        <width>183</width>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>IPGet_5</name>
+        <pv_name>ca://${PREFIX}registerRBV</pv_name>
+        <x>714</x>
+        <y>17</y>
+        <width>133</width>
+        <format>1</format>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Timeout description_5</name>
+        <text>Setpoint (Decimal)</text>
+        <x>287</x>
+        <width>138</width>
+      </widget>
+      <widget type="textentry" version="3.0.0">
+        <name>IPSet_4</name>
+        <pv_name>ca://${PREFIX}da</pv_name>
+        <x>287</x>
+        <y>18</y>
+        <width>128</width>
+        <format>1</format>
       </widget>
     </widget>
   </widget>
