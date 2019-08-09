@@ -31,6 +31,7 @@ dmsc_detector_interface_SRCS += convertMACAddress.cpp
 dmsc_detector_interface_SRCS += generateHexString.c
 dmsc_detector_interface_SRCS += getTimeStamp_aSub.c
 dmsc_detector_interface_SRCS += syncState_aSub.c
+dmsc_detector_interface_SRCS += getRange_aSub.c
 
 # Build the main IOC entry point on workstation OSs.
 dmsc_detector_interface_SRCS_DEFAULT += dmsc_detector_interfaceMain.cpp
