@@ -24,29 +24,29 @@ double ticksD;
 unsigned long ticksC; 
 	if (!dbGetTimeStamp(&prec->inpa, &tick)){ 			
 				
-		printf("Initial sec %lu ICS nsec %lu ",tick.secPastEpoch,tick.nsec);
+		//printf("Initial sec %lu ICS nsec %lu ",tick.secPastEpoch,tick.nsec);
 		
 		NANOSPERTICK = ((double)NANOSPERSECOND/(double)ICSTICKSPERSECOND);
-		printf("NANOSPERTICK = %f ",NANOSPERTICK);
+		//printf("NANOSPERTICK = %f ",NANOSPERTICK);
 		
 		tickDelta = *(long *)prec->b; //in ticks
-		printf("tickDelta = %lu ",tickDelta);
+		//printf("tickDelta = %lu ",tickDelta);
 				
 		//convert the tick.nsec from nsecs to ticks
 		ticksD = tick.nsec/NANOSPERTICK;
-		printf("ticksD = %f ",ticksD);
+		//printf("ticksD = %f ",ticksD);
 		
 		ticksC = floor(ticksD);
-		printf("ticksC = %lu ",ticksC);
+		//printf("ticksC = %lu ",ticksC);
 		
 		//Deal with the carry
 		nSecRem = (ticksC + tickDelta)%ICSTICKSPERSECOND; 
-		printf("ticksC + ticksDelta = %lu ",ticksC + tickDelta);
-		printf("nSecRem = %lu ",nSecRem);
+		//printf("ticksC + ticksDelta = %lu ",ticksC + tickDelta);
+		//printf("nSecRem = %lu ",nSecRem);
 		
 		
 		carrySec = floor((ticksC + tickDelta)/ICSTICKSPERSECOND);
-	 	printf("CarrySec = %lu\n",carrySec); 
+	 	//printf("CarrySec = %lu\n",carrySec); 
 		
 		//convert ICS ticks into FPGA ticks
 		firmware_ticks = floor((nSecRem/2)); //to account for the prescaler clock output
