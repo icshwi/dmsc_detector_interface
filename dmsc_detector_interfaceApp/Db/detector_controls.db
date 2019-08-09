@@ -31,14 +31,14 @@ record(longin, "$(SYS)-$(DEV):registerRBV"){
 
 record(longin, "$(SYS)-$(DEV):off") {
   field(VAL, "0")
-  field(FLNK, "$(SYS)-$(DEV):writeRegister")
+  field(FLNK, "$(SYS)-$(DEV):registerRBV")
 }
 
 
 record(longin, "$(SYS)-$(DEV):da") {
   field(DESC, "Data, 4 bytes")
   field(VAL, "0")
-  field(FLNK, "$(SYS)-$(DEV):writeRegister")
+  field(FLNK, "$(SYS)-$(DEV):registerRBV")
   
 }
 
