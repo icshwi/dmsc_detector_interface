@@ -22,6 +22,7 @@ record(aSub, "$(SYS)-$(EVR):getTimeStamp_aSub"){
 
 record(longout, "$(SYS)-$(EVR):FracNsecDelta-SP"){
 	field(DESC, "delta in nanos")
+	info(autosaveFields_pass0, "VAL")
 }
 
 record(longin, "$(SYS)-$(EVR):SyncSec-RBV") {

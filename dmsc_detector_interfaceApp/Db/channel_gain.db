@@ -22,7 +22,9 @@ record(mbbo, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP"){
   field(FVVL, "43")
   field(SXST, "GND")
   field(SXVL, "64")
-	field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP")
+  field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP")
+  info(autosaveFields_pass0, "VAL")
+  field(PINI, "1")
 }
 
 record(longout, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP"){
@@ -30,6 +32,7 @@ record(longout, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP"){
   field(DTYP, "stream")
   field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),GAIN-CH$(CH)-OFF,GAIN-CH$(CH)-SP.RVAL) $(COM)")
   field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV")
+  
 }
 
 record(mbbi, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV"){
@@ -57,7 +60,7 @@ record(mbbi, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV"){
 record(longin, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV"){
 	field(DESC, "Raw gain setting ch$(CH)")
 	field(DTYP, "stream")
-	field(PINI, "1")
+	#field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),GAIN-CH$(CH)-OFF) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV")
 }

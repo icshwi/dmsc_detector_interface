@@ -14,6 +14,8 @@ record(mbbo, "$(SYS)-$(DEV):OVERSMPL-SP"){
   field(ONST, "2x")
   field(TWST, "4x")
 	field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-SP")
+	 info(autosaveFields_pass0, "VAL")
+  field(PINI, "1")
 }
 
 record(longout, "$(SYS)-$(DEV):OVERSMPL-RAW-SP"){
@@ -39,7 +41,7 @@ record(mbbi, "$(SYS)-$(DEV):OVERSMPL-RBV"){
 record(longin, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV"){
 	field(DESC, "Raw oversampling multiplier")
 	field(DTYP, "stream")
-	field(PINI, "1")
+	#field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),OVERSMPL-OFF) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RBV")
 

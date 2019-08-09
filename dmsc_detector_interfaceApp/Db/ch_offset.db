@@ -12,6 +12,8 @@ record(ao,"$(SYS)-$(DEV):OFF-CH$(CH)-SP") {
     field(DESC, "Set channel$(CH) offset.")
     field(FLNK,"$(SYS)-$(DEV):OFF-CH$(CH)-WR")
 	field(EGU, "V")
+	info(autosaveFields_pass0, "VAL")
+	field(PINI, "1")
 }
 
 record(calcout, "$(SYS)-$(DEV):OFF-CH$(CH)-WR"){

@@ -49,7 +49,7 @@ record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV") {
   field(DESC, "(RAW) MAC $(DIR) address")
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF) $(COM)")
-  field(PINI, "1")
+  field(PINI, "0")
   field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV")
 
 
@@ -89,6 +89,8 @@ record(stringout, "$(SYS)-$(DEV):MAC-$(DIR)-SP") {
     field(VAL, "")
     field(PINI, "NO")
     field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)-CALC-OUT-STR")
+	info(autosaveFields_pass0, "VAL")
+	field(PINI, "1")
 }
 
 record(aSub,"$(SYS)-$(DEV):MAC-$(DIR)-CALC-OUT-STR")

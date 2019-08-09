@@ -11,6 +11,8 @@ record(bo, "$(SYS)-$(DEV):CLKSEL-SP"){
 	field(DTYP, "stream")
 	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),CLKSEL-OFF,CLKSEL-SP) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):CLKSEL-RBV")
+	info(autosaveFields_pass0, "VAL")
+    field(PINI, "1")
 }
 
 record(bi, "$(SYS)-$(DEV):CLKSEL-RBV"){
@@ -18,7 +20,7 @@ record(bi, "$(SYS)-$(DEV):CLKSEL-RBV"){
 	field(ZNAM, "Internal")
 	field(ONAM, "External")
 	field(DTYP, "stream")
-	field(PINI, "1")
+	#field(PINI, "1")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),CLKSEL-OFF) $(COM)")
 
 }

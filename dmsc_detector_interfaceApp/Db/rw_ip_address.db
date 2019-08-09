@@ -26,7 +26,7 @@ record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV") {
   field(DESC, "(RAW) IP $(DIR) address")
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),IP-$(DIR)-OFF) $(COM)")
-  field(PINI, "1")
+  field(PINI, "0")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
 
@@ -54,6 +54,8 @@ record(stringout, "$(SYS)-$(DEV):IP-$(DIR)-SP") {
     field(VAL, "")
     field(PINI, "NO")
     field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-OUT-STR")
+	info(autosaveFields_pass0, "VAL")
+	field(PINI, "1")
 }
 
 record(aSub,"$(SYS)-$(DEV):IP-$(DIR)-CALC-OUT-STR") {

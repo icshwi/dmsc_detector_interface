@@ -14,6 +14,8 @@ record(longin, "$(SYS)-$(DEV):$(REG)-SP"){
 
   field(DESC, "$(REG) Set Point")
   field(FLNK, "$(SYS)-$(DEV):$(REG)-WR")
+  info(autosaveFields_pass0, "VAL")
+  field(PINI, "1")
 }
 
 record(longin, "$(SYS)-$(DEV):$(REG)-OFF") {
@@ -33,7 +35,7 @@ record(longin, "$(SYS)-$(DEV):$(REG)-RBV"){
   #field(DESC, "$(REG) Current Value")
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
-  field(PINI, "1")
+  #field(PINI, "1")
 
 }
 

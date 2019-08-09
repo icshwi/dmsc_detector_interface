@@ -13,6 +13,8 @@ record(bo, "$(SYS)-$(DEV):PAYSEL-SP"){
 	field(DTYP, "stream")
 	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),PAYSEL-OFF,PAYSEL-SP) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):PAYSEL-RBV")
+	info(autosaveFields_pass0, "VAL")
+	field(PINI, "1")
 }
 
 record(bi, "$(SYS)-$(DEV):PAYSEL-RBV"){
@@ -20,7 +22,7 @@ record(bi, "$(SYS)-$(DEV):PAYSEL-RBV"){
 	field(ZNAM, "ADC")
 	field(ONAM, "Ramp")
 	field(DTYP, "stream")
-    field(PINI, "1")
+    
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),PAYSEL-OFF) $(COM)")
 
 }
