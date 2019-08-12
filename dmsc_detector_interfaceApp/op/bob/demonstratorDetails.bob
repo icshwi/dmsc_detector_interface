@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>Display</name>
-  <width>1000</width>
+  <width>1500</width>
   <height>800</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
@@ -259,12 +259,11 @@
         <name>Timeout description_1</name>
         <text>Offset</text>
         <x>9</x>
-        <y>-1</y>
         <width>80</width>
       </widget>
       <widget type="label" version="2.0.0">
         <name>Timeout description_2</name>
-        <text>Setpoint (Hex)</text>
+        <text>Write Value (Hex)</text>
         <x>149</x>
         <width>115</width>
       </widget>
@@ -306,7 +305,7 @@
       </widget>
       <widget type="label" version="2.0.0">
         <name>Timeout description_4</name>
-        <text>Readback (Decimal)</text>
+        <text>Readback (Dec)</text>
         <x>714</x>
         <width>183</width>
       </widget>
@@ -320,9 +319,9 @@
       </widget>
       <widget type="label" version="2.0.0">
         <name>Timeout description_5</name>
-        <text>Setpoint (Decimal)</text>
+        <text>Write Value (Dec)</text>
         <x>287</x>
-        <width>138</width>
+        <width>165</width>
       </widget>
       <widget type="textentry" version="3.0.0">
         <name>IPSet_4</name>
