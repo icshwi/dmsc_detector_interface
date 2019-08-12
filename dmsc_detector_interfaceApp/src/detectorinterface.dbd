@@ -1,2 +1,3 @@
 function(getTimeStamp_aSub)
 function(syncState_aSub)
+function(getRange_aSub)

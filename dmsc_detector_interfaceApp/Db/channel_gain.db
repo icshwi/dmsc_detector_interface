@@ -27,6 +27,9 @@ record(mbbo, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP"){
   field(PINI, "1")
 }
 
+
+
+
 record(longout, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP"){
   field(DESC, "(RAW) Select ch$(CH) gain")
   field(DTYP, "stream")
@@ -54,7 +57,22 @@ record(mbbi, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV"){
   field(SXVL, "64")
   field(PINI, "0")
   field(INP, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV NPP")
+  field(FLNK, "$(SYS)-$(DEV):getRange_aSub")
  
+}
+
+record(aSub, "$(SYS)-$(DEV):getRange_aSub"){
+	field(SNAM, "getRange_aSub")
+	field(FTA,  "ULONG")     
+	field(NOA,  "1")  	
+	field(INPA, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV")
+	field(FTVA, "DOUBLE")
+	field(NOVA, "1")
+	field(OUTA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV")
+}
+
+record(ai, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV"){
+	field(DESC, "Range of CH$(CH) (V)")
 }
 
 record(longin, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV"){
