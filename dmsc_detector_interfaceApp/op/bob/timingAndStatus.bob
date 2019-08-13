@@ -614,9 +614,9 @@
           <name>R01</name>
           <children>
             <widget type="tabs" version="2.0.0">
-              <name>Detector Readout Controls</name>
+              <name>Detector Readout Controls_2</name>
               <macros>
-                <DEV>RO2</DEV>
+                <DEV>RO1</DEV>
               </macros>
               <tabs>
                 <tab>
@@ -1181,205 +1181,295 @@ widget.setValue(data)]]></text>
                           <name>ADC Setup</name>
                           <children>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Setup_1</name>
-                              <x>18</x>
+                              <name>Peak Detection</name>
+                              <x>20</x>
+                              <y>233</y>
+                              <width>620</width>
+                              <height>210</height>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>IPGet_12</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
+                                <x>344</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>PortGet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
+                                <x>344</x>
+                                <y>49</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <x>344</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>IPSet_10</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
+                                <x>219</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>PortSet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
+                                <x>219</x>
+                                <y>49</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
+                                <x>219</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
+                                <x>219</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
+                                <x>343</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_21</name>
+                                <text>Rising Hold</text>
+                                <x>119</x>
+                                <y>19</y>
+                                <width>80</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_22</name>
+                                <text>Falling Hold</text>
+                                <x>117</x>
+                                <y>47</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_23</name>
+                                <text>Samples Before</text>
+                                <x>109</x>
+                                <y>79</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_24</name>
+                                <text>Samples After</text>
+                                <x>109</x>
+                                <y>109</y>
+                                <width>132</width>
+                              </widget>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch4Label_1</name>
+                              <text>4</text>
+                              <x>27</x>
+                              <y>154</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch3Label_1</name>
+                              <text>3</text>
+                              <x>27</x>
+                              <y>114</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch2Label_1</name>
+                              <text>2</text>
+                              <x>27</x>
+                              <y>73</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch1Label_16</name>
+                              <text>1</text>
+                              <x>27</x>
+                              <y>31</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch1Led_2</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>0</bit>
+                              <x>63</x>
+                              <y>31</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch1OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <label></label>
+                              <x>92</x>
+                              <y>31</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch2Led_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>1</bit>
+                              <x>63</x>
+                              <y>74</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch2OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <bit>1</bit>
+                              <label></label>
+                              <x>92</x>
+                              <y>74</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch3Led_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>2</bit>
+                              <x>63</x>
+                              <y>115</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch3OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <bit>2</bit>
+                              <label></label>
+                              <x>92</x>
+                              <y>115</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch4Led_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>3</bit>
+                              <x>63</x>
+                              <y>155</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch4OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <bit>3</bit>
+                              <label></label>
+                              <x>92</x>
+                              <y>155</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ChNrLabel_15</name>
+                              <text>#</text>
+                              <x>27</x>
                               <y>12</y>
-                              <width>650</width>
-                              <height>190</height>
-                              <style>3</style>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch4Label_1</name>
-                                <text>4</text>
-                                <x>9</x>
-                                <y>142</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch3Label_1</name>
-                                <text>3</text>
-                                <x>9</x>
-                                <y>102</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch2Label_1</name>
-                                <text>2</text>
-                                <x>9</x>
-                                <y>61</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch1Label_16</name>
-                                <text>1</text>
-                                <x>9</x>
-                                <y>19</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch1Led_2</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>0</bit>
-                                <x>45</x>
-                                <y>19</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch1OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <label></label>
-                                <x>74</x>
-                                <y>19</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch2Led_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>1</bit>
-                                <x>45</x>
-                                <y>62</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch2OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <bit>1</bit>
-                                <label></label>
-                                <x>74</x>
-                                <y>62</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch3Led_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>2</bit>
-                                <x>45</x>
-                                <y>103</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch3OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <bit>2</bit>
-                                <label></label>
-                                <x>74</x>
-                                <y>103</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch4Led_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>3</bit>
-                                <x>45</x>
-                                <y>143</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch4OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <bit>3</bit>
-                                <label></label>
-                                <x>74</x>
-                                <y>143</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ChNrLabel_15</name>
-                                <text>#</text>
-                                <x>9</x>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ActiveLabel_1</name>
-                                <text>Active</text>
-                                <x>44</x>
-                                <width>50</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>GainLabel_1</name>
-                                <text>Gain</text>
-                                <x>124</x>
-                                <width>50</width>
-                              </widget>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ActiveLabel_1</name>
+                              <text>Active</text>
+                              <x>62</x>
+                              <y>12</y>
+                              <width>50</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>GainLabel_1</name>
+                              <text>Gain</text>
+                              <x>142</x>
+                              <y>12</y>
+                              <width>50</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch1Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH1-SP</pv_name>
+                              <x>142</x>
+                              <y>31</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch2Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH2-SP</pv_name>
+                              <x>142</x>
+                              <y>73</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch3Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH3-SP</pv_name>
+                              <x>142</x>
+                              <y>114</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch4Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH4-SP</pv_name>
+                              <x>142</x>
+                              <y>154</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>OffsetLabel_1</name>
+                              <text>Offset</text>
+                              <x>297</x>
+                              <y>12</y>
+                              <width>50</width>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch1Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH1-SP</pv_name>
+                              <x>297</x>
+                              <y>35</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch2Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH2-SP</pv_name>
+                              <x>297</x>
+                              <y>77</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch3Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH3-SP</pv_name>
+                              <x>297</x>
+                              <y>118</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch4Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH4-SP</pv_name>
+                              <x>297</x>
+                              <y>158</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Downsample Averaging</name>
+                              <x>418</x>
+                              <y>22</y>
+                              <width>220</width>
+                              <height>160</height>
                               <widget type="combo" version="2.0.0">
-                                <name>Ch1Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH1-SP</pv_name>
-                                <x>124</x>
-                                <y>19</y>
-                                <width>130</width>
+                                <name>Combo Box_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
+                                <x>12</x>
+                                <y>9</y>
                               </widget>
-                              <widget type="combo" version="2.0.0">
-                                <name>Ch2Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH2-SP</pv_name>
-                                <x>124</x>
-                                <y>61</y>
-                                <width>130</width>
-                              </widget>
-                              <widget type="combo" version="2.0.0">
-                                <name>Ch3Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH3-SP</pv_name>
-                                <x>124</x>
-                                <y>102</y>
-                                <width>130</width>
-                              </widget>
-                              <widget type="combo" version="2.0.0">
-                                <name>Ch4Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH4-SP</pv_name>
-                                <x>124</x>
-                                <y>142</y>
-                                <width>130</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>OffsetLabel_1</name>
-                                <text>Offset</text>
-                                <x>279</x>
-                                <width>50</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch1Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH1-SP</pv_name>
-                                <x>279</x>
-                                <y>23</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch2Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH2-SP</pv_name>
-                                <x>279</x>
-                                <y>65</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch3Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH3-SP</pv_name>
-                                <x>279</x>
-                                <y>106</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch4Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH4-SP</pv_name>
-                                <x>279</x>
-                                <y>146</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Downsample Averaging</name>
-                                <x>400</x>
-                                <y>10</y>
-                                <width>220</width>
-                                <height>160</height>
-                                <widget type="combo" version="2.0.0">
-                                  <name>Combo Box_1</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
-                                  <x>12</x>
-                                  <y>9</y>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Text Update_1</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
-                                  <x>12</x>
-                                  <y>47</y>
-                                </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Text Update_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
+                                <x>12</x>
+                                <y>47</y>
                               </widget>
                             </widget>
                           </children>
@@ -2000,107 +2090,13 @@ widget.setValue(data)]]></text>
                       <width>678</width>
                       <height>550</height>
                     </widget>
-                    <widget type="group" version="2.0.0">
-                      <name>Peak Detection</name>
-                      <x>78</x>
-                      <y>502</y>
-                      <width>580</width>
-                      <height>190</height>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>IPGet_12</name>
-                        <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
-                        <x>344</x>
-                        <y>19</y>
-                        <width>115</width>
-                        <format>1</format>
-                      </widget>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>PortGet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
-                        <x>344</x>
-                        <y>49</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>MACGet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
-                        <x>344</x>
-                        <y>79</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>IPSet_10</name>
-                        <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
-                        <x>219</x>
-                        <y>19</y>
-                        <width>115</width>
-                        <format>1</format>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>PortSet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
-                        <x>219</x>
-                        <y>49</y>
-                        <width>115</width>
-                        <format>1</format>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>MACSet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
-                        <x>219</x>
-                        <y>79</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>MACSet_5</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
-                        <x>219</x>
-                        <y>109</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>MACGet_5</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
-                        <x>343</x>
-                        <y>109</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_21</name>
-                        <text>Rising Hold</text>
-                        <x>119</x>
-                        <y>19</y>
-                        <width>80</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_22</name>
-                        <text>Falling Hold</text>
-                        <x>117</x>
-                        <y>47</y>
-                        <width>132</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_23</name>
-                        <text>Samples Before</text>
-                        <x>109</x>
-                        <y>79</y>
-                        <width>132</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_24</name>
-                        <text>Samples After</text>
-                        <x>109</x>
-                        <y>109</y>
-                        <width>132</width>
-                      </widget>
-                    </widget>
                   </children>
                 </tab>
               </tabs>
-              <x>17</x>
-              <y>13</y>
+              <x>16</x>
               <width>740</width>
               <height>750</height>
+              <active_tab>2</active_tab>
             </widget>
           </children>
         </tab>
@@ -2675,205 +2671,295 @@ widget.setValue(data)]]></text>
                           <name>ADC Setup</name>
                           <children>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Setup_1</name>
-                              <x>18</x>
+                              <name>Peak Detection</name>
+                              <x>20</x>
+                              <y>233</y>
+                              <width>620</width>
+                              <height>210</height>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>IPGet_12</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
+                                <x>344</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>PortGet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
+                                <x>344</x>
+                                <y>49</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <x>344</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>IPSet_10</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
+                                <x>219</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>PortSet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
+                                <x>219</x>
+                                <y>49</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_4</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
+                                <x>219</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
+                                <x>219</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
+                                <x>343</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_21</name>
+                                <text>Rising Hold</text>
+                                <x>119</x>
+                                <y>19</y>
+                                <width>80</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_22</name>
+                                <text>Falling Hold</text>
+                                <x>117</x>
+                                <y>47</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_23</name>
+                                <text>Samples Before</text>
+                                <x>109</x>
+                                <y>79</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_24</name>
+                                <text>Samples After</text>
+                                <x>109</x>
+                                <y>109</y>
+                                <width>132</width>
+                              </widget>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch4Label_1</name>
+                              <text>4</text>
+                              <x>27</x>
+                              <y>154</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch3Label_1</name>
+                              <text>3</text>
+                              <x>27</x>
+                              <y>114</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch2Label_1</name>
+                              <text>2</text>
+                              <x>27</x>
+                              <y>73</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>Ch1Label_16</name>
+                              <text>1</text>
+                              <x>27</x>
+                              <y>31</y>
+                              <width>10</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch1Led_2</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>0</bit>
+                              <x>63</x>
+                              <y>31</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch1OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <label></label>
+                              <x>92</x>
+                              <y>31</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch2Led_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>1</bit>
+                              <x>63</x>
+                              <y>74</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch2OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <bit>1</bit>
+                              <label></label>
+                              <x>92</x>
+                              <y>74</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch3Led_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>2</bit>
+                              <x>63</x>
+                              <y>115</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch3OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <bit>2</bit>
+                              <label></label>
+                              <x>92</x>
+                              <y>115</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="led" version="2.0.0">
+                              <name>Ch4Led_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
+                              <bit>3</bit>
+                              <x>63</x>
+                              <y>155</y>
+                            </widget>
+                            <widget type="checkbox" version="2.0.0">
+                              <name>Ch4OnSelect_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
+                              <bit>3</bit>
+                              <label></label>
+                              <x>92</x>
+                              <y>155</y>
+                              <width>19</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ChNrLabel_15</name>
+                              <text>#</text>
+                              <x>27</x>
                               <y>12</y>
-                              <width>650</width>
-                              <height>190</height>
-                              <style>3</style>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch4Label_1</name>
-                                <text>4</text>
-                                <x>9</x>
-                                <y>142</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch3Label_1</name>
-                                <text>3</text>
-                                <x>9</x>
-                                <y>102</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch2Label_1</name>
-                                <text>2</text>
-                                <x>9</x>
-                                <y>61</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>Ch1Label_16</name>
-                                <text>1</text>
-                                <x>9</x>
-                                <y>19</y>
-                                <width>10</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch1Led_2</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>0</bit>
-                                <x>45</x>
-                                <y>19</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch1OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <label></label>
-                                <x>74</x>
-                                <y>19</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch2Led_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>1</bit>
-                                <x>45</x>
-                                <y>62</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch2OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <bit>1</bit>
-                                <label></label>
-                                <x>74</x>
-                                <y>62</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch3Led_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>2</bit>
-                                <x>45</x>
-                                <y>103</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch3OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <bit>2</bit>
-                                <label></label>
-                                <x>74</x>
-                                <y>103</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="led" version="2.0.0">
-                                <name>Ch4Led_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-RBV</pv_name>
-                                <bit>3</bit>
-                                <x>45</x>
-                                <y>143</y>
-                              </widget>
-                              <widget type="checkbox" version="2.0.0">
-                                <name>Ch4OnSelect_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:ADC-SEL-SP</pv_name>
-                                <bit>3</bit>
-                                <label></label>
-                                <x>74</x>
-                                <y>143</y>
-                                <width>19</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ChNrLabel_15</name>
-                                <text>#</text>
-                                <x>9</x>
-                                <width>10</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ActiveLabel_1</name>
-                                <text>Active</text>
-                                <x>44</x>
-                                <width>50</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>GainLabel_1</name>
-                                <text>Gain</text>
-                                <x>124</x>
-                                <width>50</width>
-                              </widget>
+                              <width>10</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ActiveLabel_1</name>
+                              <text>Active</text>
+                              <x>62</x>
+                              <y>12</y>
+                              <width>50</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>GainLabel_1</name>
+                              <text>Gain</text>
+                              <x>142</x>
+                              <y>12</y>
+                              <width>50</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch1Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH1-SP</pv_name>
+                              <x>142</x>
+                              <y>31</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch2Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH2-SP</pv_name>
+                              <x>142</x>
+                              <y>73</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch3Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH3-SP</pv_name>
+                              <x>142</x>
+                              <y>114</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="combo" version="2.0.0">
+                              <name>Ch4Gain_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:GAIN-CH4-SP</pv_name>
+                              <x>142</x>
+                              <y>154</y>
+                              <width>130</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>OffsetLabel_1</name>
+                              <text>Offset</text>
+                              <x>297</x>
+                              <y>12</y>
+                              <width>50</width>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch1Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH1-SP</pv_name>
+                              <x>297</x>
+                              <y>35</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch2Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH2-SP</pv_name>
+                              <x>297</x>
+                              <y>77</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch3Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH3-SP</pv_name>
+                              <x>297</x>
+                              <y>118</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="textentry" version="3.0.0">
+                              <name>Ch4Offset_1</name>
+                              <pv_name>ca://${PREFIX}${DEV}:OFF-CH4-SP</pv_name>
+                              <x>297</x>
+                              <y>158</y>
+                              <width>56</width>
+                              <precision>3</precision>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Downsample Averaging</name>
+                              <x>418</x>
+                              <y>22</y>
+                              <width>220</width>
+                              <height>160</height>
                               <widget type="combo" version="2.0.0">
-                                <name>Ch1Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH1-SP</pv_name>
-                                <x>124</x>
-                                <y>19</y>
-                                <width>130</width>
+                                <name>Combo Box_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
+                                <x>12</x>
+                                <y>9</y>
                               </widget>
-                              <widget type="combo" version="2.0.0">
-                                <name>Ch2Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH2-SP</pv_name>
-                                <x>124</x>
-                                <y>61</y>
-                                <width>130</width>
-                              </widget>
-                              <widget type="combo" version="2.0.0">
-                                <name>Ch3Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH3-SP</pv_name>
-                                <x>124</x>
-                                <y>102</y>
-                                <width>130</width>
-                              </widget>
-                              <widget type="combo" version="2.0.0">
-                                <name>Ch4Gain_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:GAIN-CH4-SP</pv_name>
-                                <x>124</x>
-                                <y>142</y>
-                                <width>130</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>OffsetLabel_1</name>
-                                <text>Offset</text>
-                                <x>279</x>
-                                <width>50</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch1Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH1-SP</pv_name>
-                                <x>279</x>
-                                <y>23</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch2Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH2-SP</pv_name>
-                                <x>279</x>
-                                <y>65</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch3Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH3-SP</pv_name>
-                                <x>279</x>
-                                <y>106</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>Ch4Offset_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OFF-CH4-SP</pv_name>
-                                <x>279</x>
-                                <y>146</y>
-                                <width>56</width>
-                                <precision>3</precision>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Downsample Averaging</name>
-                                <x>400</x>
-                                <y>10</y>
-                                <width>220</width>
-                                <height>160</height>
-                                <widget type="combo" version="2.0.0">
-                                  <name>Combo Box_1</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
-                                  <x>12</x>
-                                  <y>9</y>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Text Update_1</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
-                                  <x>12</x>
-                                  <y>47</y>
-                                </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Text Update_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
+                                <x>12</x>
+                                <y>47</y>
                               </widget>
                             </widget>
                           </children>
@@ -2881,309 +2967,6 @@ widget.setValue(data)]]></text>
                         <tab>
                           <name>Test Data</name>
                           <children>
-                            <widget type="group" version="2.0.0">
-                              <name>Group</name>
-                              <x>8</x>
-                              <y>149</y>
-                              <width>650</width>
-                              <height>186</height>
-                              <style>3</style>
-                              <transparent>true</transparent>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_17</name>
-                                <text>High Period (Smps)</text>
-                                <x>70</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_16</name>
-                                <text>Ch</text>
-                                <x>10</x>
-                                <width>80</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_18</name>
-                                <text> Low Period (Smps)</text>
-                                <x>210</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_19</name>
-                                <text>Pulse Buffer Width</text>
-                                <x>360</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_20</name>
-                                <text>Pulse Count</text>
-                                <x>510</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_15</name>
-                                <macros>
-                                  <CH>1</CH>
-                                </macros>
-                                <y>20</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_17</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_20</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_18</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_18</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_21</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_21</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_20</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_16</name>
-                                <macros>
-                                  <CH>2</CH>
-                                </macros>
-                                <y>60</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_1</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_22</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_21</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_22</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_23</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_23</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_24</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_25</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_17</name>
-                                <macros>
-                                  <CH>3</CH>
-                                </macros>
-                                <y>100</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_2</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_26</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_22</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_24</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_27</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_25</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_28</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_29</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_18</name>
-                                <macros>
-                                  <CH>4</CH>
-                                </macros>
-                                <y>140</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_3</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_30</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_23</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_26</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_31</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_27</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_32</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_33</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                            </widget>
                             <widget type="group" version="2.0.0">
                               <name>Test Pulse Enable</name>
                               <x>248</x>
@@ -3266,6 +3049,309 @@ widget.setValue(data)]]></text>
                                 <x>89</x>
                                 <y>38</y>
                                 <width>70</width>
+                              </widget>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_17</name>
+                              <text>High Period (Smps)</text>
+                              <x>78</x>
+                              <y>149</y>
+                              <width>140</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_16</name>
+                              <text>Ch</text>
+                              <x>18</x>
+                              <y>149</y>
+                              <width>80</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_18</name>
+                              <text> Low Period (Smps)</text>
+                              <x>218</x>
+                              <y>149</y>
+                              <width>140</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_19</name>
+                              <text>Pulse Buffer Width</text>
+                              <x>368</x>
+                              <y>149</y>
+                              <width>140</width>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_20</name>
+                              <text>Pulse Count</text>
+                              <x>518</x>
+                              <y>149</y>
+                              <width>140</width>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Channel Threshold Group_15</name>
+                              <macros>
+                                <CH>1</CH>
+                              </macros>
+                              <x>8</x>
+                              <y>169</y>
+                              <width>600</width>
+                              <height>46</height>
+                              <style>3</style>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Test Pulse Width</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                <x>72</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_17</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                <x>136</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>Ch1Label_20</name>
+                                <text>${CH}</text>
+                                <x>9</x>
+                                <y>15</y>
+                                <width>10</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_18</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                <x>217</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_18</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                <x>281</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_21</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                <x>359</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_21</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                <x>423</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_20</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
+                                <x>515</x>
+                                <y>11</y>
+                                <width>56</width>
+                              </widget>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Channel Threshold Group_16</name>
+                              <macros>
+                                <CH>2</CH>
+                              </macros>
+                              <x>8</x>
+                              <y>209</y>
+                              <width>600</width>
+                              <height>46</height>
+                              <style>3</style>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Test Pulse Width_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                <x>72</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_22</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                <x>136</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>Ch1Label_21</name>
+                                <text>${CH}</text>
+                                <x>9</x>
+                                <y>15</y>
+                                <width>10</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_22</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                <x>217</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_23</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                <x>281</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_23</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                <x>359</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_24</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                <x>423</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_25</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
+                                <x>515</x>
+                                <y>11</y>
+                                <width>56</width>
+                              </widget>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Channel Threshold Group_17</name>
+                              <macros>
+                                <CH>3</CH>
+                              </macros>
+                              <x>8</x>
+                              <y>249</y>
+                              <width>600</width>
+                              <height>46</height>
+                              <style>3</style>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Test Pulse Width_2</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                <x>72</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_26</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                <x>136</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>Ch1Label_22</name>
+                                <text>${CH}</text>
+                                <x>9</x>
+                                <y>15</y>
+                                <width>10</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_24</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                <x>217</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_27</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                <x>281</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_25</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                <x>359</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_28</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                <x>423</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_29</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
+                                <x>515</x>
+                                <y>11</y>
+                                <width>56</width>
+                              </widget>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Channel Threshold Group_18</name>
+                              <macros>
+                                <CH>4</CH>
+                              </macros>
+                              <x>8</x>
+                              <y>289</y>
+                              <width>600</width>
+                              <height>46</height>
+                              <style>3</style>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Test Pulse Width_3</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                <x>72</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_30</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                <x>136</x>
+                                <y>14</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>Ch1Label_23</name>
+                                <text>${CH}</text>
+                                <x>9</x>
+                                <y>15</y>
+                                <width>10</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_26</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                <x>217</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_31</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                <x>281</x>
+                                <y>13</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>Ch1ThresholdSet_27</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                <x>359</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_32</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                <x>423</x>
+                                <y>12</y>
+                                <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_33</name>
+                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
+                                <x>515</x>
+                                <y>11</y>
+                                <width>56</width>
                               </widget>
                             </widget>
                           </children>
@@ -3489,105 +3575,10 @@ widget.setValue(data)]]></text>
                           </children>
                         </tab>
                       </tabs>
-                      <x>46</x>
-                      <y>138</y>
+                      <x>40</x>
+                      <y>155</y>
                       <width>678</width>
-                      <height>550</height>
-                      <active_tab>-1</active_tab>
-                    </widget>
-                    <widget type="group" version="2.0.0">
-                      <name>Peak Detection</name>
-                      <x>78</x>
-                      <y>502</y>
-                      <width>580</width>
-                      <height>190</height>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>IPGet_12</name>
-                        <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
-                        <x>344</x>
-                        <y>19</y>
-                        <width>115</width>
-                        <format>1</format>
-                      </widget>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>PortGet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
-                        <x>344</x>
-                        <y>49</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>MACGet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
-                        <x>344</x>
-                        <y>79</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>IPSet_10</name>
-                        <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
-                        <x>219</x>
-                        <y>19</y>
-                        <width>115</width>
-                        <format>1</format>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>PortSet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
-                        <x>219</x>
-                        <y>49</y>
-                        <width>115</width>
-                        <format>1</format>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>MACSet_4</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
-                        <x>219</x>
-                        <y>79</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textentry" version="3.0.0">
-                        <name>MACSet_5</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
-                        <x>219</x>
-                        <y>109</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="textupdate" version="2.0.0">
-                        <name>MACGet_5</name>
-                        <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
-                        <x>343</x>
-                        <y>109</y>
-                        <width>115</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_21</name>
-                        <text>Rising Hold</text>
-                        <x>119</x>
-                        <y>19</y>
-                        <width>80</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_22</name>
-                        <text>Falling Hold</text>
-                        <x>117</x>
-                        <y>47</y>
-                        <width>132</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_23</name>
-                        <text>Samples Before</text>
-                        <x>109</x>
-                        <y>79</y>
-                        <width>132</width>
-                      </widget>
-                      <widget type="label" version="2.0.0">
-                        <name>ThresholdLabel_24</name>
-                        <text>Samples After</text>
-                        <x>109</x>
-                        <y>109</y>
-                        <width>132</width>
-                      </widget>
+                      <height>527</height>
                     </widget>
                   </children>
                 </tab>
@@ -3596,7 +3587,7 @@ widget.setValue(data)]]></text>
               <y>13</y>
               <width>740</width>
               <height>750</height>
-              <active_tab>-1</active_tab>
+              <active_tab>2</active_tab>
             </widget>
           </children>
         </tab>
