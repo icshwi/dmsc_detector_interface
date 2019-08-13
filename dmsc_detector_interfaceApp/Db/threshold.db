@@ -4,12 +4,12 @@
 # $(OFF) = register offset
 # $(CH) = ADC channel
 
-record(longin, "$(SYS)-$(DEV):THRESH-CH$(CH)-OFF") {
-	field(DESC, "Reg offset for threshold")
+record(longin, "$(SYS)-$(DEV):T-CH$(CH)-OFF") {
+	field(DESC, "Reg offset for Threshold")
     field(VAL, "$(OFF)")
 }
 
-record(ao,"$(SYS)-$(DEV):THRESH-CH$(CH)-SP") {
+record(ao,"$(SYS)-$(DEV):T-CH$(CH)-SP") {
     field(DESC, "Set channel$(CH) Threshold(V)")
     #field(FLNK,"$(SYS)-$(DEV):OFF-CH$(CH)-WR")
 	field(EGU, "V")
@@ -17,30 +17,30 @@ record(ao,"$(SYS)-$(DEV):THRESH-CH$(CH)-SP") {
 	field(PINI, "1")
 }
 
-record(calcout, "$(SYS)-$(DEV):THRESH-CH$(CH)-WR"){
-  field(DESC, "Calc Thresh")
+record(calcout, "$(SYS)-$(DEV):T-CH$(CH)-WR"){
+  field(DESC, "Calc T")
   field(CALC, "((A+(B/2))/B)*(2^(C+14))")
-  field(INPA, "$(SYS)-$(DEV):THRESH-CH$(CH)-SP NPP")
+  field(INPA, "$(SYS)-$(DEV):T-CH$(CH)-SP NPP")
   field(INPB, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV NPP")
   field(INPC, "$(SYS)-$(DEV):OVERSMPL-RBV NPP")  
   field(DTYP, "stream")
-  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),THRESH-CH$(CH)-OFF,THRESH-CH$(CH)-WR) $(COM)")
-  field(FLNK, "$(SYS)-$(DEV):THRESH-CH${CH}-RD")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),T-CH$(CH)-OFF,T-CH$(CH)-WR) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):T-CH${CH}-RD")
 }
 
 
-record(longin, "$(SYS)-$(DEV):THRESH-CH${CH}-RD"){
+record(longin, "$(SYS)-$(DEV):T-CH${CH}-RD"){
 
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
-  field(FLNK, "$(SYS)-$(DEV):THRESH-CH${CH}-RBV")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),T-CH$(CH)-OFF) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):T-CH${CH}-RBV")
 
 }
 
-record(calc, "$(SYS)-$(DEV):THRESH-CH${CH}-RBV"){
-  field(DESC, "Calc Thresh from reg")
-  field(CALC, "((A/(2^(C+14)))*B)+(B/2)"
-  field(INPA, "$(SYS)-$(DEV):THRESH-CH${CH}-RD NPP")
+record(calc, "$(SYS)-$(DEV):T-CH${CH}-RBV"){
+  field(DESC, "Calc T from reg")
+  field(CALC, "((A/(2^(C+14)))*B)+(B/2)")
+  field(INPA, "$(SYS)-$(DEV):T-CH${CH}-RD NPP")
   field(INPB, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV NPP")
   field(INPC, "$(SYS)-$(DEV):OVERSMPL-RBV NPP")  
 }
