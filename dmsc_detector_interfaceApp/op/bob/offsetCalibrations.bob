@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Display</name>
+  <width>400</width>
+  <height>200</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>SUBTITLE</class>
+    <text>Channel ${CH} Offset Calibration</text>
+    <y use_class="true">20</y>
+    <width>330</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">2</horizontal_alignment>
+    <vertical_alignment use_class="true">2</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_1</name>
+    <x>90</x>
+    <y>70</y>
+    <width>170</width>
+    <height>80</height>
+    <style>3</style>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch1Offset_2</name>
+      <pv_name>ca://${PREFIX}${DEV}:OFF-CH${CH}-AOFF</pv_name>
+      <x>89</x>
+      <y>31</y>
+      <width>70</width>
+      <precision>3</precision>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>Ch1Offset_3</name>
+      <pv_name>ca://${PREFIX}${DEV}:OFF-CH${CH}-ASLO</pv_name>
+      <x>10</x>
+      <y>30</y>
+      <width>69</width>
+      <precision>3</precision>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>ThresholdLabel_33</name>
+      <text>ASLO</text>
+      <x>10</x>
+      <width>46</width>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>ThresholdLabel_34</name>
+      <text>AOFF</text>
+      <x>89</x>
+      <width>46</width>
+    </widget>
+  </widget>
+</display>
