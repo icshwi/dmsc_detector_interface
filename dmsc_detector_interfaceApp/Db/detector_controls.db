@@ -26,6 +26,7 @@ record(longin, "$(SYS)-$(DEV):registerRBV"){
   field(DESC, "Send packets to read  register")
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),off) $(COM)")
+  field(PINI, "1")
 }
 
 

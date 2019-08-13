@@ -11,22 +11,25 @@
 static long getRange_aSub(aSubRecord *prec) {
 
 	double range = 0;
-	unsigned long  state;
+	long  state;
 		
-	state 		= *(unsigned long *)prec->a; 	// the value of the state input record
+	state 		= *(long *)prec->a; 	// the value of the state input record
 	
-	if(state == 69 || state == 77){ 	// +/-5V 
+	//printf("State = %lu ",state);
+	
+	if(state == 0 || state == 3){ 	// +/-5V 
 		range = 5.0*2;
 	}
-	else if(state == 17 || state == 25){// +/-0.5V 
+	else if(state == 1 || state == 4){// +/-0.5V 
 		range = 0.5*2;
 	}
-	else if(state == 35 || state == 43){// +/-50mV 
+	else if(state == 2 || state == 5){// +/-50mV 
 		range = 0.05*2;
 	}
-	else{
+	else {
 		range = 0;
 	}
+	//printf("Range = %f\n",range);
 	*(double *)prec->vala = range; //single
 		
 	

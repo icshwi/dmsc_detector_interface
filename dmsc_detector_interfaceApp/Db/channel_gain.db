@@ -57,18 +57,18 @@ record(mbbi, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV"){
   field(SXVL, "64")
   field(PINI, "0")
   field(INP, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV NPP")
-  field(FLNK, "$(SYS)-$(DEV):getRange_aSub")
+  field(FLNK, "$(SYS)-$(DEV):CH$(CH)getRange_aSub")
  
 }
 
-record(aSub, "$(SYS)-$(DEV):getRange_aSub"){
+record(aSub, "$(SYS)-$(DEV):CH$(CH)getRange_aSub"){
 	field(SNAM, "getRange_aSub")
-	field(FTA,  "ULONG")     
+	field(FTA,  "LONG")     
 	field(NOA,  "1")  	
 	field(INPA, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV")
 	field(FTVA, "DOUBLE")
 	field(NOVA, "1")
-	field(OUTA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV")
+	field(OUTA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV PP")
 }
 
 record(ai, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV"){

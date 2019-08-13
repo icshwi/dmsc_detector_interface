@@ -1,0 +1,59 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(OFF) = register offset
+# $(CH) = ADC channel
+
+record(longin, "$(SYS)-$(DEV):THRESH-CH$(CH)-OFF") {
+	field(DESC, "Reg offset for threshold")
+    field(VAL, "$(OFF)")
+}
+
+record(ao,"$(SYS)-$(DEV):THRESH-CH$(CH)-SP") {
+    field(DESC, "Set channel$(CH) Threshold(V)")
+    #field(FLNK,"$(SYS)-$(DEV):OFF-CH$(CH)-WR")
+	field(EGU, "V")
+	info(autosaveFields_pass0, "VAL")
+	field(PINI, "1")
+}
+
+record(calcout, "$(SYS)-$(DEV):THRESH-CH$(CH)-WR"){
+  field(DESC, "(RAW) Set channel$(CH) offset.")
+  field(CALC,"(A*B)+C")
+  field(INPA,"$(SYS)-$(DEV):THRESH-CH$(CH)-SP NPP")
+  field(INPB,"$(SYS)-$(DEV):OFF-CH$(CH)-ASLO NPP")
+  field(INPC,"$(SYS)-$(DEV):OFF-CH$(CH)-AOFF NPP") 
+  field(DTYP, "stream")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),THRESH-CH$(CH)-OFF,THRESH-CH$(CH)-WR) $(COM)")
+}
+
+
+
+
+
+
+
+
+record(calcout, "$(SYS)-$(DEV):OFF-CH$(CH)-WR"){
+  field(DESC, "(RAW) Set channel$(CH) offset.")
+  field(CALC,"(A*B)+C")
+  field(INPA,"$(SYS)-$(DEV):OFF-CH$(CH)-SP NPP")
+  field(INPB,"$(SYS)-$(DEV):OFF-CH$(CH)-ASLO NPP")
+  field(INPC,"$(SYS)-$(DEV):OFF-CH$(CH)-AOFF NPP") 
+  field(DTYP, "stream")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),OFF-CH$(CH)-OFF,OFF-CH$(CH)-WR) $(COM)")
+}
+
+record(ao, "$(SYS)-$(DEV):OFF-CH$(CH)-ASLO"){
+	field(DESC, "scaling for channel offset")
+	field(VAL, "-6553.4")
+}
+
+
+record(ao, "$(SYS)-$(DEV):OFF-CH$(CH)-AOFF"){	
+	field(DESC, "offset for channel offset")
+	field(VAL, "32768")
+}
+	
+
+
