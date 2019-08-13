@@ -2274,8 +2274,8 @@ widget.setValue(data)]]></text>
                   </children>
                 </tab>
               </tabs>
-              <x>17</x>
-              <y>7</y>
+              <x>18</x>
+              <y>11</y>
               <width>740</width>
               <height>750</height>
               <active_tab>2</active_tab>
@@ -2286,7 +2286,7 @@ widget.setValue(data)]]></text>
           <name>R02</name>
           <children>
             <widget type="tabs" version="2.0.0">
-              <name>Detector Readout Controls_3</name>
+              <name>Detector Readout Controls_5</name>
               <macros>
                 <DEV>RO2</DEV>
               </macros>
@@ -3041,10 +3041,10 @@ widget.setValue(data)]]></text>
                             </widget>
                             <widget type="group" version="2.0.0">
                               <name>Downsample Averaging</name>
-                              <x>418</x>
-                              <y>22</y>
+                              <x>453</x>
+                              <y>185</y>
                               <width>220</width>
-                              <height>160</height>
+                              <height>130</height>
                               <widget type="combo" version="2.0.0">
                                 <name>Combo Box_1</name>
                                 <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
@@ -3062,7 +3062,7 @@ widget.setValue(data)]]></text>
                               <name>SPI Debug</name>
                               <x>24</x>
                               <y>188</y>
-                              <width>466</width>
+                              <width>429</width>
                               <height>130</height>
                               <widget type="textentry" version="3.0.0">
                                 <name>IPSet_14</name>
@@ -3148,7 +3148,7 @@ widget.setValue(data)]]></text>
                               <name>Peak Detection</name>
                               <x>23</x>
                               <y>318</y>
-                              <width>467</width>
+                              <width>430</width>
                               <height>180</height>
                               <widget type="textupdate" version="2.0.0">
                                 <name>IPGet_12</name>
@@ -3237,6 +3237,94 @@ widget.setValue(data)]]></text>
                                 <y>109</y>
                                 <width>132</width>
                               </widget>
+                            </widget>
+                            <widget type="action_button" version="3.0.0">
+                              <name>Action Button_3</name>
+                              <actions>
+                                <action type="open_display">
+                                  <file>../dmsc_detector_interfaceApp/op/bob/offsetCalibrations.bob</file>
+                                  <macros>
+                                    <CH>1</CH>
+                                    <DEV>${DEV}</DEV>
+                                    <PREFIX>${PREFIX}</PREFIX>
+                                    <SYS>${SYS}</SYS>
+                                  </macros>
+                                  <target>standalone</target>
+                                  <description>Open Display</description>
+                                </action>
+                              </actions>
+                              <text>Calibration</text>
+                              <x>364</x>
+                              <y>37</y>
+                              <width>89</width>
+                              <height>20</height>
+                              <tooltip>$(actions)</tooltip>
+                            </widget>
+                            <widget type="action_button" version="3.0.0">
+                              <name>Action Button_7</name>
+                              <actions>
+                                <action type="open_display">
+                                  <file>../dmsc_detector_interfaceApp/op/bob/offsetCalibrations.bob</file>
+                                  <macros>
+                                    <CH>2</CH>
+                                    <DEV>${DEV}</DEV>
+                                    <PREFIX>${PREFIX}</PREFIX>
+                                    <SYS>${SYS}</SYS>
+                                  </macros>
+                                  <target>standalone</target>
+                                  <description>Open Display</description>
+                                </action>
+                              </actions>
+                              <text>Calibration</text>
+                              <x>364</x>
+                              <y>77</y>
+                              <width>89</width>
+                              <height>20</height>
+                              <tooltip>$(actions)</tooltip>
+                            </widget>
+                            <widget type="action_button" version="3.0.0">
+                              <name>Action Button_8</name>
+                              <actions>
+                                <action type="open_display">
+                                  <file>../dmsc_detector_interfaceApp/op/bob/offsetCalibrations.bob</file>
+                                  <macros>
+                                    <CH>3</CH>
+                                    <DEV>${DEV}</DEV>
+                                    <PREFIX>${PREFIX}</PREFIX>
+                                    <SYS>${SYS}</SYS>
+                                  </macros>
+                                  <target>standalone</target>
+                                  <description>Open Display</description>
+                                </action>
+                              </actions>
+                              <text>Calibration</text>
+                              <x>364</x>
+                              <y>119</y>
+                              <width>89</width>
+                              <height>20</height>
+                              <tooltip>$(actions)</tooltip>
+                            </widget>
+                            <widget type="action_button" version="3.0.0">
+                              <name>Action Button_9</name>
+                              <actions>
+                                <action type="open_display">
+                                  <file>../dmsc_detector_interfaceApp/op/bob/offsetCalibrations.bob</file>
+                                  <macros>
+                                    <CH>4</CH>
+                                    <DEV>${DEV}</DEV>
+                                    <PREFIX>${PREFIX}</PREFIX>
+                                    <SYS>${SYS}</SYS>
+                                  </macros>
+                                  <target>standalone</target>
+                                  <description>Open Display</description>
+                                </action>
+                              </actions>
+                              <text>Calibration</text>
+                              <x>364</x>
+                              <y>157</y>
+                              <width>89</width>
+                              <height>20</height>
+                              <tooltip>$(actions)</tooltip>
                             </widget>
                           </children>
                         </tab>
@@ -3855,15 +3943,16 @@ widget.setValue(data)]]></text>
                       <y>138</y>
                       <width>678</width>
                       <height>550</height>
+                      <active_tab>-1</active_tab>
                     </widget>
                   </children>
                 </tab>
               </tabs>
-              <x>17</x>
-              <y>7</y>
+              <x>18</x>
+              <y>11</y>
               <width>740</width>
               <height>750</height>
-              <active_tab>2</active_tab>
+              <active_tab>-1</active_tab>
             </widget>
           </children>
         </tab>
@@ -3872,7 +3961,7 @@ widget.setValue(data)]]></text>
       <y>49</y>
       <width>779</width>
       <height>849</height>
-      <active_tab>1</active_tab>
+      <active_tab>2</active_tab>
     </widget>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -3882,41 +3971,5 @@ widget.setValue(data)]]></text>
     <width>1</width>
     <height>1</height>
     <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group_1</name>
-    <x>940</x>
-    <y>570</y>
-    <width>170</width>
-    <height>80</height>
-    <style>3</style>
-    <widget type="textentry" version="3.0.0">
-      <name>Ch1Offset_2</name>
-      <pv_name>ca://${PREFIX}${DEV}:OFF-CH1-AOFF</pv_name>
-      <x>89</x>
-      <y>31</y>
-      <width>70</width>
-      <precision>3</precision>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>Ch1Offset_3</name>
-      <pv_name>ca://${PREFIX}${DEV}:OFF-CH1-ASLO</pv_name>
-      <x>10</x>
-      <y>30</y>
-      <width>69</width>
-      <precision>3</precision>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>ThresholdLabel_33</name>
-      <text>ASLO</text>
-      <x>10</x>
-      <width>46</width>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>ThresholdLabel_34</name>
-      <text>AOFF</text>
-      <x>89</x>
-      <width>46</width>
-    </widget>
   </widget>
 </display>
