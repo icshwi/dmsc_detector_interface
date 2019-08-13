@@ -73,6 +73,7 @@ record(aSub, "$(SYS)-$(DEV):CH$(CH)getRange_aSub"){
 
 record(ai, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV"){
 	field(DESC, "Range of CH$(CH) (V)")
+	field(FLNK, "$(SYS)-$(DEV):THRESH-CH$(CH)-SP")
 }
 
 record(longin, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV"){

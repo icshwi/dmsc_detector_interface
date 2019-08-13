@@ -36,6 +36,7 @@ record(mbbi, "$(SYS)-$(DEV):OVERSMPL-RBV"){
   field(TWST, "4x")
   field(PINI, "0")
   field(INP, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")
+  field(FLNK, "$(SYS)-$(DEV):THRESH-CH$(CH)-OFF")
 }
 
 record(longin, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV"){
