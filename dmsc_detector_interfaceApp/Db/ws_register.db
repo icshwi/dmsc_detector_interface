@@ -19,7 +19,7 @@ record(bo, "$(SYS)-$(DEV):$(REG)-CMD"){
 
   field(DESC, "$(REG) write for ${REG}")
   field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),$(REG)-OFF,$(REG)-SP) $(COM)")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),$(REG)-OFF,$(REG)-CMD) $(COM)")
   
 }
 

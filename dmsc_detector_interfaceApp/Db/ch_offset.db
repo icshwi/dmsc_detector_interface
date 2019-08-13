@@ -26,12 +26,14 @@ record(calc, "$(SYS)-$(DEV):OFF-CH$(CH)-CALC"){
 record(ao, "$(SYS)-$(DEV):OFF-CH$(CH)-ASLO"){
 	field(DESC, "scaling for channel offset")
 	field(VAL, "-6553.4")
+	info(autosaveFields_pass0, "VAL")
 }
 
 
 record(ao, "$(SYS)-$(DEV):OFF-CH$(CH)-AOFF"){	
 	field(DESC, "offset for channel offset")
 	field(VAL, "32768")
+	info(autosaveFields_pass0, "VAL")
 }
 	
 	
@@ -46,7 +48,11 @@ record(seq, "$(SYS)-$(DEV):OFF-CH$(CH)-WRS"){
 	field(DOL1, "$(SYS)-$(DEV):OFF-CH$(CH)-CALC")
 	field(DOL2, "$(SYS)-$(DEV):CH$(CH)-DEV")
 	field(DOL3, "1")
+	#field(DOL4, "1")
+	#field(DLY3, "0.1")
+	#field(DLY4, "0.1")
 	field(LNK1, "$(SYS)-$(DEV):SPI-M2C-SP PP")
 	field(LNK2, "$(SYS)-$(DEV):SPI-DEV-SP PP")
 	field(LNK3, "$(SYS)-$(DEV):SPI-WR-CMD PP")
+	#field(LNK4, "$(SYS)-$(DEV):SPI-C2M-SP.PROC PP")
 }
