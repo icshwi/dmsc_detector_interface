@@ -10,11 +10,11 @@ record(mbbo, "$(SYS)-$(DEV):OVERSMPL-SP"){
   field(ZRVL, "1")
   field(ONVL, "2")
   field(TWVL, "4")
-	field(ZRST, "1x")
+  field(ZRST, "1x")
   field(ONST, "2x")
   field(TWST, "4x")
-	field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-SP")
-	 info(autosaveFields_pass0, "VAL")
+  field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-SP")
+  info(autosaveFields_pass0, "VAL")
   field(PINI, "1")
 }
 
@@ -36,8 +36,21 @@ record(mbbi, "$(SYS)-$(DEV):OVERSMPL-RBV"){
   field(TWST, "4x")
   field(PINI, "0")
   field(INP, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")
-  #field(FLNK, "$(SYS)-$(DEV):THRESH-CH$(CH)-OFF")
+  field(FLNK, "$(SYS)-$(DEV):OVERSMPL-FANO")
 }
+
+
+#To reset the threshold to the middle and make it take into account the new ratio
+record(fanout, "$(SYS)-$(DEV):OVERSMPL-FANO"){
+	field(LNK1, "$(SYS)-$(DEV):T-CH1-SP")
+	field(LNK2, "$(SYS)-$(DEV):T-CH2-SP")
+	field(LNK3, "$(SYS)-$(DEV):T-CH3-SP")
+	field(LNK4, "$(SYS)-$(DEV):T-CH4-SP")
+	field(SELM, "All")
+	#field(DISV, "0")
+	#field(SDIS, "ESSIP-DET:TS-EVR-01:Time-Valid-Sts PP")
+}
+
 
 record(longin, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV"){
 	field(DESC, "Raw oversampling multiplier")

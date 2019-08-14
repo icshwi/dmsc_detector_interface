@@ -65,16 +65,48 @@ record(aSub, "$(SYS)-$(DEV):CH$(CH)getRange_aSub"){
 	field(SNAM, "getRange_aSub")
 	field(FTA,  "LONG")     
 	field(NOA,  "1")  	
-	field(INPA, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV")
+	field(INPA, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP")
 	field(FTVA, "DOUBLE")
 	field(NOVA, "1")
 	field(OUTA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV PP")
+	
 }
 
 record(ai, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV"){
 	field(DESC, "Range of CH$(CH) (V)")
-	#field(FLNK, "$(SYS)-$(DEV):THRESH-CH$(CH)-SP")
+	field(FLNK, "$(SYS)-$(DEV):CH${CH}-MIN")
+	info(autosaveFields_pass0, "VAL")
 }
+
+record(calcout, "$(SYS)-$(DEV):CH${CH}-MIN"){
+  field(DESC, "Calc Min Range")
+  field(OUT, "$(SYS)-$(DEV):T-CH$(CH)-SP.DRVL")
+  field(CALC, "-1*A/2")
+  field(INPA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV NPP")
+  field(FLNK, "$(SYS)-$(DEV):CH${CH}-MAX")
+}
+
+record(calcout, "$(SYS)-$(DEV):CH${CH}-MAX"){
+  field(DESC, "Calc Min Range")
+  field(OUT, "$(SYS)-$(DEV):T-CH$(CH)-SP.DRVH")
+  field(CALC, "A/2-(A/(B*16384))")
+  field(INPA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV NPP")
+  field(INPB, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")  
+  field(FLNK, "$(SYS)-$(DEV):T-CH$(CH)-SP")
+}
+
+record(ao, "$(SYS)-$(DEV):CH${CH}-T-DEF"){
+    field(DESC, "Reset the thresh max")
+	field(VAL, "10")
+	field(OUT, "$(SYS)-$(DEV):T-CH$(CH)-SP PP")
+	field(FLNK, "$(SYS)-$(DEV):T-CH$(CH)-SP")
+	field(DTYP, "Soft Channel")
+	#field(DISV, "0")
+	#field(SDIS, "ESSIP-DET:TS-EVR-01:Time-Valid-Sts PP")
+}
+	
+
+
 
 record(longin, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV"){
 	field(DESC, "Raw gain setting ch$(CH)")
