@@ -91,22 +91,10 @@ record(calcout, "$(SYS)-$(DEV):CH${CH}-MAX"){
   field(OUT, "$(SYS)-$(DEV):T-CH$(CH)-SP.DRVH")
   field(CALC, "A/2-(A/(B*16384))")
   field(INPA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV NPP")
-  field(INPB, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")  
+  field(INPB, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP") 
+  # This FLNK forces threshold value to be updated.   
   field(FLNK, "$(SYS)-$(DEV):T-CH$(CH)-SP")
 }
-
-record(ao, "$(SYS)-$(DEV):CH${CH}-T-DEF"){
-    field(DESC, "Reset the thresh max")
-	field(VAL, "10")
-	field(OUT, "$(SYS)-$(DEV):T-CH$(CH)-SP PP")
-	field(FLNK, "$(SYS)-$(DEV):T-CH$(CH)-SP")
-	field(DTYP, "Soft Channel")
-	#field(DISV, "0")
-	#field(SDIS, "ESSIP-DET:TS-EVR-01:Time-Valid-Sts PP")
-}
-	
-
-
 
 record(longin, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV"){
 	field(DESC, "Raw gain setting ch$(CH)")

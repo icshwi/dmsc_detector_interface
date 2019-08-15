@@ -40,15 +40,13 @@ record(mbbi, "$(SYS)-$(DEV):OVERSMPL-RBV"){
 }
 
 
-#To reset the threshold to the middle and make it take into account the new ratio
+#Ensures that the threshold value sent to device is updated for new oversampling ratio
 record(fanout, "$(SYS)-$(DEV):OVERSMPL-FANO"){
 	field(LNK1, "$(SYS)-$(DEV):T-CH1-SP")
 	field(LNK2, "$(SYS)-$(DEV):T-CH2-SP")
 	field(LNK3, "$(SYS)-$(DEV):T-CH3-SP")
 	field(LNK4, "$(SYS)-$(DEV):T-CH4-SP")
 	field(SELM, "All")
-	#field(DISV, "0")
-	#field(SDIS, "ESSIP-DET:TS-EVR-01:Time-Valid-Sts PP")
 }
 
 

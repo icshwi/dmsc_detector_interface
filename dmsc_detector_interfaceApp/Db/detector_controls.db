@@ -69,6 +69,7 @@ record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	field(LNK1,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
 	field(LNK2,  "$(SYS)-$(DEV):TSU-RBV.PROC")
 	field(LNK3,  "$(SYS)-$(DEV):TSL-RBV.PROC")
+	field(LNK4,  "$(SYS)-$(DEV):TS-Diff-RBV")
 	field(SCAN, "Event")
 	field(EVNT, "$(SYNC_EVNT)")
 	field(DISV, "0")
@@ -118,4 +119,12 @@ record(calc, "$(SYS)-$(DEV):TS-NDiff-RBV"){
 	field(INPB, "$(SYS)-$(DEV):TSL-RBV NPP")
 	field(CALC, "B-A")
 	
+}
+
+record(calc, "$(SYS)-$(DEV):TS-Diff-RBV"){
+	field(DESC, "Diff between ${DEV} and ${EVR} TS")
+	field(INPA, "$(SYS)-$(DEV):TS-SDiff-RBV NPP")
+	field(INPB, "$(SYS)-$(DEV):TS-NDiff-RBV NPP") 
+	field(CALC, "(A+(B/88052500)*1000000000")
+	field(EGU, "ns")
 }

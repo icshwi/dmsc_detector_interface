@@ -1,0 +1,48 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    		= The System (DG)
+# $(DEV) 			= The DEV name (FPGA)
+# $(OFF) 			= register offset
+# $(COM)			= COM port for stream DEV
+# $(PRO) 			= stream DEV protocol filename
+
+
+
+## Communication Records ###
+
+
+record(ao, "$(SYS)-$(DEV):PTO-SP"){
+
+	field(DESC, "Packet Keep Alive Interval")
+	field(EGU, "ms")
+	field(PREC, "6")
+	field(FLNK, "$(SYS)-$(DEV):PTO-WR")
+	info(autosaveFields_pass0, "VAL")
+	field(PINI, "1")
+}
+
+record(calcout, "$(SYS)-$(DEV):PTO-WR"){
+  field(DESC, "Calculate Timeout Reg")
+  field(CALC, "FLOOR(A*125000.00)")
+  field(INPA, "$(SYS)-$(DEV):PTO-SP NPP")
+  field(DTYP, "stream")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),PTO-OFF,PTO-WR) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):PTO-RBV")
+}
+
+record(longin, "$(SYS)-$(DEV):PTO-OFF") {
+  field(VAL, "$(OFF)")
+}
+
+record(ai, "$(SYS)-$(DEV):PTO-RBV"){
+	
+	field(DESC, "Packet Keep Alive Interval")
+	field(EGU, "ms")
+	field(LINR, "LINEAR")
+	field(PREC, "6")
+	field(ASLO, "0.000008")
+	field(AOFF, "0")
+	field(DTYP, "stream")
+	field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),PTO-OFF) $(COM)")
+
+}
+
