@@ -26,6 +26,7 @@ DB += timestamp_sync.db
 DB += ws_register.db
 DB += threshold.db
 DB += packetTimeout_register.db
+DB += peakDetection_reg.db
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
