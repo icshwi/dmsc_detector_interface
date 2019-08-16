@@ -7,8 +7,8 @@
 
 record(bo, "$(SYS)-$(DEV):ACQ-MODE-SP"){
 	field(DESC, "Acquisition mode SP")
-	field(ZNAM, "Peak detect")
-	field(ONAM, "Continous")
+	field(ZNAM, "Continous")
+	field(ONAM, "Peak detect")
 	field(DTYP, "stream")
 	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),ACQ-MODE-OFF,ACQ-MODE-SP) $(COM)")
 	field(FLNK, "$(SYS)-$(DEV):ACQ-MODE-RBV")
@@ -18,8 +18,8 @@ record(bo, "$(SYS)-$(DEV):ACQ-MODE-SP"){
 
 record(bi, "$(SYS)-$(DEV):ACQ-MODE-RBV"){
 	field(DESC, "Acquisition mode RBV")
-	field(ZNAM, "Peak detect")
-	field(ONAM, "Continous")
+	field(ZNAM, "Continous")
+	field(ONAM, "Peak detect")
 	field(DTYP, "stream")
 	field(PINI, "0")
 	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),ACQ-MODE-OFF) $(COM)")

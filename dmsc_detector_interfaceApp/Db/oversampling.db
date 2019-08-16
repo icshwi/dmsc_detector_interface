@@ -10,11 +10,11 @@ record(mbbo, "$(SYS)-$(DEV):OVERSMPL-SP"){
   field(ZRVL, "1")
   field(ONVL, "2")
   field(TWVL, "4")
-	field(ZRST, "1x")
+  field(ZRST, "1x")
   field(ONST, "2x")
   field(TWST, "4x")
-	field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-SP")
-	 info(autosaveFields_pass0, "VAL")
+  field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-SP")
+  info(autosaveFields_pass0, "VAL")
   field(PINI, "1")
 }
 
@@ -36,7 +36,19 @@ record(mbbi, "$(SYS)-$(DEV):OVERSMPL-RBV"){
   field(TWST, "4x")
   field(PINI, "0")
   field(INP, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")
+  field(FLNK, "$(SYS)-$(DEV):OVERSMPL-FANO")
 }
+
+
+#Ensures that the threshold value sent to device is updated for new oversampling ratio
+record(fanout, "$(SYS)-$(DEV):OVERSMPL-FANO"){
+	field(LNK1, "$(SYS)-$(DEV):T-CH1-SP")
+	field(LNK2, "$(SYS)-$(DEV):T-CH2-SP")
+	field(LNK3, "$(SYS)-$(DEV):T-CH3-SP")
+	field(LNK4, "$(SYS)-$(DEV):T-CH4-SP")
+	field(SELM, "All")
+}
+
 
 record(longin, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV"){
 	field(DESC, "Raw oversampling multiplier")

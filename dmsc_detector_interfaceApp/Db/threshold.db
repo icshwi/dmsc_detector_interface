@@ -1,0 +1,52 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(OFF) = register offset
+# $(CH) = ADC channel
+
+record(longin, "$(SYS)-$(DEV):T-CH$(CH)-OFF") {
+	field(DESC, "Reg offset for Threshold")
+    field(VAL, "$(OFF)")
+}
+
+record(ao,"$(SYS)-$(DEV):T-CH$(CH)-SP") {
+    field(DESC, "Set channel$(CH) Threshold(V)")
+    field(FLNK,"$(SYS)-$(DEV):T-CH$(CH)-WR")
+	field(EGU, "V")
+	field(PREC, "10")
+	field(PINI, "1")
+	info(autosaveFields_pass0, "VAL")
+}
+
+record(calcout, "$(SYS)-$(DEV):T-CH$(CH)-WR"){
+  field(DESC, "Calc T")
+  field(CALC, "FLOOR(((A+(B/2))/B)*((C*16384)))")
+  field(INPA, "$(SYS)-$(DEV):T-CH$(CH)-SP NPP")
+  field(INPB, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV NPP")
+  field(INPC, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")  
+  field(DTYP, "stream")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),T-CH$(CH)-OFF,T-CH$(CH)-WR) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):T-CH${CH}-RD")
+}
+
+
+record(longin, "$(SYS)-$(DEV):T-CH${CH}-RD"){
+
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),T-CH$(CH)-OFF) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):T-CH${CH}-RBV")
+
+}
+
+record(calc, "$(SYS)-$(DEV):T-CH${CH}-RBV"){
+  field(DESC, "Calc T from reg")
+  field(EGU, "V")
+  field(PREC, "10")
+  field(CALC, "((A/((C*16384)))*B)-(B/2)")
+  field(INPA, "$(SYS)-$(DEV):T-CH${CH}-RD NPP")
+  field(INPB, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV NPP")
+  field(INPC, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")  
+}
+  
+
+
