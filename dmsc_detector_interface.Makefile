@@ -74,13 +74,14 @@ TEMPLATES += $(wildcard $(APPPROTO)/*.proto)
 # DBDINC_HDRS = $(subst .c,.h,     $(DBDINC_SRCS:$(APPSRC)/%=%))
 # DBDINC_DEPS = $(subst .c,$(DEP), $(DBDINC_SRCS:$(APPSRC)/%=%))
 
+SOURCES += $(APPSRC)/*.c
+#SOURCES += $(APPSRC)/getTimeStamp_aSub.c
+#SOURCES += $(APPSRC)/syncState_aSub.c
+#SOURCES += $(APPSRC)/getRange_aSub.c
+#SOURCES += $(APPSRC)/convertIPAddress.cpp
+#SOURCES += $(APPSRC)/convertMACAddress.cpp
+#SOURCES += $(APPSRC)/generateHexString.c
 
-SOURCES += $(APPSRC)/getTimeStamp_aSub.c
-SOURCES += $(APPSRC)/syncState_aSub.c
-SOURCES += $(APPSRC)/getRange_aSub.c
-SOURCES += $(APPSRC)/convertIPAddress.cpp
-SOURCES += $(APPSRC)/convertMACAddress.cpp
-SOURCES += $(APPSRC)/generateHexString.c
 # # DBDINC_SRCS should be last of the series of SOURCES
 # SOURCES += $(DBDINC_SRCS)
 
