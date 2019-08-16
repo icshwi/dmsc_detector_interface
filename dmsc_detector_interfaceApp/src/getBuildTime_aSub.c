@@ -9,9 +9,10 @@
 #include <string.h>
 
 
+
 static long getBuildTime_aSub(aSubRecord *prec) {
 
-	char  outStr[32];
+	epicsOldString *outStr;
 	long  buildTime;
 	int sec;
 	int min;
@@ -21,19 +22,24 @@ static long getBuildTime_aSub(aSubRecord *prec) {
 	int day;
 		
 	buildTime 		= *(long *)prec->a; 	// the value of the state input record
+	outStr = (epicsOldString*)prec->vala;
 	
-	day 	=  buildTime >> 26;
-	month 	= (buildTime >> 21) & 0xF;
-	year 	= (buildTime >> 16) & 0x3F;
-	hour 	= (buildTime >> 11) & 0x1F;
+	day 	=  buildTime >> 27;
+	month 	= (buildTime >> 23) & 0xF;
+	year 	= (buildTime >> 17) & 0x3F;
+	hour 	= (buildTime >> 12) & 0x1F;
 	min 	= (buildTime >> 6) 	& 0x3F;
 	sec 	=  buildTime 		& 0x3F;
 	
-	snprintf(outStr,32,"%d/%d/%d %d:%d:d",day,month,year,hour,min,sec);
-	printf(outStr);
+	snprintf(outStr,31,"%.2d/%.2d/%.2d %.2d:%.2d:%.2d",day,month,year,hour,min,sec);
 	
-	//printf("Range = %f\n",range);
-	*(char)prec->vala = range; //single
+	printf("The Firmware Build Time is: ");
+	printf(outStr);
+	printf("\n");
+	
+	
+	
+    //memcpy((char*)outStr, MacStr.c_str(), 32);
 		
 	
 	return 0;

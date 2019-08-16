@@ -22,7 +22,7 @@ record(longin, "$(SYS)-$(DEV):BUILD-RD"){
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),BUILD-OFF) $(COM)")
   field(PINI, "1")
-  field(FLNK, "$(SYS)-$(DEV):BUILD-PRS"
+  field(FLNK, "$(SYS)-$(DEV):BUILD-PRS")
 
 }
 
