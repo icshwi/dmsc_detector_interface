@@ -41,9 +41,9 @@
                 <RO2FP>10</RO2FP>
               </macros>
               <x>17</x>
-              <y>102</y>
+              <y>19</y>
               <width>310</width>
-              <height>431</height>
+              <height>703</height>
               <widget type="label" version="2.0.0">
                 <name>Label_30</name>
                 <text>Evt16 Sent Sec</text>
@@ -113,14 +113,14 @@
                 <name>IPSet</name>
                 <pv_name>ca://$(PREFIX)$(EVR):FracNsecDelta-SP</pv_name>
                 <x>128</x>
-                <y>129</y>
+                <y>105</y>
                 <width>115</width>
               </widget>
               <widget type="label" version="2.0.0">
                 <name>Label_33</name>
-                <text>FracNanoDelta</text>
+                <text>TicksDelta</text>
                 <x>9</x>
-                <y>129</y>
+                <y>105</y>
               </widget>
               <widget type="label" version="2.0.0">
                 <name>Label_32</name>
@@ -178,13 +178,13 @@
                 <name>Label_56</name>
                 <text>RO2 Clock</text>
                 <x>9</x>
-                <y>349</y>
+                <y>352</y>
               </widget>
               <widget type="bool_button" version="2.0.0">
                 <name>Boolean Button_10</name>
                 <pv_name>$(PREFIX)$(EVR):OutFPUV$(RO2FP)-Ena-SP</pv_name>
                 <x>124</x>
-                <y>349</y>
+                <y>352</y>
                 <actions>
                   <action type="write_pv">
                     <pv_name>ca://$(PREFIX)$(EVR):OutFPUV$(RO2FP)-Ena-SP</pv_name>
@@ -382,6 +382,21 @@
                 <y>159</y>
                 <width>119</width>
               </widget>
+              <widget type="label" version="2.0.0">
+                <name>Label_76</name>
+                <text>Total Diff</text>
+                <x>10</x>
+                <y>279</y>
+                <width>119</width>
+              </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>IPGet_55</name>
+                <pv_name>ca://$(PREFIX)$(DEV):TS-Diff-RBV</pv_name>
+                <x>108</x>
+                <y>279</y>
+                <width>115</width>
+                <format>1</format>
+              </widget>
             </widget>
             <widget type="group" version="2.0.0">
               <name>$(DEV)</name>
@@ -571,31 +586,46 @@
                 <y>159</y>
                 <width>119</width>
               </widget>
+              <widget type="textupdate" version="2.0.0">
+                <name>IPGet_54</name>
+                <pv_name>ca://$(PREFIX)$(DEV):TS-Diff-RBV</pv_name>
+                <x>109</x>
+                <y>279</y>
+                <width>115</width>
+                <format>1</format>
+              </widget>
+              <widget type="label" version="2.0.0">
+                <name>Label_75</name>
+                <text>Total Diff</text>
+                <x>9</x>
+                <y>279</y>
+                <width>119</width>
+              </widget>
             </widget>
             <widget type="polyline" version="2.0.0">
               <name>Polyline_1</name>
-              <x>277</x>
+              <x>273</x>
               <y>322</y>
-              <width>110</width>
-              <height>110</height>
+              <width>114</width>
+              <height>30</height>
               <line_color>
                 <color name="BLACK" red="0" green="0" blue="0">
                 </color>
               </line_color>
               <arrows>2</arrows>
               <points>
-                <point x="0.0" y="111.17765179802389">
+                <point x="0.0" y="30.268560888933052">
                 </point>
-                <point x="110.64938464796687" y="0.0">
+                <point x="114.28574828433051" y="0.0">
                 </point>
               </points>
             </widget>
             <widget type="polyline" version="2.0.0">
               <name>Polyline_2</name>
-              <x>277</x>
-              <y>492</y>
-              <width>106</width>
-              <height>117</height>
+              <x>278</x>
+              <y>407</y>
+              <width>104</width>
+              <height>202</height>
               <line_color>
                 <color name="BLACK" red="0" green="0" blue="0">
                 </color>
@@ -604,7 +634,7 @@
               <points>
                 <point x="0.0" y="0.0">
                 </point>
-                <point x="106.01052010636289" y="117.7932804388787">
+                <point x="104.19233828818102" y="202.3387349843332">
                 </point>
               </points>
             </widget>
@@ -614,7 +644,7 @@
           <name>R01</name>
           <children>
             <widget type="tabs" version="2.0.0">
-              <name>Detector Readout Controls_4</name>
+              <name>Detector Readout Controls_6</name>
               <macros>
                 <DEV>RO1</DEV>
               </macros>
@@ -624,7 +654,7 @@
                   <children>
                     <widget type="group" version="2.0.0">
                       <name>StatsGroup</name>
-                      <x>368</x>
+                      <x>396</x>
                       <y>62</y>
                       <width>320</width>
                       <height>280</height>
@@ -866,7 +896,7 @@ widget.setValue(data)]]></text>
                     </widget>
                     <widget type="textentry" version="3.0.0">
                       <name>TimeoutSetField_2</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-SP</pv_name>
+                      <pv_name>ca://${PREFIX}${DEV}:LEDSEL-SP</pv_name>
                       <x>66</x>
                       <y>216</y>
                       <width>69</width>
@@ -874,7 +904,7 @@ widget.setValue(data)]]></text>
                     </widget>
                     <widget type="textupdate" version="2.0.0">
                       <name>TimeoutGetField_2</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-RBV</pv_name>
+                      <pv_name>ca://${PREFIX}${DEV}:LEDSEL-RBV</pv_name>
                       <x>145</x>
                       <y>216</y>
                       <width>59</width>
@@ -885,30 +915,6 @@ widget.setValue(data)]]></text>
                 <tab>
                   <name>Network</name>
                   <children>
-                    <widget type="label" version="2.0.0">
-                      <name>Timeout description_7</name>
-                      <text>Keep Alive Interval</text>
-                      <x>58</x>
-                      <y>242</y>
-                      <width>80</width>
-                      <height>70</height>
-                    </widget>
-                    <widget type="textentry" version="3.0.0">
-                      <name>TimeoutSetField_1</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-SP</pv_name>
-                      <x>170</x>
-                      <y>242</y>
-                      <width>69</width>
-                      <format>1</format>
-                    </widget>
-                    <widget type="textupdate" version="2.0.0">
-                      <name>TimeoutGetField_1</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-RBV</pv_name>
-                      <x>249</x>
-                      <y>242</y>
-                      <width>59</width>
-                      <format>1</format>
-                    </widget>
                     <widget type="label" version="2.0.0">
                       <name>Label_16</name>
                       <text>IP Address</text>
@@ -1035,6 +1041,35 @@ widget.setValue(data)]]></text>
                           <font family="Source Code Pro" style="REGULAR" size="11.0">
                           </font>
                         </font>
+                      </widget>
+                    </widget>
+                    <widget type="group" version="2.0.0">
+                      <name>Group</name>
+                      <x>58</x>
+                      <y>256</y>
+                      <width>340</width>
+                      <height>70</height>
+                      <style>3</style>
+                      <transparent>true</transparent>
+                      <widget type="textentry" version="3.0.0">
+                        <name>TimeoutSetField_3</name>
+                        <pv_name>ca://${PREFIX}${DEV}:PTO-SP</pv_name>
+                        <x>80</x>
+                        <width>120</width>
+                        <format>1</format>
+                      </widget>
+                      <widget type="textupdate" version="2.0.0">
+                        <name>TimeoutGetField_3</name>
+                        <pv_name>ca://${PREFIX}${DEV}:PTO-RBV</pv_name>
+                        <x>220</x>
+                        <width>120</width>
+                        <format>1</format>
+                      </widget>
+                      <widget type="label" version="2.0.0">
+                        <name>Timeout description_8</name>
+                        <text>Keep Alive Interval</text>
+                        <width>80</width>
+                        <height>70</height>
                       </widget>
                     </widget>
                   </children>
@@ -1367,205 +1402,6 @@ widget.setValue(data)]]></text>
                               <width>56</width>
                               <precision>3</precision>
                             </widget>
-                            <widget type="group" version="2.0.0">
-                              <name>Downsample Averaging</name>
-                              <x>453</x>
-                              <y>185</y>
-                              <width>220</width>
-                              <height>130</height>
-                              <widget type="combo" version="2.0.0">
-                                <name>Combo Box_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
-                                <x>12</x>
-                                <y>9</y>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>Text Update_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
-                                <x>12</x>
-                                <y>47</y>
-                              </widget>
-                            </widget>
-                            <widget type="group" version="2.0.0">
-                              <name>SPI Debug</name>
-                              <x>24</x>
-                              <y>188</y>
-                              <width>429</width>
-                              <height>130</height>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_14</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-M2C-SP</pv_name>
-                                <x>115</x>
-                                <y>9</y>
-                                <width>115</width>
-                                <format>4</format>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_15</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-M2C-RBV</pv_name>
-                                <x>245</x>
-                                <y>9</y>
-                                <width>115</width>
-                                <height>21</height>
-                                <format>4</format>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_29</name>
-                                <text>SPI M2C</text>
-                                <x>45</x>
-                                <y>9</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_30</name>
-                                <text>SPI DEV</text>
-                                <x>45</x>
-                                <y>29</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_17</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-DEV-RBV</pv_name>
-                                <x>245</x>
-                                <y>31</y>
-                                <width>115</width>
-                                <height>21</height>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_15</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-DEV-SP</pv_name>
-                                <x>115</x>
-                                <y>31</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_31</name>
-                                <text>SPI Write</text>
-                                <x>39</x>
-                                <y>51</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_16</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-WR-CMD</pv_name>
-                                <x>115</x>
-                                <y>51</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_32</name>
-                                <text>SPI Read</text>
-                                <x>39</x>
-                                <y>71</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_22</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-C2M-RBV</pv_name>
-                                <x>245</x>
-                                <y>71</y>
-                                <width>115</width>
-                                <height>21</height>
-                                <format>4</format>
-                              </widget>
-                            </widget>
-                            <widget type="group" version="2.0.0">
-                              <name>Peak Detection</name>
-                              <x>23</x>
-                              <y>318</y>
-                              <width>430</width>
-                              <height>180</height>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_12</name>
-                                <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
-                                <x>264</x>
-                                <y>19</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>PortGet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
-                                <x>264</x>
-                                <y>49</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>MACGet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
-                                <x>264</x>
-                                <y>79</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_10</name>
-                                <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
-                                <x>139</x>
-                                <y>19</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>PortSet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
-                                <x>139</x>
-                                <y>49</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>MACSet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
-                                <x>139</x>
-                                <y>79</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>MACSet_5</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
-                                <x>139</x>
-                                <y>109</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>MACGet_5</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
-                                <x>263</x>
-                                <y>109</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_21</name>
-                                <text>Rising Hold</text>
-                                <x>39</x>
-                                <y>19</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_22</name>
-                                <text>Falling Hold</text>
-                                <x>37</x>
-                                <y>47</y>
-                                <width>132</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_23</name>
-                                <text>Samples Before</text>
-                                <x>29</x>
-                                <y>79</y>
-                                <width>132</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_24</name>
-                                <text>Samples After</text>
-                                <x>29</x>
-                                <y>109</y>
-                                <width>132</width>
-                              </widget>
-                            </widget>
                             <widget type="action_button" version="3.0.0">
                               <name>Action Button_3</name>
                               <actions>
@@ -1586,6 +1422,7 @@ widget.setValue(data)]]></text>
                               <y>37</y>
                               <width>89</width>
                               <height>20</height>
+                              <tooltip>$(actions)</tooltip>
                             </widget>
                             <widget type="action_button" version="3.0.0">
                               <name>Action Button_7</name>
@@ -1652,6 +1489,47 @@ widget.setValue(data)]]></text>
                               <width>89</width>
                               <height>20</height>
                               <tooltip>$(actions)</tooltip>
+                            </widget>
+                            <widget type="action_button" version="3.0.0">
+                              <name>Action Button_4</name>
+                              <actions>
+                                <action type="open_display">
+                                  <file>../dmsc_detector_interfaceApp/op/bob/SPIdebug.bob</file>
+                                  <macros>
+                                    <CH>1</CH>
+                                    <DEV>${DEV}</DEV>
+                                    <PREFIX>${PREFIX}</PREFIX>
+                                    <SYS>${SYS}</SYS>
+                                  </macros>
+                                  <target>standalone</target>
+                                  <description>Open Display</description>
+                                </action>
+                              </actions>
+                              <text>Open SPI Debug Display</text>
+                              <x>269</x>
+                              <y>192</y>
+                              <width>110</width>
+                              <height>50</height>
+                              <tooltip>$(actions)</tooltip>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Downsample Averaging</name>
+                              <x>469</x>
+                              <y>12</y>
+                              <width>190</width>
+                              <height>120</height>
+                              <widget type="combo" version="2.0.0">
+                                <name>Combo Box_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
+                                <x>12</x>
+                                <y>9</y>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Text Update_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
+                                <x>12</x>
+                                <y>47</y>
+                              </widget>
                             </widget>
                           </children>
                         </tab>
@@ -2053,30 +1931,30 @@ widget.setValue(data)]]></text>
                             <widget type="label" version="2.0.0">
                               <name>SnapLabel_17</name>
                               <text>Buffer Overflow Count</text>
-                              <x>290</x>
-                              <y>18</y>
+                              <x>429</x>
+                              <y>32</y>
                               <width>143</width>
                               <height>59</height>
                             </widget>
                             <widget type="label" version="2.0.0">
                               <name>SnapLabel_14</name>
                               <text>Snap value</text>
-                              <x>421</x>
-                              <y>18</y>
+                              <x>559</x>
+                              <y>52</y>
                               <width>80</width>
                             </widget>
                             <widget type="label" version="2.0.0">
                               <name>ThresholdLabel_14</name>
                               <text>Threshold</text>
-                              <x>88</x>
-                              <y>19</y>
+                              <x>49</x>
+                              <y>52</y>
                               <width>80</width>
                             </widget>
                             <widget type="label" version="2.0.0">
                               <name>ThresholdLabel_15</name>
                               <text>Ch</text>
-                              <x>18</x>
-                              <y>19</y>
+                              <x>13</x>
+                              <y>52</y>
                               <width>80</width>
                             </widget>
                             <widget type="group" version="2.0.0">
@@ -2087,21 +1965,23 @@ widget.setValue(data)]]></text>
                               <x>9</x>
                               <y>75</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
                                 <name>Ch1ThresholdSet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>Ch1ThresholdGet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
                                 <name>Ch1Label_6</name>
@@ -2113,154 +1993,301 @@ widget.setValue(data)]]></text>
                               <widget type="textupdate" version="2.0.0">
                                 <name>Ch1FrameCtr_16</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>Ch1FrameCtr_46</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
+                              </widget>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_26</name>
+                              <text>Threshold Reg Value</text>
+                              <x>319</x>
+                              <y>32</y>
+                              <width>110</width>
+                              <height>60</height>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_27</name>
+                              <text>Threshold Readback</text>
+                              <x>179</x>
+                              <y>32</y>
+                              <height>50</height>
                             </widget>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Threshold Group_19</name>
+                              <name>Channel Threshold Group_3</name>
                               <macros>
                                 <CH>2</CH>
                               </macros>
                               <x>9</x>
-                              <y>132</y>
+                              <y>139</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
-                                <name>Ch1ThresholdSet_28</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdSet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1ThresholdGet_35</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdGet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
-                                <name>Ch1Label_24</name>
+                                <name>Ch1Label_7</name>
                                 <text>${CH}</text>
                                 <x>9</x>
                                 <y>15</y>
                                 <width>10</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_47</name>
+                                <name>Ch1FrameCtr_17</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_48</name>
+                                <name>Ch1FrameCtr_53</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
                               </widget>
                             </widget>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Threshold Group_20</name>
+                              <name>Channel Threshold Group_4</name>
                               <macros>
                                 <CH>4</CH>
                               </macros>
                               <x>9</x>
-                              <y>245</y>
+                              <y>266</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
-                                <name>Ch1ThresholdSet_29</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdSet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1ThresholdGet_36</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdGet_8</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
-                                <name>Ch1Label_25</name>
+                                <name>Ch1Label_8</name>
                                 <text>${CH}</text>
                                 <x>9</x>
                                 <y>15</y>
                                 <width>10</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_49</name>
+                                <name>Ch1FrameCtr_54</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_50</name>
+                                <name>Ch1FrameCtr_55</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_9</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
                               </widget>
                             </widget>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Threshold Group_21</name>
+                              <name>Channel Threshold Group_5</name>
                               <macros>
                                 <CH>3</CH>
                               </macros>
                               <x>9</x>
-                              <y>188</y>
+                              <y>202</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
-                                <name>Ch1ThresholdSet_30</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdSet_8</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1ThresholdGet_37</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdGet_10</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
-                                <name>Ch1Label_26</name>
+                                <name>Ch1Label_9</name>
                                 <text>${CH}</text>
                                 <x>9</x>
                                 <y>15</y>
                                 <width>10</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_51</name>
+                                <name>Ch1FrameCtr_56</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_52</name>
+                                <name>Ch1FrameCtr_57</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_11</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
+                              </widget>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Peak Detection Parameters</name>
+                              <x>9</x>
+                              <y>342</y>
+                              <width>470</width>
+                              <height>170</height>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>IPGet_13</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
+                                <x>264</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>PortGet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
+                                <x>264</x>
+                                <y>49</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <x>264</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>IPSet_11</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
+                                <x>139</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>PortSet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
+                                <x>139</x>
+                                <y>49</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
+                                <x>139</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
+                                <x>139</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
+                                <x>263</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_25</name>
+                                <text>Rising Hold</text>
+                                <x>39</x>
+                                <y>19</y>
+                                <width>80</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_28</name>
+                                <text>Falling Hold</text>
+                                <x>37</x>
+                                <y>47</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_33</name>
+                                <text>Samples Before</text>
+                                <x>29</x>
+                                <y>79</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_34</name>
+                                <text>Samples After</text>
+                                <x>29</x>
+                                <y>109</y>
+                                <width>132</width>
                               </widget>
                             </widget>
                           </children>
@@ -2268,17 +2295,16 @@ widget.setValue(data)]]></text>
                       </tabs>
                       <x>46</x>
                       <y>138</y>
-                      <width>678</width>
-                      <height>550</height>
+                      <width>681</width>
+                      <height>563</height>
                     </widget>
                   </children>
                 </tab>
               </tabs>
-              <x>18</x>
-              <y>11</y>
+              <x>17</x>
+              <y>8</y>
               <width>740</width>
               <height>750</height>
-              <active_tab>2</active_tab>
             </widget>
           </children>
         </tab>
@@ -2296,7 +2322,7 @@ widget.setValue(data)]]></text>
                   <children>
                     <widget type="group" version="2.0.0">
                       <name>StatsGroup</name>
-                      <x>368</x>
+                      <x>397</x>
                       <y>62</y>
                       <width>320</width>
                       <height>280</height>
@@ -2538,7 +2564,7 @@ widget.setValue(data)]]></text>
                     </widget>
                     <widget type="textentry" version="3.0.0">
                       <name>TimeoutSetField_2</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-SP</pv_name>
+                      <pv_name>ca://${PREFIX}${DEV}:LEDSEL-SP</pv_name>
                       <x>66</x>
                       <y>216</y>
                       <width>69</width>
@@ -2546,7 +2572,7 @@ widget.setValue(data)]]></text>
                     </widget>
                     <widget type="textupdate" version="2.0.0">
                       <name>TimeoutGetField_2</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-RBV</pv_name>
+                      <pv_name>ca://${PREFIX}${DEV}:LEDSEL-RBV</pv_name>
                       <x>145</x>
                       <y>216</y>
                       <width>59</width>
@@ -2557,30 +2583,6 @@ widget.setValue(data)]]></text>
                 <tab>
                   <name>Network</name>
                   <children>
-                    <widget type="label" version="2.0.0">
-                      <name>Timeout description_7</name>
-                      <text>Keep Alive Interval</text>
-                      <x>58</x>
-                      <y>242</y>
-                      <width>80</width>
-                      <height>70</height>
-                    </widget>
-                    <widget type="textentry" version="3.0.0">
-                      <name>TimeoutSetField_1</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-SP</pv_name>
-                      <x>170</x>
-                      <y>242</y>
-                      <width>69</width>
-                      <format>1</format>
-                    </widget>
-                    <widget type="textupdate" version="2.0.0">
-                      <name>TimeoutGetField_1</name>
-                      <pv_name>ca://${PREFIX}${DEV}:PTO-RBV</pv_name>
-                      <x>249</x>
-                      <y>242</y>
-                      <width>59</width>
-                      <format>1</format>
-                    </widget>
                     <widget type="label" version="2.0.0">
                       <name>Label_16</name>
                       <text>IP Address</text>
@@ -2707,6 +2709,35 @@ widget.setValue(data)]]></text>
                           <font family="Source Code Pro" style="REGULAR" size="11.0">
                           </font>
                         </font>
+                      </widget>
+                    </widget>
+                    <widget type="group" version="2.0.0">
+                      <name>Group_1</name>
+                      <x>58</x>
+                      <y>256</y>
+                      <width>340</width>
+                      <height>70</height>
+                      <style>3</style>
+                      <transparent>true</transparent>
+                      <widget type="textentry" version="3.0.0">
+                        <name>TimeoutSetField_5</name>
+                        <pv_name>ca://${PREFIX}${DEV}:PTO-SP</pv_name>
+                        <x>80</x>
+                        <width>120</width>
+                        <format>1</format>
+                      </widget>
+                      <widget type="textupdate" version="2.0.0">
+                        <name>TimeoutGetField_5</name>
+                        <pv_name>ca://${PREFIX}${DEV}:PTO-RBV</pv_name>
+                        <x>220</x>
+                        <width>120</width>
+                        <format>1</format>
+                      </widget>
+                      <widget type="label" version="2.0.0">
+                        <name>Timeout description_10</name>
+                        <text>Keep Alive Interval</text>
+                        <width>80</width>
+                        <height>70</height>
                       </widget>
                     </widget>
                   </children>
@@ -3039,205 +3070,6 @@ widget.setValue(data)]]></text>
                               <width>56</width>
                               <precision>3</precision>
                             </widget>
-                            <widget type="group" version="2.0.0">
-                              <name>Downsample Averaging</name>
-                              <x>453</x>
-                              <y>185</y>
-                              <width>220</width>
-                              <height>130</height>
-                              <widget type="combo" version="2.0.0">
-                                <name>Combo Box_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
-                                <x>12</x>
-                                <y>9</y>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>Text Update_1</name>
-                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
-                                <x>12</x>
-                                <y>47</y>
-                              </widget>
-                            </widget>
-                            <widget type="group" version="2.0.0">
-                              <name>SPI Debug</name>
-                              <x>24</x>
-                              <y>188</y>
-                              <width>429</width>
-                              <height>130</height>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_14</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-M2C-SP</pv_name>
-                                <x>115</x>
-                                <y>9</y>
-                                <width>115</width>
-                                <format>4</format>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_15</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-M2C-RBV</pv_name>
-                                <x>245</x>
-                                <y>9</y>
-                                <width>115</width>
-                                <height>21</height>
-                                <format>4</format>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_29</name>
-                                <text>SPI M2C</text>
-                                <x>45</x>
-                                <y>9</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_30</name>
-                                <text>SPI DEV</text>
-                                <x>45</x>
-                                <y>29</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_17</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-DEV-RBV</pv_name>
-                                <x>245</x>
-                                <y>31</y>
-                                <width>115</width>
-                                <height>21</height>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_15</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-DEV-SP</pv_name>
-                                <x>115</x>
-                                <y>31</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_31</name>
-                                <text>SPI Write</text>
-                                <x>39</x>
-                                <y>51</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_16</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-WR-CMD</pv_name>
-                                <x>115</x>
-                                <y>51</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_32</name>
-                                <text>SPI Read</text>
-                                <x>39</x>
-                                <y>71</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_22</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SPI-C2M-RBV</pv_name>
-                                <x>245</x>
-                                <y>71</y>
-                                <width>115</width>
-                                <height>21</height>
-                                <format>4</format>
-                              </widget>
-                            </widget>
-                            <widget type="group" version="2.0.0">
-                              <name>Peak Detection</name>
-                              <x>23</x>
-                              <y>318</y>
-                              <width>430</width>
-                              <height>180</height>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>IPGet_12</name>
-                                <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
-                                <x>264</x>
-                                <y>19</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>PortGet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
-                                <x>264</x>
-                                <y>49</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>MACGet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
-                                <x>264</x>
-                                <y>79</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>IPSet_10</name>
-                                <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
-                                <x>139</x>
-                                <y>19</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>PortSet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
-                                <x>139</x>
-                                <y>49</y>
-                                <width>115</width>
-                                <format>1</format>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>MACSet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
-                                <x>139</x>
-                                <y>79</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textentry" version="3.0.0">
-                                <name>MACSet_5</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
-                                <x>139</x>
-                                <y>109</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>MACGet_5</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
-                                <x>263</x>
-                                <y>109</y>
-                                <width>115</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_21</name>
-                                <text>Rising Hold</text>
-                                <x>39</x>
-                                <y>19</y>
-                                <width>80</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_22</name>
-                                <text>Falling Hold</text>
-                                <x>37</x>
-                                <y>47</y>
-                                <width>132</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_23</name>
-                                <text>Samples Before</text>
-                                <x>29</x>
-                                <y>79</y>
-                                <width>132</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_24</name>
-                                <text>Samples After</text>
-                                <x>29</x>
-                                <y>109</y>
-                                <width>132</width>
-                              </widget>
-                            </widget>
                             <widget type="action_button" version="3.0.0">
                               <name>Action Button_3</name>
                               <actions>
@@ -3325,6 +3157,47 @@ widget.setValue(data)]]></text>
                               <width>89</width>
                               <height>20</height>
                               <tooltip>$(actions)</tooltip>
+                            </widget>
+                            <widget type="action_button" version="3.0.0">
+                              <name>Action Button_4</name>
+                              <actions>
+                                <action type="open_display">
+                                  <file>../dmsc_detector_interfaceApp/op/bob/SPIdebug.bob</file>
+                                  <macros>
+                                    <CH>1</CH>
+                                    <DEV>${DEV}</DEV>
+                                    <PREFIX>${PREFIX}</PREFIX>
+                                    <SYS>${SYS}</SYS>
+                                  </macros>
+                                  <target>standalone</target>
+                                  <description>Open Display</description>
+                                </action>
+                              </actions>
+                              <text>Open SPI Debug Display</text>
+                              <x>269</x>
+                              <y>192</y>
+                              <width>110</width>
+                              <height>50</height>
+                              <tooltip>$(actions)</tooltip>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Downsample Averaging</name>
+                              <x>469</x>
+                              <y>12</y>
+                              <width>190</width>
+                              <height>120</height>
+                              <widget type="combo" version="2.0.0">
+                                <name>Combo Box_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-SP</pv_name>
+                                <x>12</x>
+                                <y>9</y>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Text Update_1</name>
+                                <pv_name>ca://${PREFIX}${DEV}:OVERSMPL-RBV</pv_name>
+                                <x>12</x>
+                                <y>47</y>
+                              </widget>
                             </widget>
                           </children>
                         </tab>
@@ -3726,30 +3599,30 @@ widget.setValue(data)]]></text>
                             <widget type="label" version="2.0.0">
                               <name>SnapLabel_17</name>
                               <text>Buffer Overflow Count</text>
-                              <x>290</x>
-                              <y>18</y>
+                              <x>429</x>
+                              <y>32</y>
                               <width>143</width>
                               <height>59</height>
                             </widget>
                             <widget type="label" version="2.0.0">
                               <name>SnapLabel_14</name>
                               <text>Snap value</text>
-                              <x>421</x>
-                              <y>18</y>
+                              <x>559</x>
+                              <y>52</y>
                               <width>80</width>
                             </widget>
                             <widget type="label" version="2.0.0">
                               <name>ThresholdLabel_14</name>
                               <text>Threshold</text>
-                              <x>88</x>
-                              <y>19</y>
+                              <x>49</x>
+                              <y>52</y>
                               <width>80</width>
                             </widget>
                             <widget type="label" version="2.0.0">
                               <name>ThresholdLabel_15</name>
                               <text>Ch</text>
-                              <x>18</x>
-                              <y>19</y>
+                              <x>13</x>
+                              <y>52</y>
                               <width>80</width>
                             </widget>
                             <widget type="group" version="2.0.0">
@@ -3760,21 +3633,23 @@ widget.setValue(data)]]></text>
                               <x>9</x>
                               <y>75</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
                                 <name>Ch1ThresholdSet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>Ch1ThresholdGet_4</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
                                 <name>Ch1Label_6</name>
@@ -3786,154 +3661,301 @@ widget.setValue(data)]]></text>
                               <widget type="textupdate" version="2.0.0">
                                 <name>Ch1FrameCtr_16</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>Ch1FrameCtr_46</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
+                              </widget>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_26</name>
+                              <text>Threshold Reg Value</text>
+                              <x>319</x>
+                              <y>32</y>
+                              <width>110</width>
+                              <height>60</height>
+                            </widget>
+                            <widget type="label" version="2.0.0">
+                              <name>ThresholdLabel_27</name>
+                              <text>Threshold Readback</text>
+                              <x>179</x>
+                              <y>32</y>
+                              <height>50</height>
                             </widget>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Threshold Group_19</name>
+                              <name>Channel Threshold Group_3</name>
                               <macros>
                                 <CH>2</CH>
                               </macros>
                               <x>9</x>
-                              <y>132</y>
+                              <y>139</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
-                                <name>Ch1ThresholdSet_28</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdSet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1ThresholdGet_35</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdGet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
-                                <name>Ch1Label_24</name>
+                                <name>Ch1Label_7</name>
                                 <text>${CH}</text>
                                 <x>9</x>
                                 <y>15</y>
                                 <width>10</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_47</name>
+                                <name>Ch1FrameCtr_17</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_48</name>
+                                <name>Ch1FrameCtr_53</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
                               </widget>
                             </widget>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Threshold Group_20</name>
+                              <name>Channel Threshold Group_4</name>
                               <macros>
                                 <CH>4</CH>
                               </macros>
                               <x>9</x>
-                              <y>245</y>
+                              <y>266</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
-                                <name>Ch1ThresholdSet_29</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdSet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1ThresholdGet_36</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdGet_8</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
-                                <name>Ch1Label_25</name>
+                                <name>Ch1Label_8</name>
                                 <text>${CH}</text>
                                 <x>9</x>
                                 <y>15</y>
                                 <width>10</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_49</name>
+                                <name>Ch1FrameCtr_54</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_50</name>
+                                <name>Ch1FrameCtr_55</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_9</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
                               </widget>
                             </widget>
                             <widget type="group" version="2.0.0">
-                              <name>Channel Threshold Group_21</name>
+                              <name>Channel Threshold Group_5</name>
                               <macros>
                                 <CH>3</CH>
                               </macros>
                               <x>9</x>
-                              <y>188</y>
+                              <y>202</y>
                               <width>642</width>
-                              <height>56</height>
+                              <height>67</height>
                               <style>3</style>
                               <widget type="textentry" version="3.0.0">
-                                <name>Ch1ThresholdSet_30</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-SP</pv_name>
-                                <x>72</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdSet_8</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-SP</pv_name>
+                                <x>41</x>
+                                <y>17</y>
+                                <width>120</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1ThresholdGet_37</name>
-                                <pv_name>ca://${PREFIX}${DEV}:CH${CH}-T-RBV</pv_name>
-                                <x>136</x>
-                                <y>14</y>
-                                <width>56</width>
+                                <name>Ch1ThresholdGet_10</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RBV</pv_name>
+                                <x>171</x>
+                                <y>17</y>
+                                <width>130</width>
+                                <format>1</format>
+                                <precision>10</precision>
                               </widget>
                               <widget type="label" version="2.0.0">
-                                <name>Ch1Label_26</name>
+                                <name>Ch1Label_9</name>
                                 <text>${CH}</text>
                                 <x>9</x>
                                 <y>15</y>
                                 <width>10</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_51</name>
+                                <name>Ch1FrameCtr_56</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SNAP${CH}-RBV</pv_name>
-                                <x>418</x>
-                                <y>14</y>
+                                <x>550</x>
+                                <y>17</y>
                                 <width>56</width>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
-                                <name>Ch1FrameCtr_52</name>
+                                <name>Ch1FrameCtr_57</name>
                                 <pv_name>ca://${PREFIX}${DEV}:CH${CH}-BFOV-RBV</pv_name>
-                                <x>290</x>
-                                <y>13</y>
+                                <x>430</x>
+                                <y>17</y>
                                 <width>56</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>Ch1ThresholdGet_11</name>
+                                <pv_name>ca://${PREFIX}${DEV}:T-CH${CH}-RD</pv_name>
+                                <x>320</x>
+                                <y>17</y>
+                                <width>80</width>
+                                <format>1</format>
+                              </widget>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Peak Detection Parameters</name>
+                              <x>9</x>
+                              <y>342</y>
+                              <width>470</width>
+                              <height>170</height>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>IPGet_13</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-RBV</pv_name>
+                                <x>264</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>PortGet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-RBV</pv_name>
+                                <x>264</x>
+                                <y>49</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <x>264</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>IPSet_11</name>
+                                <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
+                                <x>139</x>
+                                <y>19</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>PortSet_5</name>
+                                <pv_name>ca://${PREFIX}${DEV}:FH-SP</pv_name>
+                                <x>139</x>
+                                <y>49</y>
+                                <width>115</width>
+                                <format>1</format>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-SP</pv_name>
+                                <x>139</x>
+                                <y>79</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textentry" version="3.0.0">
+                                <name>MACSet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-SP</pv_name>
+                                <x>139</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_7</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
+                                <x>263</x>
+                                <y>109</y>
+                                <width>115</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_25</name>
+                                <text>Rising Hold</text>
+                                <x>39</x>
+                                <y>19</y>
+                                <width>80</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_28</name>
+                                <text>Falling Hold</text>
+                                <x>37</x>
+                                <y>47</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_33</name>
+                                <text>Samples Before</text>
+                                <x>29</x>
+                                <y>79</y>
+                                <width>132</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_34</name>
+                                <text>Samples After</text>
+                                <x>29</x>
+                                <y>109</y>
+                                <width>132</width>
                               </widget>
                             </widget>
                           </children>
@@ -3941,18 +3963,17 @@ widget.setValue(data)]]></text>
                       </tabs>
                       <x>46</x>
                       <y>138</y>
-                      <width>678</width>
-                      <height>550</height>
-                      <active_tab>-1</active_tab>
+                      <width>681</width>
+                      <height>563</height>
+                      <active_tab>2</active_tab>
                     </widget>
                   </children>
                 </tab>
               </tabs>
-              <x>18</x>
-              <y>11</y>
+              <x>17</x>
+              <y>8</y>
               <width>740</width>
               <height>750</height>
-              <active_tab>-1</active_tab>
             </widget>
           </children>
         </tab>
@@ -3962,6 +3983,20 @@ widget.setValue(data)]]></text>
       <width>779</width>
       <height>849</height>
       <active_tab>2</active_tab>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_5</name>
+      <actions>
+        <action type="open_webpage">
+          <url>https://confluence.esss.lu.se/display/IS/Detector+Readout+Support+Module</url>
+          <description>Open Webpage</description>
+        </action>
+      </actions>
+      <text>Help</text>
+      <x>709</x>
+      <y>19</y>
+      <height>40</height>
+      <tooltip>$(actions)</tooltip>
     </widget>
   </widget>
   <widget type="action_button" version="3.0.0">
