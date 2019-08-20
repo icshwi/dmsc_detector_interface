@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Display</name>
+  <width>400</width>
+  <height>200</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>SUBTITLE</class>
+    <text>${DEV} SPI Debug</text>
+    <x>96</x>
+    <y use_class="true">20</y>
+    <width>201</width>
+    <height use_class="true">30</height>
+    <font use_class="true">
+      <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment use_class="true">2</horizontal_alignment>
+    <vertical_alignment use_class="true">2</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>IPSet_14</name>
+    <pv_name>ca://${PREFIX}${DEV}:SPI-M2C-SP</pv_name>
+    <x>96</x>
+    <y>70</y>
+    <width>115</width>
+    <format>4</format>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>IPGet_15</name>
+    <pv_name>ca://${PREFIX}${DEV}:SPI-M2C-RBV</pv_name>
+    <x>226</x>
+    <y>70</y>
+    <width>115</width>
+    <height>21</height>
+    <format>4</format>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>ThresholdLabel_29</name>
+    <text>SPI M2C</text>
+    <x>26</x>
+    <y>70</y>
+    <width>80</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>ThresholdLabel_30</name>
+    <text>SPI DEV</text>
+    <x>26</x>
+    <y>90</y>
+    <width>80</width>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>IPGet_17</name>
+    <pv_name>ca://${PREFIX}${DEV}:SPI-DEV-RBV</pv_name>
+    <x>226</x>
+    <y>92</y>
+    <width>115</width>
+    <height>21</height>
+    <format>1</format>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>IPSet_15</name>
+    <pv_name>ca://${PREFIX}${DEV}:SPI-DEV-SP</pv_name>
+    <x>96</x>
+    <y>92</y>
+    <width>115</width>
+    <format>1</format>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>ThresholdLabel_31</name>
+    <text>SPI Write</text>
+    <x>20</x>
+    <y>112</y>
+    <width>80</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>IPSet_16</name>
+    <pv_name>ca://${PREFIX}${DEV}:SPI-WR-CMD</pv_name>
+    <x>96</x>
+    <y>112</y>
+    <width>115</width>
+    <format>1</format>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>ThresholdLabel_32</name>
+    <text>SPI Read</text>
+    <x>20</x>
+    <y>132</y>
+    <width>80</width>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>IPGet_22</name>
+    <pv_name>ca://${PREFIX}${DEV}:SPI-C2M-RBV</pv_name>
+    <x>226</x>
+    <y>132</y>
+    <width>115</width>
+    <height>21</height>
+    <format>4</format>
+  </widget>
+</display>
