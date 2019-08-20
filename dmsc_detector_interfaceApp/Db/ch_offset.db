@@ -46,7 +46,8 @@ record(calc, "$(SYS)-$(DEV):CH$(CH)-DEV"){
 record(seq, "$(SYS)-$(DEV):OFF-CH$(CH)-WRS"){
 	field(DESC, "(RAW) Set channel$(CH) off seq")
 	field(DOL1, "$(SYS)-$(DEV):OFF-CH$(CH)-CALC")
-	field(DOL2, "$(SYS)-$(DEV):CH$(CH)-DEV")
+	#field(DOL2, "$(SYS)-$(DEV):CH$(CH)-DEV")
+	field(DOL2, "$(CH)")
 	field(DOL3, "1")
 	#field(DOL4, "1")
 	#field(DLY3, "0.1")
