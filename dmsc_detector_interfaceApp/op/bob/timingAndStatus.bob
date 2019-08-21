@@ -2156,7 +2156,7 @@ widget.setValue(data)]]></text>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>MACGet_6</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
                                 <x>264</x>
                                 <y>79</y>
                                 <width>115</width>
@@ -2193,7 +2193,7 @@ widget.setValue(data)]]></text>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>MACGet_7</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
                                 <x>263</x>
                                 <y>109</y>
                                 <width>115</width>
@@ -2234,6 +2234,7 @@ widget.setValue(data)]]></text>
                       <y>138</y>
                       <width>681</width>
                       <height>563</height>
+                      <active_tab>2</active_tab>
                     </widget>
                     <widget type="group" version="2.0.0">
                       <name>Sampling mode</name>
@@ -3823,13 +3824,6 @@ widget.setValue(data)]]></text>
                                 <y>49</y>
                                 <width>115</width>
                               </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>MACGet_6</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
-                                <x>264</x>
-                                <y>79</y>
-                                <width>115</width>
-                              </widget>
                               <widget type="textentry" version="3.0.0">
                                 <name>IPSet_11</name>
                                 <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
@@ -3863,8 +3857,8 @@ widget.setValue(data)]]></text>
                               <widget type="textupdate" version="2.0.0">
                                 <name>MACGet_7</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
-                                <x>263</x>
-                                <y>109</y>
+                                <x>265</x>
+                                <y>78</y>
                                 <width>115</width>
                               </widget>
                               <widget type="label" version="2.0.0">
@@ -3894,6 +3888,13 @@ widget.setValue(data)]]></text>
                                 <x>29</x>
                                 <y>109</y>
                                 <width>132</width>
+                              </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <x>265</x>
+                                <y>107</y>
+                                <width>115</width>
                               </widget>
                             </widget>
                           </children>
@@ -3980,7 +3981,7 @@ widget.setValue(data)]]></text>
       <y>49</y>
       <width>779</width>
       <height>849</height>
-      <active_tab>2</active_tab>
+      <active_tab>1</active_tab>
     </widget>
     <widget type="action_button" version="3.0.0">
       <name>Action Button_5</name>
