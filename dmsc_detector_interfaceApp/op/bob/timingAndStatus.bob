@@ -1154,69 +1154,6 @@ widget.setValue(data)]]></text>
                         <items_from_pv>false</items_from_pv>
                       </widget>
                     </widget>
-                    <widget type="group" version="2.0.0">
-                      <name>Sampling mode</name>
-                      <x>423</x>
-                      <y>6</y>
-                      <width>223</width>
-                      <height>137</height>
-                      <widget type="led" version="2.0.0">
-                        <name>PeakDetectEnabled</name>
-                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
-                        <x>9</x>
-                        <y>10</y>
-                        <off_color>
-                          <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
-                          </color>
-                        </off_color>
-                        <on_color>
-                          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
-                          </color>
-                        </on_color>
-                      </widget>
-                      <widget type="led" version="2.0.0">
-                        <name>ContinousEnabled</name>
-                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
-                        <x>9</x>
-                        <y>57</y>
-                        <off_color>
-                          <color name="ON" red="70" green="255" blue="70">
-                          </color>
-                        </off_color>
-                        <on_color>
-                          <color name="Off" red="90" green="110" blue="90">
-                          </color>
-                        </on_color>
-                      </widget>
-                      <widget type="action_button" version="3.0.0">
-                        <name>Action Button_1</name>
-                        <actions>
-                          <action type="write_pv">
-                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
-                            <value>1</value>
-                            <description>Peak det.</description>
-                          </action>
-                        </actions>
-                        <text>Peak detect</text>
-                        <x>49</x>
-                        <y>10</y>
-                        <tooltip>$(actions)</tooltip>
-                      </widget>
-                      <widget type="action_button" version="3.0.0">
-                        <name>Action Button_2</name>
-                        <actions>
-                          <action type="write_pv">
-                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
-                            <value>0</value>
-                            <description>Enable cont.</description>
-                          </action>
-                        </actions>
-                        <text>Continous</text>
-                        <x>49</x>
-                        <y>57</y>
-                        <tooltip>$(actions)</tooltip>
-                      </widget>
-                    </widget>
                     <widget type="tabs" version="2.0.0">
                       <name>Tabs</name>
                       <tabs>
@@ -2298,6 +2235,69 @@ widget.setValue(data)]]></text>
                       <width>681</width>
                       <height>563</height>
                     </widget>
+                    <widget type="group" version="2.0.0">
+                      <name>Sampling mode</name>
+                      <x>428</x>
+                      <y>6</y>
+                      <width>210</width>
+                      <height>140</height>
+                      <widget type="led" version="2.0.0">
+                        <name>PeakDetectEnabled_2</name>
+                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
+                        <x>9</x>
+                        <y>10</y>
+                        <off_color>
+                          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+                          </color>
+                        </off_color>
+                        <on_color>
+                          <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+                          </color>
+                        </on_color>
+                      </widget>
+                      <widget type="led" version="2.0.0">
+                        <name>ContinousEnabled_2</name>
+                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
+                        <x>9</x>
+                        <y>49</y>
+                        <off_color>
+                          <color name="ON" red="70" green="255" blue="70">
+                          </color>
+                        </off_color>
+                        <on_color>
+                          <color name="Off" red="90" green="110" blue="90">
+                          </color>
+                        </on_color>
+                      </widget>
+                      <widget type="action_button" version="3.0.0">
+                        <name>Action Button_11</name>
+                        <actions>
+                          <action type="write_pv">
+                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
+                            <value>0</value>
+                            <description>Peak det.</description>
+                          </action>
+                        </actions>
+                        <text>Peak detect</text>
+                        <x>49</x>
+                        <y>10</y>
+                        <tooltip>$(actions)</tooltip>
+                      </widget>
+                      <widget type="action_button" version="3.0.0">
+                        <name>Action Button_12</name>
+                        <actions>
+                          <action type="write_pv">
+                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
+                            <value>1</value>
+                            <description>Enable cont.</description>
+                          </action>
+                        </actions>
+                        <text>Continous</text>
+                        <x>49</x>
+                        <y>49</y>
+                        <tooltip>$(actions)</tooltip>
+                      </widget>
+                    </widget>
                   </children>
                 </tab>
               </tabs>
@@ -2305,6 +2305,7 @@ widget.setValue(data)]]></text>
               <y>8</y>
               <width>740</width>
               <height>750</height>
+              <active_tab>2</active_tab>
             </widget>
           </children>
         </tab>
@@ -2820,69 +2821,6 @@ widget.setValue(data)]]></text>
                           <item>External</item>
                         </items>
                         <items_from_pv>false</items_from_pv>
-                      </widget>
-                    </widget>
-                    <widget type="group" version="2.0.0">
-                      <name>Sampling mode</name>
-                      <x>423</x>
-                      <y>6</y>
-                      <width>223</width>
-                      <height>137</height>
-                      <widget type="led" version="2.0.0">
-                        <name>PeakDetectEnabled</name>
-                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
-                        <x>9</x>
-                        <y>10</y>
-                        <off_color>
-                          <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
-                          </color>
-                        </off_color>
-                        <on_color>
-                          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
-                          </color>
-                        </on_color>
-                      </widget>
-                      <widget type="led" version="2.0.0">
-                        <name>ContinousEnabled</name>
-                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
-                        <x>9</x>
-                        <y>57</y>
-                        <off_color>
-                          <color name="ON" red="70" green="255" blue="70">
-                          </color>
-                        </off_color>
-                        <on_color>
-                          <color name="Off" red="90" green="110" blue="90">
-                          </color>
-                        </on_color>
-                      </widget>
-                      <widget type="action_button" version="3.0.0">
-                        <name>Action Button_1</name>
-                        <actions>
-                          <action type="write_pv">
-                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
-                            <value>1</value>
-                            <description>Peak det.</description>
-                          </action>
-                        </actions>
-                        <text>Peak detect</text>
-                        <x>49</x>
-                        <y>10</y>
-                        <tooltip>$(actions)</tooltip>
-                      </widget>
-                      <widget type="action_button" version="3.0.0">
-                        <name>Action Button_2</name>
-                        <actions>
-                          <action type="write_pv">
-                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
-                            <value>0</value>
-                            <description>Enable cont.</description>
-                          </action>
-                        </actions>
-                        <text>Continous</text>
-                        <x>49</x>
-                        <y>57</y>
-                        <tooltip>$(actions)</tooltip>
                       </widget>
                     </widget>
                     <widget type="tabs" version="2.0.0">
@@ -3967,6 +3905,65 @@ widget.setValue(data)]]></text>
                       <height>563</height>
                       <active_tab>2</active_tab>
                     </widget>
+                    <widget type="group" version="2.0.0">
+                      <name>Sampling mode</name>
+                      <x>428</x>
+                      <y>3</y>
+                      <width>210</width>
+                      <height>141</height>
+                      <widget type="led" version="2.0.0">
+                        <name>PeakDetectEnabled_1</name>
+                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
+                        <x>9</x>
+                        <y>10</y>
+                        <off_color>
+                          <color name="LED-GREEN-ON" red="70" green="255" blue="70">
+                          </color>
+                        </off_color>
+                        <on_color>
+                          <color name="LED-GREEN-OFF" red="90" green="110" blue="90">
+                          </color>
+                        </on_color>
+                      </widget>
+                      <widget type="led" version="2.0.0">
+                        <name>ContinousEnabled_1</name>
+                        <pv_name>ca://${PREFIX}${DEV}:ACQ-MODE-RBV</pv_name>
+                        <x>9</x>
+                        <y>49</y>
+                        <on_color>
+                          <color name="ON" red="70" green="255" blue="70">
+                          </color>
+                        </on_color>
+                      </widget>
+                      <widget type="action_button" version="3.0.0">
+                        <name>Action Button_6</name>
+                        <actions>
+                          <action type="write_pv">
+                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
+                            <value>0</value>
+                            <description>Peak det.</description>
+                          </action>
+                        </actions>
+                        <text>Peak detect</text>
+                        <x>49</x>
+                        <y>10</y>
+                        <tooltip>$(actions)</tooltip>
+                      </widget>
+                      <widget type="action_button" version="3.0.0">
+                        <name>Action Button_10</name>
+                        <actions>
+                          <action type="write_pv">
+                            <pv_name>$(PREFIX)${DEV}:ACQ-MODE-SP</pv_name>
+                            <value>1</value>
+                            <description>Enable cont.</description>
+                          </action>
+                        </actions>
+                        <text>Continous</text>
+                        <x>49</x>
+                        <y>49</y>
+                        <tooltip>$(actions)</tooltip>
+                      </widget>
+                    </widget>
                   </children>
                 </tab>
               </tabs>
@@ -3974,6 +3971,7 @@ widget.setValue(data)]]></text>
               <y>8</y>
               <width>740</width>
               <height>750</height>
+              <active_tab>2</active_tab>
             </widget>
           </children>
         </tab>
