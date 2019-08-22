@@ -2262,11 +2262,11 @@ widget.setValue(data)]]></text>
                         <x>9</x>
                         <y>49</y>
                         <off_color>
-                          <color name="ON" red="70" green="255" blue="70">
+                          <color name="OFF" red="90" green="110" blue="90">
                           </color>
                         </off_color>
                         <on_color>
-                          <color name="Off" red="90" green="110" blue="90">
+                          <color name="ON" red="70" green="255" blue="70">
                           </color>
                         </on_color>
                       </widget>
@@ -3909,7 +3909,7 @@ widget.setValue(data)]]></text>
                     <widget type="group" version="2.0.0">
                       <name>Sampling mode</name>
                       <x>428</x>
-                      <y>3</y>
+                      <y>4</y>
                       <width>210</width>
                       <height>141</height>
                       <widget type="led" version="2.0.0">
@@ -3981,7 +3981,7 @@ widget.setValue(data)]]></text>
       <y>49</y>
       <width>779</width>
       <height>849</height>
-      <active_tab>1</active_tab>
+      <active_tab>2</active_tab>
     </widget>
     <widget type="action_button" version="3.0.0">
       <name>Action Button_5</name>
