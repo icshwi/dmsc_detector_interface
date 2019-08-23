@@ -23,10 +23,10 @@ record(aSub, "$(SYS)-$(EVR):getTimeStamp_aSub"){
 record(longout, "$(SYS)-$(EVR):FracNsecDelta-SP"){
 	field(DESC, "delta in ticks")
 	info(autosaveFields_pass0, "VAL")
-	field(FLNK, "$(SYS)-$(DEV):Delta-SP")
+	field(FLNK, "$(SYS)-$(EVR):Delta-SP_")
 }
 
-record(calc, "$(SYS)-$(DEV):Delta-SP_"){
+record(calc, "$(SYS)-$(EVR):Delta-SP_"){
 	field(DESC, "delta in ns")
 	field(INPA, "$(SYS)-$(EVR):FracNsecDelta-SP NPP")
 	field(CALC, "B*1000000000/88052500")
