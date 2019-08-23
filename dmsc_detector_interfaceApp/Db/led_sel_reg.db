@@ -1,0 +1,71 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    	= The System (DG)
+# $(DEV) 	= The DEV name (FPGA)
+# $(OFF) = register offset
+# $(COM)	= COM port for stream DEV
+
+record(mbbo, "$(SYS)-$(DEV):LEDSEL-SP"){
+  field(DESC, "LED Select")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(SVVL, "7")
+  field(EIVL, "8")
+  field(NIVL, "9")
+  field(TEVL, "10")
+  field(ZRST, "Default")
+  field(ONST, "Test")
+  field(TWST, "Clock & Reset")
+  field(THST, "ADC")
+  field(FRST, "ICS")
+  field(FVST, "Packet 7:0")
+  field(SXST, "Packet 15:8")
+  field(SVST, "Packet 20:16")
+  field(EIST, "Packet 25:21")
+  field(NIST, "UDP")
+  field(TEST, "All On")
+  field(DTYP, "stream")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),LEDSEL-OFF,LEDSEL-SP.RVAL) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):LEDSEL-RBV")
+  info(autosaveFields_pass0, "VAL")
+  field(PINI, "1")
+}
+
+record(mbbi, "$(SYS)-$(DEV):LEDSEL-RBV"){
+  field(DESC, "LED State")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(SVVL, "7")
+  field(EIVL, "8")
+  field(NIVL, "9")
+  field(TEVL, "10")
+  field(ZRST, "Default")
+  field(ONST, "Test")
+  field(TWST, "Clock & Reset")
+  field(THST, "ADC")
+  field(FRST, "ICS")
+  field(FVST, "Packet 7:0")
+  field(SXST, "Packet 15:8")
+  field(SVST, "Packet 20:16")
+  field(EIST, "Packet 25:21")
+  field(NIST, "UDP")
+  field(TEST, "All On")
+  field(DTYP, "stream")
+  field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),LEDSEL-OFF) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):OVERSMPL-FANO")
+}
+
+record(longin, "$(SYS)-$(DEV):LEDSEL-OFF") {
+  field(VAL, $(OFF))
+}
+
+

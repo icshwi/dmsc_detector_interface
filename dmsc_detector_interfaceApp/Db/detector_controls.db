@@ -70,6 +70,7 @@ record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	field(LNK2,  "$(SYS)-$(DEV):TSU-RBV.PROC")
 	field(LNK3,  "$(SYS)-$(DEV):TSL-RBV.PROC")
 	field(LNK4,  "$(SYS)-$(DEV):TS-Diff-RBV.PROC")
+	field(LNK5,  "$(SYS)-$(DEV):TS-RBV.PROC")
 	field(SCAN, "Event")
 	field(EVNT, "$(SYNC_EVNT)")
 	field(DISV, "0")
@@ -128,3 +129,12 @@ record(calc, "$(SYS)-$(DEV):TS-Diff-RBV"){
 	field(CALC, "(A+(B/88052500))*1000000000")
 	field(EGU, "ns")
 }
+
+record(calc, "$(SYS)-$(DEV):TS-RBV"){
+	field(DESC, "TS when pulse received")
+	field(CALC, "A+(B*2/88052500)")
+	field(INPA, "$(SYS)-$(DEV):TSU-RBV NPP") 
+	field(INPB, "$(SYS)-$(DEV):TSL-RBV NPP")
+	field(EGU, "S")
+}
+
