@@ -666,15 +666,10 @@
                         <x>19</x>
                         <y>9</y>
                         <width>220</width>
-                        <font use_class="true">
+                        <font>
                           <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
                           </font>
                         </font>
-                        <background_color use_class="true">
-                          <color name="Background" red="220" green="225" blue="221">
-                          </color>
-                        </background_color>
-                        <transparent use_class="true">true</transparent>
                       </widget>
                       <widget type="table" version="2.0.0">
                         <name>Table</name>
@@ -1479,9 +1474,9 @@ widget.setValue(data)]]></text>
                             <widget type="group" version="2.0.0">
                               <name>Group</name>
                               <x>8</x>
-                              <y>149</y>
-                              <width>650</width>
-                              <height>186</height>
+                              <y>145</y>
+                              <width>680</width>
+                              <height>230</height>
                               <style>3</style>
                               <transparent>true</transparent>
                               <widget type="label" version="2.0.0">
@@ -1508,19 +1503,13 @@ widget.setValue(data)]]></text>
                                 <x>360</x>
                                 <width>140</width>
                               </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_20</name>
-                                <text>Pulse Count</text>
-                                <x>510</x>
-                                <width>140</width>
-                              </widget>
                               <widget type="group" version="2.0.0">
                                 <name>Channel Threshold Group_15</name>
                                 <macros>
                                   <CH>1</CH>
                                 </macros>
-                                <y>20</y>
-                                <width>600</width>
+                                <y>21</y>
+                                <width>660</width>
                                 <height>46</height>
                                 <style>3</style>
                                 <widget type="textentry" version="3.0.0">
@@ -1560,223 +1549,258 @@ widget.setValue(data)]]></text>
                                 </widget>
                                 <widget type="textentry" version="3.0.0">
                                   <name>Ch1ThresholdSet_21</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
                                   <x>359</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
                                   <name>Ch1ThresholdGet_21</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
                                   <x>423</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_28</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_20</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
+                                  <name>Ch1ThresholdGet_35</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
                                   <width>56</width>
                                 </widget>
                               </widget>
                               <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_16</name>
+                                <name>Channel Threshold Group_19</name>
                                 <macros>
                                   <CH>2</CH>
                                 </macros>
-                                <y>60</y>
-                                <width>600</width>
+                                <y>66</y>
+                                <width>660</width>
                                 <height>46</height>
                                 <style>3</style>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_1</name>
+                                  <name>Test Pulse Width_4</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
                                   <x>72</x>
                                   <y>14</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_22</name>
+                                  <name>Ch1ThresholdGet_36</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
                                   <x>136</x>
                                   <y>14</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_21</name>
+                                  <name>Ch1Label_24</name>
                                   <text>${CH}</text>
                                   <x>9</x>
                                   <y>15</y>
                                   <width>10</width>
                                 </widget>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_22</name>
+                                  <name>Ch1ThresholdSet_29</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
                                   <x>217</x>
                                   <y>13</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_23</name>
+                                  <name>Ch1ThresholdGet_37</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
                                   <x>281</x>
                                   <y>13</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_23</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                  <name>Ch1ThresholdSet_30</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
                                   <x>359</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_24</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                  <name>Ch1ThresholdGet_38</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
                                   <x>423</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_31</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_25</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
+                                  <name>Ch1ThresholdGet_39</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
                                   <width>56</width>
                                 </widget>
                               </widget>
                               <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_17</name>
+                                <name>Channel Threshold Group_20</name>
                                 <macros>
                                   <CH>3</CH>
                                 </macros>
-                                <y>100</y>
-                                <width>600</width>
+                                <y>113</y>
+                                <width>660</width>
                                 <height>46</height>
                                 <style>3</style>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_2</name>
+                                  <name>Test Pulse Width_6</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
                                   <x>72</x>
                                   <y>14</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_26</name>
+                                  <name>Ch1ThresholdGet_40</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
                                   <x>136</x>
                                   <y>14</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_22</name>
+                                  <name>Ch1Label_25</name>
                                   <text>${CH}</text>
                                   <x>9</x>
                                   <y>15</y>
                                   <width>10</width>
                                 </widget>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_24</name>
+                                  <name>Ch1ThresholdSet_32</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
                                   <x>217</x>
                                   <y>13</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_27</name>
+                                  <name>Ch1ThresholdGet_41</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
                                   <x>281</x>
                                   <y>13</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_25</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                  <name>Ch1ThresholdSet_33</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
                                   <x>359</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_28</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                  <name>Ch1ThresholdGet_42</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
                                   <x>423</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_34</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_29</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
+                                  <name>Ch1ThresholdGet_43</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
                                   <width>56</width>
                                 </widget>
                               </widget>
                               <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_18</name>
+                                <name>Channel Threshold Group_21</name>
                                 <macros>
                                   <CH>4</CH>
                                 </macros>
-                                <y>140</y>
-                                <width>600</width>
+                                <y>156</y>
+                                <width>660</width>
                                 <height>46</height>
                                 <style>3</style>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_3</name>
+                                  <name>Test Pulse Width_7</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
                                   <x>72</x>
                                   <y>14</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_30</name>
+                                  <name>Ch1ThresholdGet_44</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
                                   <x>136</x>
                                   <y>14</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_23</name>
+                                  <name>Ch1Label_26</name>
                                   <text>${CH}</text>
                                   <x>9</x>
                                   <y>15</y>
                                   <width>10</width>
                                 </widget>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_26</name>
+                                  <name>Ch1ThresholdSet_35</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
                                   <x>217</x>
                                   <y>13</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_31</name>
+                                  <name>Ch1ThresholdGet_45</name>
                                   <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
                                   <x>281</x>
                                   <y>13</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_27</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
+                                  <name>Ch1ThresholdSet_36</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
                                   <x>359</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
                                 <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_32</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
+                                  <name>Ch1ThresholdGet_46</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
                                   <x>423</x>
                                   <y>12</y>
                                   <width>56</width>
                                 </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_33</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_37</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
                                   <width>56</width>
                                 </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_47</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_21</name>
+                                <text>Pulse Gap</text>
+                                <x>507</x>
+                                <y>3</y>
+                                <width>140</width>
                               </widget>
                             </widget>
                             <widget type="group" version="2.0.0">
@@ -2307,6 +2331,7 @@ widget.setValue(data)]]></text>
                       <y>134</y>
                       <width>709</width>
                       <height>563</height>
+                      <active_tab>1</active_tab>
                     </widget>
                     <widget type="group" version="2.0.0">
                       <name>Sampling mode</name>
@@ -2422,15 +2447,10 @@ widget.setValue(data)]]></text>
                         <x>19</x>
                         <y>9</y>
                         <width>220</width>
-                        <font use_class="true">
+                        <font>
                           <font name="Header 2" family="Source Sans Pro" style="BOLD_ITALIC" size="21.0">
                           </font>
                         </font>
-                        <background_color use_class="true">
-                          <color name="Background" red="220" green="225" blue="221">
-                          </color>
-                        </background_color>
-                        <transparent use_class="true">true</transparent>
                       </widget>
                       <widget type="table" version="2.0.0">
                         <name>Table</name>
@@ -3233,309 +3253,6 @@ widget.setValue(data)]]></text>
                           <name>Test Data</name>
                           <children>
                             <widget type="group" version="2.0.0">
-                              <name>Group</name>
-                              <x>8</x>
-                              <y>149</y>
-                              <width>650</width>
-                              <height>186</height>
-                              <style>3</style>
-                              <transparent>true</transparent>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_17</name>
-                                <text>High Period (Smps)</text>
-                                <x>70</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_16</name>
-                                <text>Ch</text>
-                                <x>10</x>
-                                <width>80</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_18</name>
-                                <text> Low Period (Smps)</text>
-                                <x>210</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_19</name>
-                                <text>Pulse Buffer Width</text>
-                                <x>360</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="label" version="2.0.0">
-                                <name>ThresholdLabel_20</name>
-                                <text>Pulse Count</text>
-                                <x>510</x>
-                                <width>140</width>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_15</name>
-                                <macros>
-                                  <CH>1</CH>
-                                </macros>
-                                <y>20</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_17</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_20</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_18</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_18</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_21</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_21</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_20</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_16</name>
-                                <macros>
-                                  <CH>2</CH>
-                                </macros>
-                                <y>60</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_1</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_22</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_21</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_22</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_23</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_23</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_24</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_25</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_17</name>
-                                <macros>
-                                  <CH>3</CH>
-                                </macros>
-                                <y>100</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_2</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_26</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_22</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_24</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_27</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_25</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_28</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_29</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                              <widget type="group" version="2.0.0">
-                                <name>Channel Threshold Group_18</name>
-                                <macros>
-                                  <CH>4</CH>
-                                </macros>
-                                <y>140</y>
-                                <width>600</width>
-                                <height>46</height>
-                                <style>3</style>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Test Pulse Width_3</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
-                                  <x>72</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_30</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
-                                  <x>136</x>
-                                  <y>14</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="label" version="2.0.0">
-                                  <name>Ch1Label_23</name>
-                                  <text>${CH}</text>
-                                  <x>9</x>
-                                  <y>15</y>
-                                  <width>10</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_26</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
-                                  <x>217</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_31</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
-                                  <x>281</x>
-                                  <y>13</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textentry" version="3.0.0">
-                                  <name>Ch1ThresholdSet_27</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-SP</pv_name>
-                                  <x>359</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_32</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-BUF-RBV</pv_name>
-                                  <x>423</x>
-                                  <y>12</y>
-                                  <width>56</width>
-                                </widget>
-                                <widget type="textupdate" version="2.0.0">
-                                  <name>Ch1ThresholdGet_33</name>
-                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-CNT-RBV</pv_name>
-                                  <x>515</x>
-                                  <y>11</y>
-                                  <width>56</width>
-                                </widget>
-                              </widget>
-                            </widget>
-                            <widget type="group" version="2.0.0">
                               <name>Test Pulse Enable</name>
                               <x>248</x>
                               <width>206</width>
@@ -3617,6 +3334,338 @@ widget.setValue(data)]]></text>
                                 <x>89</x>
                                 <y>38</y>
                                 <width>70</width>
+                              </widget>
+                            </widget>
+                            <widget type="group" version="2.0.0">
+                              <name>Group_3</name>
+                              <x>7</x>
+                              <y>139</y>
+                              <width>680</width>
+                              <height>230</height>
+                              <style>3</style>
+                              <transparent>true</transparent>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_37</name>
+                                <text>High Period (Smps)</text>
+                                <x>70</x>
+                                <width>140</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_38</name>
+                                <text>Ch</text>
+                                <x>10</x>
+                                <width>80</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_39</name>
+                                <text> Low Period (Smps)</text>
+                                <x>210</x>
+                                <width>140</width>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_40</name>
+                                <text>Pulse Buffer Width</text>
+                                <x>360</x>
+                                <width>140</width>
+                              </widget>
+                              <widget type="group" version="2.0.0">
+                                <name>Channel Threshold Group_30</name>
+                                <macros>
+                                  <CH>1</CH>
+                                </macros>
+                                <y>21</y>
+                                <width>660</width>
+                                <height>46</height>
+                                <style>3</style>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Test Pulse Width_16</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>72</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_80</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>136</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="label" version="2.0.0">
+                                  <name>Ch1Label_35</name>
+                                  <text>${CH}</text>
+                                  <x>9</x>
+                                  <y>15</y>
+                                  <width>10</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_54</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>217</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_81</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>281</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_55</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>359</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_82</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>423</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_56</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_83</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                              </widget>
+                              <widget type="group" version="2.0.0">
+                                <name>Channel Threshold Group_31</name>
+                                <macros>
+                                  <CH>2</CH>
+                                </macros>
+                                <y>66</y>
+                                <width>660</width>
+                                <height>46</height>
+                                <style>3</style>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Test Pulse Width_17</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>72</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_84</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>136</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="label" version="2.0.0">
+                                  <name>Ch1Label_36</name>
+                                  <text>${CH}</text>
+                                  <x>9</x>
+                                  <y>15</y>
+                                  <width>10</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_57</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>217</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_85</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>281</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_58</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>359</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_86</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>423</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_59</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_87</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                              </widget>
+                              <widget type="group" version="2.0.0">
+                                <name>Channel Threshold Group_32</name>
+                                <macros>
+                                  <CH>3</CH>
+                                </macros>
+                                <y>113</y>
+                                <width>660</width>
+                                <height>46</height>
+                                <style>3</style>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Test Pulse Width_18</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>72</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_88</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>136</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="label" version="2.0.0">
+                                  <name>Ch1Label_37</name>
+                                  <text>${CH}</text>
+                                  <x>9</x>
+                                  <y>15</y>
+                                  <width>10</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_60</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>217</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_89</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>281</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_61</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>359</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_90</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>423</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_62</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_91</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                              </widget>
+                              <widget type="group" version="2.0.0">
+                                <name>Channel Threshold Group_33</name>
+                                <macros>
+                                  <CH>4</CH>
+                                </macros>
+                                <y>156</y>
+                                <width>660</width>
+                                <height>46</height>
+                                <style>3</style>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Test Pulse Width_19</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>72</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_92</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>136</x>
+                                  <y>14</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="label" version="2.0.0">
+                                  <name>Ch1Label_38</name>
+                                  <text>${CH}</text>
+                                  <x>9</x>
+                                  <y>15</y>
+                                  <width>10</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_63</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>217</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_93</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>281</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_64</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-SP</pv_name>
+                                  <x>359</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_94</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-W-RBV</pv_name>
+                                  <x>423</x>
+                                  <y>12</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textentry" version="3.0.0">
+                                  <name>Ch1ThresholdSet_65</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-SP</pv_name>
+                                  <x>511</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                                <widget type="textupdate" version="2.0.0">
+                                  <name>Ch1ThresholdGet_95</name>
+                                  <pv_name>ca://${PREFIX}${DEV}:CH${CH}-TST-GP-RBV</pv_name>
+                                  <x>575</x>
+                                  <y>13</y>
+                                  <width>56</width>
+                                </widget>
+                              </widget>
+                              <widget type="label" version="2.0.0">
+                                <name>ThresholdLabel_41</name>
+                                <text>Pulse Gap</text>
+                                <x>507</x>
+                                <y>3</y>
+                                <width>140</width>
                               </widget>
                             </widget>
                           </children>
@@ -4063,6 +4112,7 @@ widget.setValue(data)]]></text>
                       <y>134</y>
                       <width>709</width>
                       <height>563</height>
+                      <active_tab>1</active_tab>
                     </widget>
                     <widget type="group" version="2.0.0">
                       <name>Sampling mode</name>
@@ -4157,6 +4207,7 @@ widget.setValue(data)]]></text>
       <y>49</y>
       <width>779</width>
       <height>849</height>
+      <active_tab>2</active_tab>
     </widget>
     <widget type="action_button" version="3.0.0">
       <name>Action Button_10</name>
