@@ -2156,7 +2156,7 @@ widget.setValue(data)]]></text>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>MACGet_6</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
                                 <x>264</x>
                                 <y>79</y>
                                 <width>115</width>
@@ -2193,7 +2193,7 @@ widget.setValue(data)]]></text>
                               </widget>
                               <widget type="textupdate" version="2.0.0">
                                 <name>MACGet_7</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
                                 <x>263</x>
                                 <y>109</y>
                                 <width>115</width>
@@ -2234,6 +2234,7 @@ widget.setValue(data)]]></text>
                       <y>138</y>
                       <width>681</width>
                       <height>563</height>
+                      <active_tab>2</active_tab>
                     </widget>
                     <widget type="group" version="2.0.0">
                       <name>Sampling mode</name>
@@ -2261,11 +2262,11 @@ widget.setValue(data)]]></text>
                         <x>9</x>
                         <y>49</y>
                         <off_color>
-                          <color name="ON" red="70" green="255" blue="70">
+                          <color name="OFF" red="90" green="110" blue="90">
                           </color>
                         </off_color>
                         <on_color>
-                          <color name="Off" red="90" green="110" blue="90">
+                          <color name="ON" red="70" green="255" blue="70">
                           </color>
                         </on_color>
                       </widget>
@@ -3823,13 +3824,6 @@ widget.setValue(data)]]></text>
                                 <y>49</y>
                                 <width>115</width>
                               </widget>
-                              <widget type="textupdate" version="2.0.0">
-                                <name>MACGet_6</name>
-                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
-                                <x>264</x>
-                                <y>79</y>
-                                <width>115</width>
-                              </widget>
                               <widget type="textentry" version="3.0.0">
                                 <name>IPSet_11</name>
                                 <pv_name>ca://${PREFIX}${DEV}:RH-SP</pv_name>
@@ -3863,8 +3857,8 @@ widget.setValue(data)]]></text>
                               <widget type="textupdate" version="2.0.0">
                                 <name>MACGet_7</name>
                                 <pv_name>ca://${PREFIX}${DEV}:SMPSB-RBV</pv_name>
-                                <x>263</x>
-                                <y>109</y>
+                                <x>265</x>
+                                <y>78</y>
                                 <width>115</width>
                               </widget>
                               <widget type="label" version="2.0.0">
@@ -3895,6 +3889,13 @@ widget.setValue(data)]]></text>
                                 <y>109</y>
                                 <width>132</width>
                               </widget>
+                              <widget type="textupdate" version="2.0.0">
+                                <name>MACGet_6</name>
+                                <pv_name>ca://${PREFIX}${DEV}:SMPSA-RBV</pv_name>
+                                <x>265</x>
+                                <y>107</y>
+                                <width>115</width>
+                              </widget>
                             </widget>
                           </children>
                         </tab>
@@ -3908,7 +3909,7 @@ widget.setValue(data)]]></text>
                     <widget type="group" version="2.0.0">
                       <name>Sampling mode</name>
                       <x>428</x>
-                      <y>3</y>
+                      <y>4</y>
                       <width>210</width>
                       <height>141</height>
                       <widget type="led" version="2.0.0">
