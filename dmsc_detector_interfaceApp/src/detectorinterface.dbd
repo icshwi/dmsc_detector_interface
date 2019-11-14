@@ -1,4 +1,5 @@
 function(getTimeStamp_aSub)
+function(chInp_aSub)
 function(syncState_aSub)
 function(getRange_aSub)
 function(getBuildTime_aSub)

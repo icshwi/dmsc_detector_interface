@@ -5,35 +5,63 @@
 # $(COM)	= COM port for stream DEV
 # $(CH) = ADC channel nr
 
-record(mbbo, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP"){
-	field(DESC, "Select ch$(CH) gain")
+record(bo,  "$(SYS)-$(DEV):GND-CH$(CH)-SP"){
+	field(DESC, "ground channel $(CH)")
+	field(ZNAM, "Not Grounded")
+	field(ONAM, "Grounded")
+	field(FLNK,  "$(SYS)-$(DEV):GAIN-CH$(CH)-SP")
+	info(autosaveFields_pass0, "VAL")
+  	field(PINI, "1")
+}
+
+
+record(bo,  "$(SYS)-$(DEV):IMP-CH$(CH)-SP"){
+        field(DESC, "Ch $(CH) Impedance")
+        field(ZNAM, "50 Ohms")
+        field(ONAM, "1K Ohm")
+        field(FLNK,  "$(SYS)-$(DEV):GAIN-CH$(CH)-SP")
+        info(autosaveFields_pass0, "VAL")
+        field(PINI, "1")
+}
+
+record(mbbo, "$(SYS)-$(DEV):RANGE-CH$(CH)-SP"){
+  field(DESC, "Select ch$(CH) Range")
   field(DTYP, "Raw Soft Channel")
-  field(ZRST, "+/-5V 1kOhm")
-  field(ZRVL, "69")
-  field(ONST, "+/-0.5V 1kOhm")
-  field(ONVL, "17")
-  field(TWST, "+/-50mV 1kOhm")
-  field(TWVL, "35")
-  field(THST, "+/-5V 50Ohm")
-  field(THVL, "77")
-  field(FRST, "+/-0.5V 50Ohm")
-  field(FRVL, "25")
-  field(FVST, "+/-50mV 50Ohm")
-  field(FVVL, "43")
-  field(SXST, "GND")
-  field(SXVL, "64")
-  field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP")
+  field(ZRST, "+/-50mV")
+  field(ZRVL, "0")
+  field(ONST, "+/-0.5V")
+  field(ONVL, "1")
+  field(TWST, "+/-5V")
+  field(TWVL, "2")
+  field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP")
   info(autosaveFields_pass0, "VAL")
   field(PINI, "1")
 }
 
 
 
+record(aSub, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP"){
+	field(SNAM, "chInp_aSub")
+	field(INPA, "$(SYS)-$(DEV):GND-CH$(CH)-SP")
+	field(FTA, "LONG")
+	field(FTB, "LONG")
+	field(FTC, "LONG")
+	field(FTVA,"LONG")
+	
+	field(INPB,  "$(SYS)-$(DEV):IMP-CH$(CH)-SP")
+	field(INPC,  "$(SYS)-$(DEV):RANGE-CH$(CH)-SP")
+	field(OUTA, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP PP")
+}	
 
-record(longout, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP"){
+record(longout,  "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-SP"){
+	field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-WR")
+}
+
+
+record(longout, "$(SYS)-$(DEV):GAIN-CH$(CH)-WR"){
   field(DESC, "(RAW) Select ch$(CH) gain")
   field(DTYP, "stream")
-  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),GAIN-CH$(CH)-OFF,GAIN-CH$(CH)-SP.RVAL) $(COM)")
+  field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),GAIN-CH$(CH)-OFF,GAIN-CH$(CH)-RAW-SP) $(COM)")
   field(FLNK, "$(SYS)-$(DEV):GAIN-CH$(CH)-RAW-RBV")
   
 }
@@ -65,7 +93,7 @@ record(aSub, "$(SYS)-$(DEV):CH$(CH)getRange_aSub"){
 	field(SNAM, "getRange_aSub")
 	field(FTA,  "LONG")     
 	field(NOA,  "1")  	
-	field(INPA, "$(SYS)-$(DEV):GAIN-CH$(CH)-SP")
+	field(INPA, "$(SYS)-$(DEV):GAIN-CH$(CH)-RBV")
 	field(FTVA, "DOUBLE")
 	field(NOVA, "1")
 	field(OUTA, "$(SYS)-$(DEV):RANGE-CH$(CH)-RBV PP")
