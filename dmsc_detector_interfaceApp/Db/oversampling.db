@@ -10,9 +10,9 @@ record(mbbo, "$(SYS)-$(DEV):OVERSMPL-SP"){
   field(ZRVL, "1")
   field(ONVL, "2")
   field(TWVL, "4")
-  field(ZRST, "1x")
-  field(ONST, "2x")
-  field(TWST, "4x")
+  field(ZRST, "1")
+  field(ONST, "1/2")
+  field(TWST, "1/4")
   field(FLNK, "$(SYS)-$(DEV):OVERSMPL-RAW-SP")
   info(autosaveFields_pass0, "VAL")
   field(PINI, "1")
@@ -31,9 +31,9 @@ record(mbbi, "$(SYS)-$(DEV):OVERSMPL-RBV"){
   field(ZRVL, 1)
   field(ONVL, 2)
   field(TWVL, 4)
-  field(ZRST, "1x")
-  field(ONST, "2x")
-  field(TWST, "4x")
+  field(ZRST, "1")
+  field(ONST, "1/2")
+  field(TWST, "1/4")
   field(PINI, "0")
   field(INP, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")
   field(FLNK, "$(SYS)-$(DEV):OVERSMPL-FANO")
@@ -47,6 +47,28 @@ record(fanout, "$(SYS)-$(DEV):OVERSMPL-FANO"){
 	field(LNK3, "$(SYS)-$(DEV):T-CH3-SP")
 	field(LNK4, "$(SYS)-$(DEV):T-CH4-SP")
 	field(SELM, "All")
+	field(FLNK,  "$(SYS)-$(DEV):FS-RBV")
+}
+
+record(calc, "$(SYS)-$(DEV):FS-RBV"){
+	field(INPA, "$(SYS)-$(DEV):SMP-RATE-RBV PP")
+	field(INPB,  "$(SYS)-$(DEV):OVERSMPL-RBV NPP")
+	field(CALC, "A/(2^B)")
+	field(EGU, "Hz")
+	field(FLNK, "$(SYS)-$(DEV):RES-RBV") 
+}
+
+record(mbbi, "$(SYS)-$(DEV):RES-RBV"){
+  field(DESC, "Effective Resolution")
+  field(DTYP, "Raw Soft Channel")
+  field(ZRVL, 1)
+  field(ONVL, 2)
+  field(TWVL, 4)
+  field(ZRST, "14 bits")
+  field(ONST, "15 bit")
+  field(TWST, "16 bits")
+  field(PINI, "0")
+  field(INP, "$(SYS)-$(DEV):OVERSMPL-RAW-RBV NPP")
 }
 
 
