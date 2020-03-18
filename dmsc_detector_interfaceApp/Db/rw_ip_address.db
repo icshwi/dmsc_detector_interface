@@ -1,69 +1,69 @@
 # ESS Detector group FPGA demonstrator database
 # $(SYS)    		= The System (DG)
 # $(DEV) 			= The DEV name (FPGA)
-# $(OFF) 			= register offset
+# $(SFX)            = The PV suffix
+# $(REG0) 			= register offset
 # $(COM)			= COM port for stream DEV
 # $(PRO) 			= stream DEV protocol filename
 
-
-record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-SP"){
-  field(DESC, "IP $(DIR) Set Point")
-  field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-WR")
-}
-
-record(longin, "$(SYS)-$(DEV):IP-$(DIR)-OFF") {
-  field(VAL, "$(OFF)")
-}
-
-record(bo, "$(SYS)-$(DEV):IP-$(DIR)-WR"){
-  field(DESC, "IP $(DIR) write Packets")
-  field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),IP-$(DIR)-OFF,IP-$(DIR)-RAW-SP) $(COM)")
-  field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV")
-}
-
-record(longin, "$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV") {
-  field(DESC, "(RAW) IP $(DIR) address")
-  field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),IP-$(DIR)-OFF) $(COM)")
-  field(PINI, "0")
-  field(SCAN, "Passive")
-  field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
-
-}
-
-record(aSub,"$(SYS)-$(DEV):IP-$(DIR)-CALC-IN-STR")
-{
-    field(SNAM,"ipAddrToString")
-    field(FTA,"LONG")
-    field(NOA,"1")
-    field(INPA,"$(SYS)-$(DEV):IP-$(DIR)-RAW-RBV NPP")
-    field(FTVA, "STRING")
-    field(OUTA, "$(SYS)-$(DEV):IP-$(DIR)-RBV PP")
-    field(NOVA, "1")
-}
-
-record(stringin, "$(SYS)-$(DEV):IP-$(DIR)-RBV") {
-    field(DESC, "IP $(DIR) address")
-    field(VAL, "")
-    field(PINI, "NO")
-}
-
-record(stringout, "$(SYS)-$(DEV):IP-$(DIR)-SP") {
-    field(DESC, "IP $(DIR) address")
-    field(VAL, "")
-    field(PINI, "NO")
-    field(FLNK, "$(SYS)-$(DEV):IP-$(DIR)-CALC-OUT-STR")
+## ----------- Write to the output -------------
+record(stringout, "$(SYS)-$(DEV):$(SFX)-SP") {
+    field(DESC, "IP  address")
+    field(FLNK, "$(SYS)-$(DEV):$(SFX)-CLCO")
 	info(autosaveFields_pass0, "VAL")
 	field(PINI, "1")
 }
 
-record(aSub,"$(SYS)-$(DEV):IP-$(DIR)-CALC-OUT-STR") {
-    field(SNAM,"stringToIpAddr")
-    field(FTA,"STRING")
-    field(NOA,"1")
-    field(INPA,"$(SYS)-$(DEV):IP-$(DIR)-SP NPP")
+record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCO") {
+    field(SNAM, "stringToIpAddr")
+    field(FTA,  "STRING")
+    field(NOA,  "1")
+    field(INPA, "$(SYS)-$(DEV):$(SFX)-SP NPP")
     field(FTVA, "LONG")
-    field(OUTA, "$(SYS)-$(DEV):IP-$(DIR)-RAW-SP PP")
+    field(OUTA, "$(SYS)-$(DEV):$(SFX)-RAW-SP PP")
     field(NOVA, "1")
 }
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-RAW-SP"){
+  field(DESC, "IP Set Point")
+  field(FLNK, "$(SYS)-$(DEV):$(SFX)-WR")
+}
+
+record(bo, "$(SYS)-$(DEV):$(SFX)-WR"){
+  field(DESC, "IP write Packets")
+  field(DTYP, "stream")
+  field(OUT, "@$(PRO) writeRegister($(REG0),$(SYS)-$(DEV):$(SFX)-RAW-SP) $(COM)")
+  field(FLNK, "$(SYS)-$(DEV):$(SFX)-RAW-RBV")
+}
+
+
+## ----------- Read back  -------------
+
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-RAW-RBV") {
+  field(DESC, "(RAW) IP address in")
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister($(REG0)) $(COM)")
+  field(PINI, "0")
+  field(SCAN, "Passive")
+  field(FLNK, "$(SYS)-$(DEV):$(SFX)-CLCI")
+
+}
+
+record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCI")
+{
+    field(SNAM,"ipAddrToString")
+    field(FTA,"LONG")
+    field(NOA,"1")
+    field(INPA,"$(SYS)-$(DEV):$(SFX)-RAW-RBV NPP")
+    field(FTVA, "STRING")
+    field(OUTA, "$(SYS)-$(DEV):$(SFX)-RBV PP")
+    field(NOVA, "1")
+}
+
+record(stringin, "$(SYS)-$(DEV):$(SFX)-RBV") {
+    field(DESC, "IP address")
+}
+
+
+

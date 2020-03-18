@@ -1,0 +1,54 @@
+# ESS Detector group FPGA demonstrator database
+# $(SYS)    		= The System (DG)
+# $(DEV) 			= The DEV name (FPGA), required for BM implementation
+# $(SFX)            = The PV Name Suffix
+# $(REG0) 			= lowest register offset
+# $(REG1) 			= middle register offset
+# $(REG2) 			= highest register offset
+# $(COM)			= COM port for stream DEV
+# $(PRO) 			= stream DEV protocol filename
+
+
+record(stringin, "$(SYS)-$(DEV):$(SFX)-RBV"){
+    field(SCAN, "$(SCAN="Passive")")
+    field(DESC, "Git hash of $(DEV) Firmware")
+}
+
+record(aSub,"$(SYS)-$(DEV):$(SFX)-PRS")
+{
+    field(SNAM,"printGitHash_aSub")
+    field(FTA,"LONG")
+    field(NOA,"1")
+    field(INPA,"$(SYS)-$(DEV):$(SFX)-LW NPP")
+    field(FTB,"LONG")
+    field(NOB,"1")
+    field(INPB,"$(SYS)-$(DEV):$(SFX)-MW NPP")
+    field(FTC,"LONG")
+    field(NOC,"1")
+    field(INPC,"$(SYS)-$(DEV):$(SFX)-UW NPP")
+    field(FTVA, "STRING")
+    field(OUTA, "$(SYS)-$(DEV):$(SFX)-RBV PP")
+    field(NOVA, "1")
+	field(FLNK, "$(SYS)-$(DEV):$(SFX)-RBV")
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-LW"){
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister(REG0) $(COM)")
+  field(SCAN, "$(SCAN="Passive")")
+  field(PINI, "1")
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-MW"){
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister(REG1) $(COM)")
+  field(SCAN, "$(SCAN="Passive")")
+  field(PINI, "1")
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-UW"){
+  field(DTYP, "stream")
+  field(INP, "@$(PRO) readRegister(REG2) $(COM)")
+  field(SCAN, "$(SCAN="Passive")")
+  field(PINI, "1")
+}
