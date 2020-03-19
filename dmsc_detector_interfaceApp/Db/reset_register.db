@@ -1,34 +1,13 @@
 # ESS Detector group FPGA demonstrator database
-# $(SYS)    	= The System (DG)
+# $(SYS)    = The System (DG)
 # $(DEV) 	= The DEV name (FPGA)
-# $(OFF) = register offset
+# $(REG0) 	= register offset
 # $(COM)	= COM port for stream DEV
+# $(PRO) 	= stream DEV protocol filenam
 
 
 
-record(bo, "$(SYS)-$(DEV):RST-CMD"){
-	field(DESC, "Reset FPGA SP")
-	field(VAL, "1")
-	field(OUT, "$(SYS)-$(DEV):RST-SP PP")
-}
-
-record(bo, "$(SYS)-$(DEV):ENA-CMD"){
-	field(DESC, "Enable FPGA SP")
-	field(VAL, "0")
-	field(OUT, "$(SYS)-$(DEV):RST-SP PP")
-}
-
-record(seq, "$(SYS)-$(DEV):RST-ENA-CMD"){
-	field(DESC, "Reset, Enable FPGA SP")
-	field(DOL1, "1")
-	field(LNK1, "$(SYS)-$(DEV):RST-SP PP")
-	field(DOL2, "0")
-	field(DLY2, "0.2")
-	field(LNK2, "$(SYS)-$(DEV):RST-SP PP")
-}
-
-
-record(mbbo, "$(SYS)-$(DEV):RST-SP"){
+record(mbbo, "$(SYS)-$(DEV):$(SFX)-SP"){
 	field(DESC, "Reset FPGA SP")
 	field(ZRST, "Enable")
 	field(ONST, "Reset")
@@ -44,14 +23,9 @@ record(mbbo, "$(SYS)-$(DEV):RST-SP"){
 record(longout, "$(SYS)-$(DEV):RST-WR"){
 	field(DESC, "Write to Reset Vector")
 	field(DTYP, "stream")
-	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),RST-OFF,RST-WR) $(COM)")
-	field(FLNK, "$(SYS)-$(DEV):STATUS2-RBV")
+	field(OUT, "@ics-dg.proto writeRegister($(REG0),"$(SYS)-$(DEV):$(SFX)-SP") $(COM)")
 }
 
 
-
-record(longin, "$(SYS)-$(DEV):RST-OFF") {
-  field(VAL, $(OFF))
-}
 
 

@@ -64,7 +64,6 @@ record(bo, "$(SYS)-$(DEV):sendTim-CMD") {
 
 record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	field(DESC, "Perform timestamp check")
-	field(LNK1,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
 	field(LNK2,  "$(SYS)-$(DEV):TSU-RBV.PROC")
 	field(LNK3,  "$(SYS)-$(DEV):TSL-RBV.PROC")
 	field(LNK4,  "$(SYS)-$(DEV):TS-Diff-RBV.PROC")
@@ -78,7 +77,7 @@ record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 
 
 
-record(longin, "$(SYS)-$(DEV):TSU-RBV"){
+record(longin, "$(SYS)-$(DEV):$(SFX)U-RBV"){
 
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(REG1)) $(COM)")
@@ -86,7 +85,7 @@ record(longin, "$(SYS)-$(DEV):TSU-RBV"){
   field(FLNK, "$(SYS)-$(DEV):TS-SDiff-RBV")
 }
 
-record(longin, "$(SYS)-$(DEV):TSL-RBV"){
+record(longin, "$(SYS)-$(DEV):$(SFX)L-RBV"){
 
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(REG0)) $(COM)")

@@ -8,13 +8,14 @@
 
 
 
+
 ## Communication Records ###
 
 record(longin, "$(SYS)-$(DEV):$(SFX)-RBV"){
 
   field(DTYP, "stream")
   field(INP, "@$(PRO) readRegister($(REG0) $(COM)")
-  field(SCAN, "$(SCAN="Passive")")
+  field(SCAN, "$(SCAN="1 second")")
   field(PINI, "1")
 }
 
