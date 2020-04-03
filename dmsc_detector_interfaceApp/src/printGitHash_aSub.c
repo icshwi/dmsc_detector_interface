@@ -24,9 +24,9 @@ static long printGitHash_aSub(aSubRecord *prec) {
 	
 	snprintf(outStr,28,"%#010X %08X %08X",uw,mw,lw);
 		
-    printf("The Firmware Git Hash is: ");
-	printf(outStr);
-	printf("\n");
+    //printf("The Firmware Git Hash is: ");
+	//printf(outStr);
+	//printf("\n");
 		
 	
 	return 0;

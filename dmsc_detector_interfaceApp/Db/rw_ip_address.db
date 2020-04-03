@@ -6,6 +6,11 @@
 # $(COM)			= COM port for stream DEV
 # $(PRO) 			= stream DEV protocol filename
 
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF"){
+    field(DESC, "signed address offset")
+    field(VAL, "$(REG0)")
+}
+
 ## ----------- Write to the output -------------
 record(stringout, "$(SYS)-$(DEV):$(SFX)-SP") {
     field(DESC, "IP  address")
@@ -32,7 +37,7 @@ record(longin, "$(SYS)-$(DEV):$(SFX)-RAW-SP"){
 record(bo, "$(SYS)-$(DEV):$(SFX)-WR"){
   field(DESC, "IP write Packets")
   field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(REG0),$(SYS)-$(DEV):$(SFX)-RAW-SP) $(COM)")
+  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),$(SFX)-OFF,$(SFX)-RAW-SP) $(COM)")
   field(FLNK, "$(SYS)-$(DEV):$(SFX)-RAW-RBV")
 }
 
@@ -43,7 +48,7 @@ record(bo, "$(SYS)-$(DEV):$(SFX)-WR"){
 record(longin, "$(SYS)-$(DEV):$(SFX)-RAW-RBV") {
   field(DESC, "(RAW) IP address in")
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(REG0)) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(SFX)-OFF) $(COM)")
   field(PINI, "0")
   field(SCAN, "Passive")
   field(FLNK, "$(SYS)-$(DEV):$(SFX)-CLCI")

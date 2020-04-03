@@ -82,6 +82,9 @@ SOURCES += $(APPSRC)/convertIPAddress.cpp
 SOURCES += $(APPSRC)/convertMACAddress.cpp
 SOURCES += $(APPSRC)/generateHexString.c
 SOURCES += $(APPSRC)/getBuildTime_aSub.c
+SOURCES += $(APPSRC)/printGitHash_aSub.c
+SOURCES += $(APPSRC)/chInp_aSub.c
+
 # # DBDINC_SRCS should be last of the series of SOURCES
 # SOURCES += $(DBDINC_SRCS)
 

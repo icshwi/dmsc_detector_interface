@@ -8,6 +8,16 @@
 # $(REG0) = Timestamp lower register offset
 # $(REG1) = Timestamp upper register offset
 
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF0"){
+    field(DESC, "TS lower Addr")
+    field(VAL, "$(REG0)")
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF1"){
+    field(DESC, "TS Upper Addr")
+    field(VAL, "$(REG1)")
+}
+
 ## Communication Records ###
 
 	
@@ -80,7 +90,7 @@ record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 record(longin, "$(SYS)-$(DEV):$(SFX)U-RBV"){
 
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(REG1)) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(SFX)-OFF1) $(COM)")
   field(PINI, "1")
   field(FLNK, "$(SYS)-$(DEV):TS-SDiff-RBV")
 }
@@ -88,7 +98,7 @@ record(longin, "$(SYS)-$(DEV):$(SFX)U-RBV"){
 record(longin, "$(SYS)-$(DEV):$(SFX)L-RBV"){
 
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(REG0)) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(SFX)-OFF0) $(COM)")
   field(PINI, "1")
   field(FLNK, "$(SYS)-$(DEV):TS-NDiff-RBV")
 }
@@ -112,7 +122,7 @@ record(calc, "$(SYS)-$(DEV):TS-NDiff-RBV"){
 }
 
 record(calc, "$(SYS)-$(DEV):TS-Diff-RBV"){
-	field(DESC, "Diff between ${DEV} and ${EVR} TS")
+	field(DESC, "Diff between ${DEV} and EVR TS")
 	field(INPA, "$(SYS)-$(DEV):TS-SDiff-RBV NPP")
 	field(INPB, "$(SYS)-$(DEV):TS-NDiff-RBV NPP") 
 	field(CALC, "(A+(B/88052500))*1000000000")
