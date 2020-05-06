@@ -5,12 +5,16 @@
 # $(SFX) 			= register suffix
 # $(COM)			= COM port for stream DEV
 # $(PRO) 			= stream DEV protocol filename
-
-
+# $(DEFAULT=0)    = the default value
+# $(MIN=0)    = the minimum allowable value
+# $(MAX=0)    = the maximum allowable value
 
 ## Communication Records ###
 
-record(longin, "$(SYS)-$(DEV):$(SFX)-SP"){
+record(longout, "$(SYS)-$(DEV):$(SFX)-SP"){
+  field(VAL,   "$(DEFAULT=0)")
+  field(DRVL, "$(MIN=0)")
+  field(DRVH, "$(MAX=0)")
   field(FLNK, "$(SYS)-$(DEV):$(SFX)-WR")
   info(autosaveFields_pass0, "VAL")
   field(PINI, "1")
