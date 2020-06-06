@@ -1,41 +1,55 @@
 # ESS Detector group FPGA demonstrator database
 # $(SYS)    		= The System (DG)
 # $(DEV) 			= The DEV name (FPGA)
-# $(REG) 			= name of register
-# $(OFF) 			= register offset
+# $(REG0) 			= Address Offset
+# $(SFX) 			= register suffix
 # $(COM)			= COM port for stream DEV
 # $(PRO) 			= stream DEV protocol filename
-
+# $(DEFAULT=0)      = the default value
+# $(MIN=0)          = the minimum allowable value
+# $(MAX=2147483647) = the maximum allowable value
+# $(SCAN="Passive") = scan rate in seconds
+# $(PINI="1")       = Process on init
 
 
 ## Communication Records ###
 
-record(longin, "$(SYS)-$(DEV):$(REG)-SP"){
+record(longout, "$(SYS)-$(DEV):$(SFX)-SP"){
 
-  field(DESC, "$(REG) Set Point")
-  field(FLNK, "$(SYS)-$(DEV):$(REG)-WR")
+  field(DESC, "$(SFX) Set Point")
+  field(OUT,  "@$(PRO) write1Reg($(REG0),$(SYS)-$(DEV):$(SFX)-ECHO) $(COM)")
+  field(DRVL, "$(MIN=0)")
+  field(DRVH, "$(MAX=2147483647)")
+  field(FLNK, "$(SYS)-$(DEV):$(SFX)-RBV")
+  field(PINI, "$(PINI="1")")
+  field(SDIS, "$(SYS)-$(DEV):$(SFX)-ENA")
+  field(DISV, "0")
   info(autosaveFields_pass0, "VAL")
-  field(PINI, "1")
 }
 
-record(longin, "$(SYS)-$(DEV):$(REG)-OFF") {
-  field(VAL, "$(OFF)")
+# If PINI is set to 0 we don't want "$(SYS)-$(DEV):$(SFX)-SP" to process 
+# until we enable it. After we enable it we want it to bupdate with whatever 
+# autosave had for it.
+
+record(bo, "$(SYS)-$(DEV):$(SFX)-ENA"){
+
+  field(DESC, "Enable PV")
+  field(VAL,  "$(PINI=1)")
+  field(FLNK, "$(SYS)-$(DEV):$(SFX)-SP") #So that it processes, updating whatever we used for autosave
+  
 }
 
-record(bo, "$(SYS)-$(DEV):$(REG)-WR"){
+record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO"){
+  field(DESC, "$(REG) write echo")
+}
 
-  field(DESC, "$(REG) write Packets")
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-RBV"){
+
   field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),$(REG)-OFF,$(REG)-SP) $(COM)")
-  field(FLNK, "$(SYS)-$(DEV):$(REG)-RBV")
+  field(INP,  "@$(PRO) read1Reg($(REG0)) $(COM)")
+  field(SCAN, "$(SCAN="Passive")")
+  field(EGU,  "$(EGU="")")
 }
 
-record(longin, "$(SYS)-$(DEV):$(REG)-RBV"){
-
-  #field(DESC, "$(REG) Current Value")
-  field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(REG)-OFF) $(COM)")
-  #field(PINI, "1")
-
-}
 
