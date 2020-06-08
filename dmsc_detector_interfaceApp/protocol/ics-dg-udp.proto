@@ -12,26 +12,36 @@ LockTimeout = 2000;
 PollPeriod = 1; # See section 5 http://epics.web.psi.ch/software/streamdevice/doc/stream.pdf
 
 
-# field(INP, "@ics-dg-udp.proto read1Reg($(ADDRESS)) $(COM)")
+# field(INP,  "@$(PRO) read1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
 read1Reg {
 
  MaxInput = 12; 		#Number of Bytes we expect to get back
  
- out "\xE5\x5C\x00\x01\$1";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
+ out "\xE5\x5C\x00\x01%(\$1-OFF).4r";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
  
  in  "\xE5\x5C\x00\x02%*04r%04r";   #Read Response, Ignore the address response, put the value into the record that calls this protocol
 
 }
 
+# field(INP,  "@$(PRO) read3Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
+read3Reg {
 
-# field(OUT, "@$(PRO) write1Reg($(ADDRESS), ECHO_RECORD_NAME) $(COM)")
+ MaxInput = 28; 		#Number of Bytes we expect to get back
+ 
+ out "\xE5\x5C\x00\x01%(\$1-OFF0).4r%(\$1-OFF1).4r%(\$1-OFF2).4r";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
+ 
+ in  "\xE5\x5C\x00\x02%*04r%(\$1-LW)04r%*04r%(\$1-MW)04r%*04r%(\$1-UW)04r";   #Read Response, Ignore the address response, put the value into the record that calls this protocol
+
+}
+
+# field(OUT,  "@$(PRO) write1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
 write1Reg {
  
- MaxInput = 12; 		#Number of Bytes we expect to get back
+ #MaxInput = 12; 		#Number of Bytes we expect to get back
  
- out "\xE5\x5C\x00\x03\$1%.4r";     #Write Request using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF. Data is taken from VAL field
+ out "\xE5\x5C\x00\x03%(\$1-OFF).4r%(VAL).4r";     #Write Request using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF. Data is taken from VAL field
  
- in  "\xE5\x5C\x00\x04%*04r%(\$2)04r";   #Write Response. Ignores the address response. Data sent back is written to echo record
+ in  "\xE5\x5C\x00\x04%*04r%(\$1-ECHO)04r";   #Write Response. Ignores the address response. Data sent back is written to echo record
 
 }
 

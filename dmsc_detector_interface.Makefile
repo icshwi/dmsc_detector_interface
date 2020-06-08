@@ -68,7 +68,6 @@ USR_CPPFLAGS += -Wno-unused-but-set-variable
 TEMPLATES += $(wildcard $(APPDB)/*.db)
 TEMPLATES += $(wildcard $(APPPROTO)/*.proto)
 
-#DBDINC_SRCS += $(APPSRC)/getTimeStamp_aSub.c
 
 #DBDINC_DBDS = $(subst .c,.dbd,   $(DBDINC_SRCS:$(APPSRC)/%=%))
 # DBDINC_HDRS = $(subst .c,.h,     $(DBDINC_SRCS:$(APPSRC)/%=%))
@@ -82,6 +81,9 @@ SOURCES += $(APPSRC)/convertIPAddress.cpp
 SOURCES += $(APPSRC)/convertMACAddress.cpp
 SOURCES += $(APPSRC)/generateHexString.c
 SOURCES += $(APPSRC)/getBuildTime_aSub.c
+SOURCES += $(APPSRC)/printGitHash_aSub.c
+SOURCES += $(APPSRC)/chInp_aSub.c
+
 # # DBDINC_SRCS should be last of the series of SOURCES
 # SOURCES += $(DBDINC_SRCS)
 

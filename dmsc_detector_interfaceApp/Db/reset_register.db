@@ -1,56 +1,31 @@
 # ESS Detector group FPGA demonstrator database
-# $(SYS)    	= The System (DG)
+# $(SYS)    = The System (DG)
 # $(DEV) 	= The DEV name (FPGA)
-# $(REG) 	= name of register
-# $(OFF) = register offset
+# $(REG0) 	= register offset
 # $(COM)	= COM port for stream DEV
+# $(PRO) 	= stream DEV protocol filenam
 
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF"){
+    field(DESC, "signed address offset")
+    field(VAL, "$(REG0)")
+}
 
-
-record(bo, "$(SYS)-$(DEV):RST-CMD"){
+record(mbbo, "$(SYS)-$(DEV):$(SFX)-SP"){
 	field(DESC, "Reset FPGA SP")
-	field(VAL, "1")
-	field(OUT, "$(SYS)-$(DEV):RST-SP PP")
-}
-
-record(bo, "$(SYS)-$(DEV):ENA-CMD"){
-	field(DESC, "Enable FPGA SP")
-	field(VAL, "0")
-	field(OUT, "$(SYS)-$(DEV):RST-SP PP")
-}
-
-record(seq, "$(SYS)-$(DEV):RST-ENA-CMD"){
-	field(DESC, "Reset, Enable FPGA SP")
-	field(DOL1, "1")
-	field(LNK1, "$(SYS)-$(DEV):RST-SP PP")
-	field(DOL2, "0")
-	field(DLY2, "0.2")
-	field(LNK2, "$(SYS)-$(DEV):RST-SP PP")
-}
-
-
-record(bo, "$(SYS)-$(DEV):RST-SP"){
-	field(DESC, "Reset FPGA SP")
-	field(ZNAM, "Enable")
-	field(ONAM, "Reset")
-	field(DTYP, "stream")
-	field(OUT, "@ics-dg.proto writeRegister($(SYS)-$(DEV),RST-OFF,RST-SP) $(COM)")
-	field(FLNK, "$(SYS)-$(DEV):RST-RBV")
-}
-
-record(bi, "$(SYS)-$(DEV):RST-RBV"){
-	field(DESC, "Reset FPGA RBV")
-	field(ZNAM, "Enabled")
-	field(ONAM, "Reset")
-	field(DTYP, "stream")
+	field(ZRST, "Enable")
+	field(ONST, "Reset")
+	field(ZRVL, "0")
+	field(ONVL, "18")
+	field(DTYP, "Raw Soft Channel")
+    field(DTYP, "stream")
+	field(OUT,  "@$(PRO) write1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
+	info(autosaveFields_pass0, "VAL")
 	field(PINI, "1")
-	field(INP, "@ics-dg.proto readRegister($(SYS)-$(DEV),RST-OFF) $(COM)")
-	field(FLNK, "$(SYS)-$(DEV):STATUS2-RBV")
-
+	
 }
 
-record(longin, "$(SYS)-$(DEV):RST-OFF") {
-  field(VAL, $(OFF))
+record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO"){
+  field(DESC, "Reset write echo")
 }
 
 

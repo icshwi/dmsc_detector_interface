@@ -33,6 +33,7 @@ dmsc_detector_interface_SRCS += getTimeStamp_aSub.c
 dmsc_detector_interface_SRCS += syncState_aSub.c
 dmsc_detector_interface_SRCS += getRange_aSub.c
 dmsc_detector_interface_SRCS += getBuildTime_aSub.c
+dmsc_detector_interface_SRCS += printGitHash_aSub.c
 dmsc_detector_interface_SRCS += chInp_aSub.c
 
 # Build the main IOC entry point on workstation OSs.

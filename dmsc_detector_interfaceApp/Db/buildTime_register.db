@@ -1,7 +1,8 @@
 # ESS Detector group FPGA demonstrator database
 # $(SYS)    	= The System (DG)
 # $(DEV) 	= The DEV name (FPGA)
-# $(OFF) = register offset
+# $(SFX)            = The PV Name Suffix
+# $(REG0) = register offset
 # $(COM)	= COM port for stream DEV
 # $(PRO) = stream DEV protocol filename
 
@@ -11,34 +12,36 @@
 # https://www.xilinx.com/support/documentation/application_notes/xapp1232-bitstream-id-with-usr_access.pdf 
 # pg 2-3
 
-record(longout, "$(SYS)-$(DEV):BUILD-OFF") {
-  field(VAL, "$(OFF)")
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF"){
+    field(DESC, "signed address offset")
+    
+    field(VAL, "$(REG0)")
 }
 
 
-record(longin, "$(SYS)-$(DEV):BUILD-RD"){
+record(longin, "$(SYS)-$(DEV):$(SFX)-RD"){
 
   field(DESC, "Build Reg Value")
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),BUILD-OFF) $(COM)")
+  field(INP,  "@$(PRO) read1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
   field(PINI, "1")
-  field(FLNK, "$(SYS)-$(DEV):BUILD-PRS")
+  field(FLNK, "$(SYS)-$(DEV):$(SFX)-PRS")
 
 }
 
-record(aSub,"$(SYS)-$(DEV):BUILD-PRS")
+record(aSub,"$(SYS)-$(DEV):$(SFX)-PRS")
 {
     field(SNAM,"getBuildTime_aSub")
     field(FTA,"LONG")
     field(NOA,"1")
-    field(INPA,"$(SYS)-$(DEV):BUILD-RD NPP")
+    field(INPA,"$(SYS)-$(DEV):$(SFX)-RD NPP")
     field(FTVA, "STRING")
-    field(OUTA, "$(SYS)-$(DEV):BUILD-RBV PP")
+    field(OUTA, "$(SYS)-$(DEV):$(SFX)-RBV PP")
     field(NOVA, "1")
-	field(FLNK, "$(SYS)-$(DEV):BUILD-RBV")
+	field(FLNK, "$(SYS)-$(DEV):$(SFX)-RBV")
 }
 
-record(stringin, "$(SYS)-$(DEV):BUILD-RBV") {
+record(stringin, "$(SYS)-$(DEV):$(SFX)-RBV") {
     field(DESC, "Firmware Build Time")
 }
 
