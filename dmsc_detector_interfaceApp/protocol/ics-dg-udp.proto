@@ -16,10 +16,16 @@ PollPeriod = 1; # See section 5 http://epics.web.psi.ch/software/streamdevice/do
 read1Reg {
 
  MaxInput = 12; 		#Number of Bytes we expect to get back
- 
  out "\xE5\x5C\x00\x01%(\$1-OFF).4r";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
- 
  in  "\xE5\x5C\x00\x02%*04r%04r";   #Read Response, Ignore the address response, put the value into the record that calls this protocol
+
+}
+
+read2Reg {
+
+ MaxInput = 20; 		#Number of Bytes we expect to get back
+ out "\xE5\x5C\x00\x01%(\$1-OFF0).4r%(\$1-OFF1).4r";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
+ in  "\xE5\x5C\x00\x02%*04r%(\$1-LW-RBV)04r%*04r%(\$1-UW-RBV)04r";   #Read Response, Ignore the address response, put the value into the LW and UW records.
 
 }
 
@@ -27,21 +33,31 @@ read1Reg {
 read3Reg {
 
  MaxInput = 28; 		#Number of Bytes we expect to get back
- 
  out "\xE5\x5C\x00\x01%(\$1-OFF0).4r%(\$1-OFF1).4r%(\$1-OFF2).4r";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
- 
- in  "\xE5\x5C\x00\x02%*04r%(\$1-LW)04r%*04r%(\$1-MW)04r%*04r%(\$1-UW)04r";   #Read Response, Ignore the address response, put the value into the record that calls this protocol
+ in  "\xE5\x5C\x00\x02%*04r%(\$1-LW-RBV)04r%*04r%(\$1-MW-RBV)04r%*04r%(\$1-UW-RBV)04r";   #Read Response, Ignore the address response,put the value into the LW,MW and UW records.
 
 }
 
+
+
+
+
+###### Writing ###########
 # field(OUT,  "@$(PRO) write1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
 write1Reg {
  
- #MaxInput = 12; 		#Number of Bytes we expect to get back
- 
+ MaxInput = 12; 		#Number of Bytes we expect to get back
  out "\xE5\x5C\x00\x03%(\$1-OFF).4r%(VAL).4r";     #Write Request using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF. Data is taken from VAL field
  
  in  "\xE5\x5C\x00\x04%*04r%(\$1-ECHO)04r";   #Write Response. Ignores the address response. Data sent back is written to echo record
 
 }
 
+write2Reg {
+ 
+ MaxInput = 20; 		#Number of Bytes we expect to get back
+ out "\xE5\x5C\x00\x03%(\$1-OFF0).4r%(\$1-\$2).4r%(\$1-OFF1).4r%(\$1-\$3).4r";     #Write Request using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF. Data is taken from VAL field
+ 
+ in  "\xE5\x5C\x00\x04%*04r%(\$1-ECHO0)04r%*04r%(\$1-ECHO1)04r";   #Write Response. Ignores the address response. Data sent back is written to echo record
+
+}

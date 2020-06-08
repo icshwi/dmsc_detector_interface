@@ -33,15 +33,15 @@ record(bi, "$(SYS)-$(DEV):$(SFX)-RD"){
     field(PINI, "$(PINI="1")")
 }
     
-record(longin, "$(SYS)-$(DEV):$(SFX)-LW"){
+record(longin, "$(SYS)-$(DEV):$(SFX)-LW-RBV"){
    field(DESC, "Lower word of $(SFX)")
 }
 
-record(longin, "$(SYS)-$(DEV):$(SFX)-MW"){
+record(longin, "$(SYS)-$(DEV):$(SFX)-MW-RBV"){
    field(DESC, "Middle word of $(SFX)")
 }
 
-record(longin, "$(SYS)-$(DEV):$(SFX)-UW"){
+record(longin, "$(SYS)-$(DEV):$(SFX)-UW-RBV"){
    field(DESC, "Upper word of $(SFX)")
 }
 
@@ -51,13 +51,13 @@ record(aSub,"$(SYS)-$(DEV):$(SFX)-PRS")
     field(SNAM,"printGitHash_aSub")
     field(FTA,"LONG")
     field(NOA,"1")
-    field(INPA,"$(SYS)-$(DEV):$(SFX)-LW NPP")
+    field(INPA,"$(SYS)-$(DEV):$(SFX)-LW-RBV NPP")
     field(FTB,"LONG")
     field(NOB,"1")
-    field(INPB,"$(SYS)-$(DEV):$(SFX)-MW NPP")
+    field(INPB,"$(SYS)-$(DEV):$(SFX)-MW-RBV NPP")
     field(FTC,"LONG")
     field(NOC,"1")
-    field(INPC,"$(SYS)-$(DEV):$(SFX)-UW NPP")
+    field(INPC,"$(SYS)-$(DEV):$(SFX)-UW-RBV NPP")
     field(FTVA, "STRING")
     field(OUTA, "$(SYS)-$(DEV):$(SFX)-RBV PP")
     field(NOVA, "1")

@@ -1,108 +1,102 @@
 # ESS Detector group FPGA demonstrator database
-# $(SYS)    	= The System (DG)
+# $(SYS)    = The System (DG)
 # $(DEV) 	= The DEV name (FPGA)
-# $(OFF) = register offset
+# $(REG0)   = lw register offset
+# $(REG1)   = uw register offset
+# $(SFX)    = Label
 # $(COM)	= COM port for stream DEV
-# $(PRO) = stream DEV protocol filename
-# $(DIR) = Destination or Source, used for record naming
+# $(PRO)    = stream DEV protocol filename
 
-record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-SP"){
-  field(DESC, "MAC $(DIR) raw register 1")
-  field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)1-WR")
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF0"){
+    field(DESC, "MAC Lower Addr")
+    field(VAL, "$(REG0)")
 }
 
-record(longin, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-SP"){
-  field(DESC, "MAC $(DIR) raw register 2")
-  field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-WR")
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF1"){
+    field(DESC, "MAC Upper Addr")
+    field(VAL, "$(REG1)")
 }
 
-record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-OFF") {
-  field(VAL, "$(OFF)")
-  field("PINI", "1")
-}
-
-record(calc, "$(SYS)-$(DEV):MAC-$(DIR)2-OFF-CALC") {
-    field(CALC,"A + 1")
-    field(INPA,"$(SYS)-$(DEV):MAC-$(DIR)1-OFF NPP")
-}
-
-record(longin, "$(SYS)-$(DEV):MAC-$(DIR)2-OFF") {
-  field(INP, "$(SYS)-$(DEV):MAC-$(DIR)2-OFF-CALC PP")
-  field("PINI", "1")
-}
-
-record(longout, "$(SYS)-$(DEV):MAC-$(DIR)1-WR"){
-  field(DESC, "MAC $(DIR) write Packets")
-  field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF,MAC-$(DIR)1-RAW-SP) $(COM)")
-  field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-WR")
-}
-
-record(longout, "$(SYS)-$(DEV):MAC-$(DIR)2-WR"){
-  field(DESC, "MAC $(DIR) write Packets")
-  field(DTYP, "stream")
-  field(OUT, "@$(PRO) writeRegister($(SYS)-$(DEV),MAC-$(DIR)2-OFF,MAC-$(DIR)2-RAW-SP) $(COM)")
-  field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV")
-}
-
-record(longin, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV") {
-  field(DESC, "(RAW) MAC $(DIR) address")
-  field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),MAC-$(DIR)1-OFF) $(COM)")
-  field(PINI, "0")
-  field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV")
-
-
-}
-
-record(longin, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV") {
-  field(DESC, "(RAW) MAC $(DIR) address")
-  field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),MAC-$(DIR)2-OFF) $(COM)")
-  field(PINI, "0")
-  field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)-CALC-IN-STR")
-
-}
-
-record(aSub,"$(SYS)-$(DEV):MAC-$(DIR)-CALC-IN-STR")
-{
-    field(SNAM,"macAddrToString")
-    field(FTA,"LONG")
-    field(NOA,"1")
-    field(INPA,"$(SYS)-$(DEV):MAC-$(DIR)1-RAW-RBV NPP")
-    field(FTB,"LONG")
-    field(NOB,"1")
-    field(INPB,"$(SYS)-$(DEV):MAC-$(DIR)2-RAW-RBV NPP")
-    field(FTVA, "STRING")
-    field(OUTA, "$(SYS)-$(DEV):MAC-$(DIR)-RBV PP")
-    field(NOVA, "1")
-}
-
-record(stringin, "$(SYS)-$(DEV):MAC-$(DIR)-RBV") {
-    field(DESC, "MAC $(DIR) address")
+## ----------- Write to the output -------------
+record(stringout, "$(SYS)-$(DEV):$(SFX)-SP") {
     field(VAL, "")
-    field(PINI, "NO")
-}
-
-record(stringout, "$(SYS)-$(DEV):MAC-$(DIR)-SP") {
-    field(DESC, "IP $(DIR) address")
-    field(VAL, "")
-    field(PINI, "NO")
-    field(FLNK, "$(SYS)-$(DEV):MAC-$(DIR)-CALC-OUT-STR")
+    field(FLNK, "$(SYS)-$(DEV):$(SFX)-CLCO")
 	info(autosaveFields_pass0, "VAL")
 	field(PINI, "1")
 }
 
-record(aSub,"$(SYS)-$(DEV):MAC-$(DIR)-CALC-OUT-STR")
+record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCO")
 {
     field(SNAM,"stringToMacAddr")
     field(FTA,"STRING")
     field(NOA,"1")
-    field(INPA,"$(SYS)-$(DEV):MAC-$(DIR)-SP NPP")
+    field(INPA, "$(SYS)-$(DEV):$(SFX)-SP NPP")
     field(FTVA, "LONG")
-    field(OUTA, "$(SYS)-$(DEV):MAC-$(DIR)1-RAW-SP PP")
+    field(OUTA, "$(SYS)-$(DEV):$(SFX)-LW-SP PP")
     field(NOVA, "1")
     field(FTVB, "LONG")
-    field(OUTB, "$(SYS)-$(DEV):MAC-$(DIR)2-RAW-SP PP")
+    field(OUTB, "$(SYS)-$(DEV):$(SFX)-UW-SP PP")
     field(NOVB, "1")
+    field(FLNK, "$(SYS)-$(DEV):$(SFX)-WR")
+}
+
+
+record(longout, "$(SYS)-$(DEV):$(SFX)-LW-SP"){
+  field(DESC, "MAC Lower Packets")
+}
+
+record(longout, "$(SYS)-$(DEV):$(SFX)-UW-SP"){
+  field(DESC, "MAC Upper Packets")
+}
+
+record(bo, "$(SYS)-$(DEV):$(SFX)-WR"){
+  field(DESC, "write packets")
+  field(OUT,  "@$(PRO) write2Reg($(SYS)-$(DEV):$(SFX),LW-SP,UW-SP) $(COM)")
+  field(DTYP, "stream")
+  field(FLNK, "$(SYS)-$(DEV):$(SFX)-RD")
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO0"){
+  field(DESC, "$(SFX) write echo 1")
+}
+record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO1"){
+  field(DESC, "$(SFX) write echo 2")
+}
+
+## ----------- Read back  -------------
+
+record(bi, "$(SYS)-$(DEV):$(SFX)-RD"){
+    field(DTYP, "stream")
+    field(INP, "@$(PRO) read2Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
+    field(SCAN, "$(SCAN="Passive")")
+    field(FLNK, "$(SYS)-$(DEV):$(SFX)-CLCI")
+    
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-LW-RBV"){
+   field(DESC, "Lower word of $(SFX)")
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-UW-RBV"){
+   field(DESC, "Middle word of $(SFX)")
+}
+
+
+record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCI")
+{
+    field(SNAM,"macAddrToString")
+    field(FTA,  "LONG")ca
+    field(NOA,  "1")
+    field(INPA, "$(SYS)-$(DEV):$(SFX)-LW-RBV NPP")
+    field(FTB,  "LONG")
+    field(NOB,  "1")
+    field(INPB, "$(SYS)-$(DEV):$(SFX)-UW-RBV NPP")
+    field(FTVA, "STRING")
+    field(OUTA, "$(SYS)-$(DEV):$(SFX)-RBV PP")
+    field(NOVA, "1")
+}
+
+record(stringin, "$(SYS)-$(DEV):$(SFX)-RBV") {
+
 }
