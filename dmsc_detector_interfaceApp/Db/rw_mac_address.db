@@ -86,7 +86,7 @@ record(longin, "$(SYS)-$(DEV):$(SFX)-UW-RBV"){
 record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCI")
 {
     field(SNAM,"macAddrToString")
-    field(FTA,  "LONG")ca
+    field(FTA,  "LONG")
     field(NOA,  "1")
     field(INPA, "$(SYS)-$(DEV):$(SFX)-LW-RBV NPP")
     field(FTB,  "LONG")
@@ -98,5 +98,5 @@ record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCI")
 }
 
 record(stringin, "$(SYS)-$(DEV):$(SFX)-RBV") {
-
+    field(DESC,  "$(SFX) MAC")
 }
