@@ -5,12 +5,14 @@
 # Responses will be 0 or 16 bytes.
 #
 Terminator = "";
-ReplyTimeout = 500;
-ReadTimeout  = 100;
+ReplyTimeout = 1;
+ReadTimeout  = 1;
 WriteTimeout = 100;
 LockTimeout = 2000;
 PollPeriod = 1; # See section 5 http://epics.web.psi.ch/software/streamdevice/doc/stream.pdf
 
+
+######## Reading ######
 
 # field(INP,  "@$(PRO) read1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
 read1Reg {

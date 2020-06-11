@@ -27,7 +27,7 @@ record(longin, "$(SYS)-$(DEV):$(SFX)-OFF2"){
 
 record(bi, "$(SYS)-$(DEV):$(SFX)-RD"){
     field(DTYP, "stream")
-    field(INP, "@$(PRO) read3Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
+    field(INP, "@$(PRO) read3Reg($(SYS)-$(DEV):$(SFX),LW-RBV,MW-RBV,UW-RBV) $(COM)")
     field(SCAN, "$(SCAN="Passive")")
     field(FLNK, "$(SYS)-$(DEV):$(SFX)-PRS")
     field(PINI, "$(PINI="1")")
