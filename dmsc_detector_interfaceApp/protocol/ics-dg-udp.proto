@@ -25,7 +25,7 @@ read2Reg {
 
  MaxInput = 20; 		#Number of Bytes we expect to get back
  out "\xE5\x5C\x00\x01%(\$1-OFF0).4r%(\$1-OFF1).4r";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
- in  "\xE5\x5C\x00\x02%*04r%(\$1-LW-RBV)04r%*04r%(\$1-UW-RBV)04r";   #Read Response, Ignore the address response, put the value into the LW and UW records.
+ in  "\xE5\x5C\x00\x02%*04r%(\$1-\$2)04r%*04r%(\$1-\$3)04r";   #Read Response, Ignore the address response, put the value into the LW and UW records.
 
 }
 
@@ -34,13 +34,9 @@ read3Reg {
 
  MaxInput = 28; 		#Number of Bytes we expect to get back
  out "\xE5\x5C\x00\x01%(\$1-OFF0).4r%(\$1-OFF1).4r%(\$1-OFF2).4r";         #Read Request, using address specified in argument of protocol. address must be specified in byte format \xFF\xFF\xFF\xFF
- in  "\xE5\x5C\x00\x02%*04r%(\$1-LW-RBV)04r%*04r%(\$1-MW-RBV)04r%*04r%(\$1-UW-RBV)04r";   #Read Response, Ignore the address response,put the value into the LW,MW and UW records.
+ in  "\xE5\x5C\x00\x02%*04r%(\$1-\$2)04r%*04r%(\$1-\$3)04r%*04r%(\$1-\$4)04r";   #Read Response, Ignore the address response,put the value into the LW,MW and UW records.
 
 }
-
-
-
-
 
 ###### Writing ###########
 # field(OUT,  "@$(PRO) write1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
