@@ -68,7 +68,7 @@ record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO1"){
 
 record(bi, "$(SYS)-$(DEV):$(SFX)-RD"){
     field(DTYP, "stream")
-    field(INP, "@$(PRO) read2Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
+    field(INP, "@$(PRO) read2Reg($(SYS)-$(DEV):$(SFX),LW-RBV,UW-RBV) $(COM)")
     field(SCAN, "$(SCAN="Passive")")
     field(FLNK, "$(SYS)-$(DEV):$(SFX)-CLCI")
     
