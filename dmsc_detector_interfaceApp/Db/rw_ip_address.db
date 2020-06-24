@@ -32,6 +32,7 @@ record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCO") {
     field(NOVA, "1")
 }
 
+
 record(longout, "$(SYS)-$(DEV):$(SFX)-RAW-SP"){
   field(DESC, "IP Set Point")
   field(OUT,  "@$(PRO) write1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
@@ -42,6 +43,7 @@ record(longout, "$(SYS)-$(DEV):$(SFX)-RAW-SP"){
 record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO"){
   field(DESC, "$(SFX) write echo")
 }
+
 
 ## ----------- Read back  -------------
 

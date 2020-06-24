@@ -10,6 +10,7 @@
 # $(SCAN="Passive") = scan rate in seconds
 # $(PINI="1")       = Process on init   
 
+
 record(longin, "$(SYS)-$(DEV):$(SFX)-OFF0"){
     field(DESC, "signed address offset")
     field(VAL, "$(REG0)")
@@ -46,11 +47,13 @@ record(longin, "$(SYS)-$(DEV):$(SFX)-UW-RBV"){
 }
 
 
+
 record(aSub,"$(SYS)-$(DEV):$(SFX)-PRS")
 {
     field(SNAM,"printGitHash_aSub")
     field(FTA,"LONG")
     field(NOA,"1")
+
     field(INPA,"$(SYS)-$(DEV):$(SFX)-LW-RBV NPP")
     field(FTB,"LONG")
     field(NOB,"1")
@@ -68,4 +71,5 @@ record(aSub,"$(SYS)-$(DEV):$(SFX)-PRS")
 record(stringin, "$(SYS)-$(DEV):$(SFX)-RBV"){
     field(DESC, "Git hash of $(DEV) Firmware")
 }
+
 

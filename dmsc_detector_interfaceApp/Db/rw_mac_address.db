@@ -7,7 +7,6 @@
 # $(COM)	= COM port for stream DEV
 # $(PRO)    = stream DEV protocol filename
 
-
 record(longin, "$(SYS)-$(DEV):$(SFX)-OFF0"){
     field(DESC, "MAC Lower Addr")
     field(VAL, "$(REG0)")
@@ -60,11 +59,13 @@ record(bo, "$(SYS)-$(DEV):$(SFX)-WR"){
 record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO0"){
   field(DESC, "$(SFX) write echo 1")
 }
+
 record(longin, "$(SYS)-$(DEV):$(SFX)-ECHO1"){
   field(DESC, "$(SFX) write echo 2")
 }
 
 ## ----------- Read back  -------------
+
 
 record(bi, "$(SYS)-$(DEV):$(SFX)-RD"){
     field(DTYP, "stream")
@@ -81,7 +82,6 @@ record(longin, "$(SYS)-$(DEV):$(SFX)-LW-RBV"){
 record(longin, "$(SYS)-$(DEV):$(SFX)-UW-RBV"){
    field(DESC, "Middle word of $(SFX)")
 }
-
 
 record(aSub,"$(SYS)-$(DEV):$(SFX)-CLCI")
 {

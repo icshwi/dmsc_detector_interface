@@ -1,14 +1,22 @@
 # Detector Controls general register read write
 # $(SYS)    = The System (DG)
 # $(DEV) = The Device name (FPGA)
-# $(EVR) = EVR name
+# $(SFX)            = The PV Name Suffix
 # $(COM) = COM port used for proto file
 # $(PRO) = protocol file 
 
-# $(CLK_RST_EVNT) = Event number to send timestamp
-# $(SYNC_EVNT) = Event number sync pulse is sent on and check is performed
-# $(TSL-OFF) = Timestmap lower register offset
-# $(TSU-OFF) = Timestmap upper register offset
+# $(REG0) = Timestamp lower register offset
+# $(REG1) = Timestamp upper register offset
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF0"){
+    field(DESC, "TS lower Addr")
+    field(VAL, "$(REG0)")
+}
+
+record(longin, "$(SYS)-$(DEV):$(SFX)-OFF1"){
+    field(DESC, "TS Upper Addr")
+    field(VAL, "$(REG1)")
+}
 
 ## Communication Records ###
 
@@ -47,9 +55,9 @@ record(longin, "$(SYS)-$(DEV):da") {
 
 record (seq, "$(SYS)-$(DEV):syncTimestamp-CMD"){
 	field(DESC, "Perform timestamp sync")
-	field(LNK3, "$(SYS)-$(EVR):getTimeStamp_aSub.PROC")
+	field(LNK3, "$(SYS)-EVR-01:getTimeStamp_aSub.PROC")
 	field(SCAN, "Event")
-	field(EVNT, "$(CLK_RST_EVNT)")
+	field(EVNT, "15")
 	field(FLNK, "$(SYS)-$(DEV):sendTim-CMD")
 }
 
@@ -57,7 +65,7 @@ record (seq, "$(SYS)-$(DEV):syncTimestamp-CMD"){
 record(bo, "$(SYS)-$(DEV):sendTim-CMD") {
   field(DESC, "Send timestamp register packet to FPGA")
   field(DTYP, "stream")	
-  field(OUT, "@$(PRO) sendTimestamp($(SYS)-$(EVR),SyncSec-RBV,SyncNsec-RBV) $(COM)")
+  field(OUT, "@$(PRO) sendTimestamp($(SYS)-EVR-01,SyncSec-RBV,SyncNsec-RBV) $(COM)")
   field(FLNK, "$(SYS)-$(DEV):RST-ENA-CMD")
 }
 
@@ -66,47 +74,38 @@ record(bo, "$(SYS)-$(DEV):sendTim-CMD") {
 
 record (seq, "$(SYS)-$(DEV):checkTimestamp-CMD"){
 	field(DESC, "Perform timestamp check")
-	field(LNK1,  "$(SYS)-$(DEV):STATUS2-RBV.PROC")
 	field(LNK2,  "$(SYS)-$(DEV):TSU-RBV.PROC")
 	field(LNK3,  "$(SYS)-$(DEV):TSL-RBV.PROC")
 	field(LNK4,  "$(SYS)-$(DEV):TS-Diff-RBV.PROC")
 	field(LNK5,  "$(SYS)-$(DEV):TS-RBV.PROC")
 	field(SCAN, "Event")
-	field(EVNT, "$(SYNC_EVNT)")
+	field(EVNT, "16")
 	field(DISV, "0")
-	field(SDIS, "$(SYS)-$(EVR):detSyncState-SP NPP")
+	field(SDIS, "$(SYS)-EVR-01:detSyncState-SP NPP")
 	
 }
 
-record(longin, "$(SYS)-$(DEV):TSU-OFF") {
-  field(VAL, "$(TSU-OFF)")
-}
 
 
-record(longin, "$(SYS)-$(DEV):TSU-RBV"){
+record(longin, "$(SYS)-$(DEV):$(SFX)U-RBV"){
 
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),TSU-OFF) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(SFX)-OFF1) $(COM)")
   field(PINI, "1")
   field(FLNK, "$(SYS)-$(DEV):TS-SDiff-RBV")
 }
 
-record(longin, "$(SYS)-$(DEV):TSL-OFF") {
-  field(VAL, "$(TSL-OFF)")
-}
-
-
-record(longin, "$(SYS)-$(DEV):TSL-RBV"){
+record(longin, "$(SYS)-$(DEV):$(SFX)L-RBV"){
 
   field(DTYP, "stream")
-  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),TSL-OFF) $(COM)")
+  field(INP, "@$(PRO) readRegister($(SYS)-$(DEV),$(SFX)-OFF0) $(COM)")
   field(PINI, "1")
   field(FLNK, "$(SYS)-$(DEV):TS-NDiff-RBV")
 }
 
 record(calc, "$(SYS)-$(DEV):TS-SDiff-RBV"){
 	field(DESC, "Difference between ticks")
-	field(INPA, "$(SYS)-$(EVR):checkTimeStamp_aSub.VALA PP")
+	field(INPA, "$(SYS)-EVR-01:checkTimeStamp_aSub.VALA PP")
 	#NPP since we've already worked out the value
 	field(INPB, "$(SYS)-$(DEV):TSU-RBV NPP") 
 	field(CALC, "B-A")
@@ -115,7 +114,7 @@ record(calc, "$(SYS)-$(DEV):TS-SDiff-RBV"){
 
 record(calc, "$(SYS)-$(DEV):TS-NDiff-RBV"){
 	field(DESC, "Difference between ticks")
-	field(INPA, "$(SYS)-$(EVR):checkTimeStamp_aSub.VALB PP")
+	field(INPA, "$(SYS)-EVR-01:checkTimeStamp_aSub.VALB PP")
 	#NPP since we've already worked out the value
 	field(INPB, "$(SYS)-$(DEV):TSL-RBV NPP")
 	field(CALC, "B-A")
@@ -123,7 +122,7 @@ record(calc, "$(SYS)-$(DEV):TS-NDiff-RBV"){
 }
 
 record(calc, "$(SYS)-$(DEV):TS-Diff-RBV"){
-	field(DESC, "Diff between ${DEV} and ${EVR} TS")
+	field(DESC, "Diff between ${DEV} and EVR TS")
 	field(INPA, "$(SYS)-$(DEV):TS-SDiff-RBV NPP")
 	field(INPB, "$(SYS)-$(DEV):TS-NDiff-RBV NPP") 
 	field(CALC, "(A+(B/88052500))*1000000000")
