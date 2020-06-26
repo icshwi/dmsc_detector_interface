@@ -56,6 +56,8 @@ record(longin, "$(SYS)-$(DEV):$(SFX)-RBV"){
   field(INP,  "@$(PRO) read1Reg($(SYS)-$(DEV):$(SFX)) $(COM)")
   field(SCAN, "$(SCAN="Passive")")
   field(EGU,  "$(EGU="")")
+  field(SDIS, "$(SYS)-$(DEV):$(SFX)-ENA")
+  field(DISV, "0")
 }
 
 
