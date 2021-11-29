@@ -1,3 +1,9 @@
+# DEPRECATION NOTICE
+
+## 2021-11-29
+
+This repository has been archived, as it references an out-of-date version of e3 for its use.
+---
 This support module implements a protocol to communicate between an IOC running on a host server and a detector readout master. It defines parameter template files which instantiate records required for a particular parameter. 
 
 # Using this support module
